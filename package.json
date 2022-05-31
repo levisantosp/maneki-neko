@@ -1,13 +1,21 @@
+
 {
   "name": "eris-bot",
   "version": "1.0.0",
-  "description": "?",
+  "description": "A powerful Discord bot🤖 A powerful Discord bot, made with eris library in JavaScript. With ❤️ roleplay commands, 🔧 configuration commands, 💸 economy commands, 🌐 utility commands, and more...",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Levi0100/meow-rp.git"
+  },
   "author": "Levi0100",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Levi0100/meow-rp/issues"
+  },
   "dependencies": {
     "@iamtraction/google-translate": "^1.1.2",
     "canvacord": "^5.2.3",
@@ -20,5 +28,6 @@
     "moment": "^2.29.3",
     "mongoose": "^6.3.2",
     "node-canvas-with-twemoji-and-discord-emoji": "^1.2.1"
-  }
+  },
+  "homepage": "https://github.com/Levi0100/meow-rp#readme"
 }
