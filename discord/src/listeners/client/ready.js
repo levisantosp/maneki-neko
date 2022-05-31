@@ -1,14 +1,14 @@
-const {Listener, Logger} = require('../../structures');
-const {User} = require('../../../../database');
+const {Listener, Logger} = require("../../structures");
+const {User} = require("../../../../database");
 
 module.exports = class extends Listener {
     constructor() {
-        super({name: 'ready'});
+        super({name: "ready"});
     }
     async on() {
         Logger.send(`Logged as ${this.client.user.username}#${this.client.user.discriminator}`);
-        this.client.editStatus('online', {
-            name: 'I\'ll come back',
+        this.client.editStatus("online", {
+            name: "I\"ll come back",
             type: 0
         });
         const reviveUser = async() => {

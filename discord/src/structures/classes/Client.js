@@ -1,7 +1,7 @@
-const {Client, Collection} = require('eris');
-const {readdirSync} = require('fs');
-const {connect} = require('mongoose');
-const Logger = require('../util/Logger');
+const {Client, Collection} = require("eris");
+const {readdirSync} = require("fs");
+const {connect} = require("mongoose");
+const Logger = require("../util/Logger");
 
 class App extends Client {
     constructor(token, options) {
@@ -10,7 +10,7 @@ class App extends Client {
         this.aliases = new Collection();
     }
     async login() {
-        var commandModule = readdirSync('discord/src/commands');
+        var commandModule = readdirSync("discord/src/commands");
         commandModule.forEach(module => {
             var commands = readdirSync(`discord/src/commands/${module}`);
             commands.forEach(cmd => {
@@ -24,7 +24,7 @@ class App extends Client {
                 }
             });
         });
-        var listenerType = readdirSync('discord/src/listeners');
+        var listenerType = readdirSync("discord/src/listeners");
         listenerType.forEach(type => {
             var listeners = readdirSync(`discord/src/listeners/${type}`);
             listeners.forEach(listen => {
@@ -34,14 +34,14 @@ class App extends Client {
             });
         });
         await connect(process.env.MONGO_URI);
-        await Logger.send('Database connected sucessfully');
+        await Logger.send("Database connected sucessfully");
         this.connect();
     }
 }
 module.exports = new App(process.env.TOKEN, {
     restMode: true,
     compress: true,
-    defaultImageFormat: 'png',
+    defaultImageFormat: "png",
     defaultImageSize: 4096,
     allowedMentions: {
         repliedUser: true,
@@ -49,5 +49,5 @@ module.exports = new App(process.env.TOKEN, {
         roles: true,
         everyone: false
     },
-    intents: ['all']
+    intents: ["all"]
 });

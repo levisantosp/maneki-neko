@@ -1,9 +1,9 @@
-const {Schema, model} = require('mongoose');
+const {Schema, model} = require("mongoose");
 
 const guild = new Schema({
     _id: String,
-    prefix: {type: String, default: '.'},
-    lang: {type: String, default: 'en'},
+    prefix: {type: String, default: "."},
+    lang: {type: String, default: "en"},
     allowedChannels: {type: Array, default: []},
     plan: String,
     polices: Array,
@@ -14,4 +14,4 @@ const guild = new Schema({
     announcements: String
 });
 
-module.exports = model('guilds', guild);
+module.exports = model("guilds", guild);

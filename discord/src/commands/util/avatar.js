@@ -1,12 +1,12 @@
-const {Command, Embed, Button} = require('../../structures');
+const {Command, Embed, Button} = require("../../structures");
 
 module.exports = class extends Command {
     constructor() {
         super({
-            name: 'avatar',
-            description: 'View a user\'s avatar',
-            category: 'util',
-            botPermissions: ['embedLinks']
+            name: "avatar",
+            description: "View a user\"s avatar",
+            category: "util",
+            botPermissions: ["embedLinks"]
         });
     }
     async run(message) {
@@ -17,10 +17,10 @@ module.exports = class extends Command {
         const embed = new Embed();
         const button = new Button();
         embed.setTitle(user.username);
-        embed.setColor('0x7289DA');
+        embed.setColor("0x7289DA");
         embed.setImage(user.avatarURL);
-        button.setStyle('LINK');
-        button.setLabel('Download');
+        button.setStyle("LINK");
+        button.setLabel("Download");
         button.setURL(user.avatarURL);
         message.reply({
             components: [{

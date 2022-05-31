@@ -1,4 +1,4 @@
-const emojis = require('./emojis');
+const emojis = require("./emojis");
 
 module.exports = {
     getEmoji: function(emoji) {

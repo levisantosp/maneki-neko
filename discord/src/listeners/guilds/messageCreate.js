@@ -1,27 +1,27 @@
-const {Listener, Button, Logger} = require('../../structures');
-const {Constants, Message, ComponentInteraction} = require('eris');
-const {Guild, User, Bank} = require('../../../../database');
+const {Listener, Button, Logger} = require("../../structures");
+const {Constants, Message, ComponentInteraction} = require("eris");
+const {Guild, User, Bank} = require("../../../../database");
 
 module.exports = class extends Listener {
     constructor() {
-        super({name: 'messageCreate'});
+        super({name: "messageCreate"});
     }
     async on(message) {
         if(message instanceof Message) {
             if(message.author.bot) return;
             if(message.channel.type === Constants.ChannelTypes.DM) return;
-            await Bank.findById('bank') || new Bank({_id: 'bank'});
+            await Bank.findById("bank") || new Bank({_id: "bank"});
             const guild = await Guild.findById(message.guildID) || new Guild({_id: message.guildID});
             const user = await User.findById(message.member.id);
             message.reply = function(content, options) {
                 const locale = require(`../../../../locales/${guild.lang}`);
-                if(typeof content === 'string') {
+                if(typeof content === "string") {
                     return message.channel.createMessage({
                         content: locale.get(content, options),
                         messageReferenceID: message.id
                     });
                 }
-                else if(typeof content === 'object' && !options?.embeds || !options?.components) return message.channel.createMessage(Object.assign(content, {messageReferenceID: message.id}));
+                else if(typeof content === "object" && !options?.embeds || !options?.components) return message.channel.createMessage(Object.assign(content, {messageReferenceID: message.id}));
                 else return message.channel.createMessage({
                     content: locale.get(content, options),
                     messageRefenceID: message.id,
@@ -48,9 +48,9 @@ module.exports = class extends Listener {
                     embeds: options.embeds || []
                 });
             }
-            if(message.content === `<@${this.client.user.id}>` || message.content === `<@!${this.client.user.id}>`) return message.reply('mentionBot', {prefix: guild.prefix});
+            if(message.content === `<@${this.client.user.id}>` || message.content === `<@!${this.client.user.id}>`) return message.reply("mentionBot", {prefix: guild.prefix});
             if(!message.content.toLowerCase().startsWith(guild.prefix)) return;
-            var messageArray = message.content.split(' ');
+            var messageArray = message.content.split(" ");
             var command = messageArray.shift().toLowerCase();
             var args = messageArray.slice(0);
             var cmd = this.client.commands.get(command.slice(guild.prefix.length)) || this.client.commands.get(this.client.aliases.get(command.slice(guild.prefix.length)));
@@ -65,45 +65,45 @@ module.exports = class extends Listener {
             cmd.locale = require(`../../../../locales/${guild.lang}`);
             await message.channel.sendTyping();
             var client = message.guild.members.get(this.client.user.id);
-            if(guild.allowedChannels[0] && !guild.allowedChannels.includes(message.channel.id) && !message.member.permissions.has('manageMessages')) return message.reply('wrongChannel', {tryIn: guild.allowedChannels.map(channel => `<#${channel}>`).join(', ')});
-            if(cmd.permissions[0] && !message.member.permissions.has(cmd.permissions)) return message.reply('dontHavePermission', {permission: cmd.permissions});
-            if(cmd.botPermissions[0] && !client.permissions.has(cmd.botPermissions)) return message.reply('botDontHavePermission', {permission: cmd.botPermissions});
-            if(['Roleplay', 'economy'].includes(cmd.category) && user?.energy < 1) {
+            if(guild.allowedChannels[0] && !guild.allowedChannels.includes(message.channel.id) && !message.member.permissions.has("manageMessages")) return message.reply("wrongChannel", {tryIn: guild.allowedChannels.map(channel => `<#${channel}>`).join(", ")});
+            if(cmd.permissions[0] && !message.member.permissions.has(cmd.permissions)) return message.reply("dontHavePermission", {permission: cmd.permissions});
+            if(cmd.botPermissions[0] && !client.permissions.has(cmd.botPermissions)) return message.reply("botDontHavePermission", {permission: cmd.botPermissions});
+            if(["Roleplay", "economy"].includes(cmd.category) && user?.energy < 1) {
                 const button = new Button();
-                button.setStyle('GREEN');
-                button.setLabel('Call');
-                button.setCustomID('call');
-                var msg = await message.replyC('youAreDead', {
+                button.setStyle("GREEN");
+                button.setLabel("Call");
+                button.setCustomID("call");
+                var msg = await message.replyC("youAreDead", {
                     components: [{
                         type: 1,
                         components: [button]
                     }],
                     remaining: user.deadAt
                 });
-                this.client.on('interactionCreate', async interaction => {
+                this.client.on("interactionCreate", async interaction => {
                     var arrayMembers = [];
                     if(interaction instanceof ComponentInteraction) {
-                        if(interaction.data.custom_id != 'call') return;
+                        if(interaction.data.custom_id != "call") return;
                         if(interaction.channel.id != message.channel.id) return;
                         if(interaction.member.id != message.author.id) return;
                         if(interaction.message.id != msg.id) return;
                         await interaction.defer(64);
-                        if(!guild.announcements) return message.reply('noChannelAnnouncements');
-                        if(user.asuras < 5000) return message.reply('youDontHaveAsuras');
+                        if(!guild.announcements) return message.reply("noChannelAnnouncements");
+                        if(user.asuras < 5000) return message.reply("youDontHaveAsuras");
                         message.guild.members.forEach(member => {
                             if(guild.firemans.includes(member.id)) arrayMembers.push(member);
                         });
-                        if(arrayMembers.length == 0) return interaction.createMessage(cmd.locale.get('noFiremans'));
-                        interaction.createMessage(cmd.locale.get('firemanOnTheWay'));
-                        const bank = await Bank.findById('bank');
+                        if(arrayMembers.length == 0) return interaction.createMessage(cmd.locale.get("noFiremans"));
+                        interaction.createMessage(cmd.locale.get("firemanOnTheWay"));
+                        const bank = await Bank.findById("bank");
                         bank.asuras += 5000;
                         user.asuras -= 5000;
                         bank.save();
                         user.save();
                         
                         const channel = message.guild.channels.get(guild.announcements);
-                        channel.createMessage(cmd._locale.get('firemanAnnouncement', {
-                            users: arrayMembers.map(x => x.mention).join(' '), 
+                        channel.createMessage(cmd._locale.get("firemanAnnouncement", {
+                            users: arrayMembers.map(x => x.mention).join(" "), 
                             user: message.author.mention, 
                             channel: message.channel.mention,
                             jumpLink: message.jumpLink
@@ -115,7 +115,7 @@ module.exports = class extends Listener {
             cmd.getUser = async function(args) {
                 try {
                     if(isNaN(args)) {
-                        return await this.client.getRESTUser(args.replace(/[<@!>]/g, ''));
+                        return await this.client.getRESTUser(args.replace(/[<@!>]/g, ""));
                     }
                     else return await this.client.getRESTUser(args);
                 }
@@ -126,7 +126,7 @@ module.exports = class extends Listener {
             cmd.getMember = function(args) {
                 try {
                     if(isNaN(args)) {
-                        return message.guild.members.get(args.replace(/[<@!>]/g, ''));
+                        return message.guild.members.get(args.replace(/[<@!>]/g, ""));
                     }
                     else return message.guild.members.get(args);
                 }
@@ -135,10 +135,10 @@ module.exports = class extends Listener {
                 }
             }
             cmd.run(message).catch(err => {
-                message.reply('error', {error: err});
+                message.reply("error", {error: err});
                 new Logger(this.client).error(err);
             });
-            if(['Roleplay', 'economy'].includes(cmd.category)) {
+            if(["Roleplay", "economy"].includes(cmd.category)) {
                 guild.exp += Math.floor(Math.random() * 100);
                 if(guild.exp > guild.xpRequired) {
                     guild.exp = 0;
@@ -146,8 +146,8 @@ module.exports = class extends Listener {
                     guild.xpRequired += 336;
                     if(!guild.announcements) return;
                     const channel = message.guild.channels.get(guild.announcements);
-                    if(guild.level.toString().endsWith('0')) channel.createMessage(cmd._locale.get('guildLevelUp', {level: guild.level}));
-                    else channel.createMessage(cmd._locale.get('guildLevelUp2', {level: guild.level}));
+                    if(guild.level.toString().endsWith("0")) channel.createMessage(cmd._locale.get("guildLevelUp", {level: guild.level}));
+                    else channel.createMessage(cmd._locale.get("guildLevelUp2", {level: guild.level}));
                 }
                 guild.save();
             }

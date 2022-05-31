@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+const {Schema, model} = require("mongoose");
 
 const user = new Schema({
     _id: String,
@@ -9,7 +9,7 @@ const user = new Schema({
     exp: {type: Number, default: 0},
     level: {type: Number, default: 0},
     xpRequired: {type: Number, default: 150},
-    aboutme: {type: String, default: ''},
+    aboutme: {type: String, default: ""},
     banned: Boolean,
     bannedReason: String,
     dailyTime: {type: Number, default: 0},
@@ -17,7 +17,7 @@ const user = new Schema({
     workTime: {type: Number, default: 0},
     premium: Boolean,
     premiumTime: {type: Number, default: 0},
-    background: {type: String, default: 'https://i.imgur.com/R0Y7XCF.jpg'},
+    background: {type: String, default: "https://i.imgur.com/R0Y7XCF.jpg"},
     waitingBackground: String,
     marriedWith: String,
     marryTime: Number,
@@ -34,4 +34,4 @@ const user = new Schema({
     hasGunLicense: Boolean
 });
 
-module.exports = model('users', user);
+module.exports = model("users", user);
