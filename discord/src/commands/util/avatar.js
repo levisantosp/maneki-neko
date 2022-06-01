@@ -10,10 +10,7 @@ module.exports = class extends Command {
         });
     }
     async run(message) {
-        var m = this.client.users.get(message.args[0]);
-        if(!message.mentions[0] && !message.args[0]) message.mentions.push(message.author);
-        else message.mentions.push(m);
-        const user = await this.client.getRESTUser(message.mentions[0]?.id ?? message.args[0]);
+        const user = await this.getUser(message.args[0] ?? message.author.mention);
         const embed = new Embed();
         const button = new Button();
         embed.setTitle(user.username);

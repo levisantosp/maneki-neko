@@ -10,10 +10,8 @@ module.exports = class extends Command {
         });
     }
     async run(message) {
-        var m = message.guild.members.get(message.args[0]);
-        if(!message.mentions[0] && !m && !message.args[0]) message.mentions.push(message.member);
-        else message.mentions.push(m);
-        var member = message.guild.members.get(!message.mentions[0] ? "" : message.mentions[0].id);
+        const user = await this.getUser(message.args[0] ?? message.author.mention);
+        const member = this.getMember(user.mention);
         if(member) {
             const embed = new Embed();
             embed.setTitle(member.nick ? member.nick : member.username);
@@ -26,7 +24,6 @@ module.exports = class extends Command {
             message.reply(embed.build());
         }
         else {
-            const user = await this.client.getRESTUser(message.args[0]);
             const embed = new Embed();
             embed.setTitle(user.username);
             embed.setColor("0x7289DA");
