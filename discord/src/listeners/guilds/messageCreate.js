@@ -63,7 +63,6 @@ module.exports = class extends Listener {
             }
             cmd._locale = require(`../../../../locales/util/${guild.lang}`);
             cmd.locale = require(`../../../../locales/${guild.lang}`);
-            await message.channel.sendTyping();
             var client = message.guild.members.get(this.client.user.id);
             if(guild.allowedChannels[0] && !guild.allowedChannels.includes(message.channel.id) && !message.member.permissions.has("manageMessages")) return message.reply("wrongChannel", {tryIn: guild.allowedChannels.map(channel => `<#${channel}>`).join(", ")});
             if(cmd.permissions[0] && !message.member.permissions.has(cmd.permissions)) return message.reply("dontHavePermission", {permission: cmd.permissions});
