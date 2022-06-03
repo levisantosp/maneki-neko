@@ -14,7 +14,7 @@ module.exports = class extends Command {
         const u = await this.getUser(message.args[0] ?? message.author.mention);
         const user = await User.findById(u.id);
         if(!user) return message.reply("userIsNotInDatabase");
-        message.reply(user.id === message.author.id ? "yourgranex" : "hisgranex", {
+        message.reply(user.id === message.author.id ? "yourGranex" : "hisgranex", {
             granex: user.granex.toLocaleString(),
             user: u.mention
         });
