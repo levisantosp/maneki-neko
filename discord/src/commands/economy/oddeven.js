@@ -7,7 +7,7 @@ module.exports = class extends Command {
         super({
             name: "oddeven",
             aliases: ["ímparpar", "imparpar"],
-            description: "Bet asuras by playing odd or even.",
+            description: "Bet granex by playing odd or even.",
             category: "economy"
         });
     }
@@ -19,19 +19,19 @@ module.exports = class extends Command {
                 const user = await User.findById(message.author.id) || new User({_id: message.author.id});
                 const toUser = await User.findById(member.id);
                 if(!toUser) return message.reply("userIsNotInDatabase");
-                var asuras = message.args[2];
+                var granex = message.args[2];
                 var oddOrEven = message.args[3];
-                if(!["odd", "even"].includes(oddOrEven) || !asuras) return message.reply("invalidArg", {try: `${message.guild.db.prefix}oddeven bet @${member.username} <asuras> odd/even`});
-                if(isNaN(asuras)) return message.reply("argIsNaN", {arg: asuras});
-                if(asuras > user.asuras) return message.reply("youDontHaveAsuras");
-                if(asuras > toUser.asuras) return message.reply("dontHaveAsuras", {user: member.mention});
+                if(!["odd", "even"].includes(oddOrEven) || !granex) return message.reply("invalidArg", {try: `${message.guild.db.prefix}oddeven bet @${member.username} <granex> odd/even`});
+                if(isNaN(granex)) return message.reply("argIsNaN", {arg: granex});
+                if(granex > user.granex) return message.reply("youDontHavegranex");
+                if(granex > toUser.granex) return message.reply("dontHavegranex", {user: member.mention});
 
                 const confirm = new Button();
                 confirm.setStyle("GREEN");
                 confirm.setLabel(this._locale.get("oddEvenButtonLabel"));
                 confirm.setCustomID("confirm");
                 var msg = await message.replyC("oddEvenBet", {
-                    asuras,
+                    granex,
                     user: member.mention,
                     author: message.author.mention,
                     components: [{
@@ -53,50 +53,50 @@ module.exports = class extends Command {
                         }
                         var number = Math.floor(Math.random() * 50);
                         var result = isOddOrEven(number);
-                        asuras = Number(asuras);
+                        granex = Number(granex);
                         if(result === "even" && oddOrEven === "even") {
                             message.reply("oddEvenWinner", {
                                 number,
-                                asuras,
+                                granex,
                                 chosen: oddOrEven,
                             });
-                            user.asuras += asuras;
-                            toUser.asuras -= asuras;
+                            user.granex += granex;
+                            toUser.granex -= granex;
                             user.save();
                             toUser.save();
                         }
                         else if(result === "even" && oddOrEven != "even") {
                             message.reply("oddEvenLoser", {
                                 number,
-                                asuras,
+                                granex,
                                 chosen: oddOrEven,
                                 user: member.mention
                             });
-                            user.asuras -= asuras;
-                            toUser.asuras += asuras;
+                            user.granex -= granex;
+                            toUser.granex += granex;
                             user.save();
                             toUser.save();
                         }
                         else if(result === "odd" && oddOrEven === "odd") {
                             message.reply("oddEvenWinner", {
                                 number,
-                                asuras,
+                                granex,
                                 chosen: oddOrEven
                             });
-                            user.asuras += asuras;
-                            toUser.asuras -= asuras;
+                            user.granex += granex;
+                            toUser.granex -= granex;
                             user.save();
                             toUser.save();
                         }
                         else {
                             message.reply("oddEvenLoser", {
                                 number,
-                                asuras,
+                                granex,
                                 chosen: oddOrEven,
                                 user: member.mention
                             });
-                            user.asuras -= asuras;
-                            toUser.asuras += asuras;
+                            user.granex -= granex;
+                            toUser.granex += granex;
                             user.save();
                             toUser.save();
                         }

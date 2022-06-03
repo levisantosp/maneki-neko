@@ -52,13 +52,13 @@ module.exports = class extends Command {
             case "scar": index           = ((percentual >= 20) ? 0 : 1);
         }
         var result = array[index];
-        if(victim.asuras < 100) result = member.id;
+        if(victim.granex < 100) result = member.id;
         if(result == message.author.id) {
-            var value = Number.parseInt(victim.asuras * 0.1);
+            var value = Number.parseInt(victim.granex * 0.1);
             user.energy -= 300;
-            user.asuras += value;
+            user.granex += value;
             victim.energy -= user.usingWeapon.damage;
-            victim.asuras -= value;
+            victim.granex -= value;
             if(user.energy < 1) user.deadAt = Date.now() + 3.6e+6;
             if(victim.energy < 1) victim.deadAt = Date.now() + 3.6e+6;
             user.save();
@@ -68,8 +68,8 @@ module.exports = class extends Command {
         else {
             const bank = await Bank.findById("bank");
             user.energy -= 500;
-            user.asuras -= 5000;
-            bank.asuras += 5000;
+            user.granex -= 5000;
+            bank.granex += 5000;
             if(user.energy < 1) user.deadAt = Date.now() + 3.6e+6;
             user.save();
             bank.save();

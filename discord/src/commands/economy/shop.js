@@ -26,11 +26,16 @@ module.exports = class extends Command {
         vehicle.setStyle("GRAY");
         vehicle.setEmoji("🚗");
         vehicle.setCustomID("vehicles");
+
+        const button = new Button();
+        button.setStyle("GRAY");
+        button.setEmoji("🌾");
+        button.setCustomID("farm");
         
         var msg = await message.replyC("chooseItem", {
             components: [{
                 type: 1,
-                components: [weapon, food, vehicle]
+                components: [weapon, food, vehicle, button]
             }]
         });
         this.client.on("interactionCreate", async interaction => {
@@ -57,6 +62,12 @@ module.exports = class extends Command {
                     case "vehicles": {
                         embed.setTitle(this._locale.get("vehiclesEmbedTitle"));
                         embed.setDescription(this._locale.get("vehiclesEmbedDescription", {usage: `${message.guild.db.prefix}buy [vehicle]`}));
+                        message.reply(embed.build());
+                    }
+                        break;
+                    case "farm": {
+                        embed.setTitle(this._locale.get("farmEmbedTitle", {usage: `${message.guild.db.prefix}buy [vehicle]`}));
+                        embed.setDescription(this._locale.get("farmEmbedDescription", {usage: `${message.guild.db.prefix}buy [farm/item]`}));
                         message.reply(embed.build());
                     }
                 }

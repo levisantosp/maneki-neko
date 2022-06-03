@@ -7,7 +7,7 @@ module.exports = class extends Command {
         super({
             name: "pay",
             aliases: ["pagar"],
-            description: "Give asuras to somebody",
+            description: "Give granex to somebody",
             category: "economy"
         });
     }
@@ -18,7 +18,7 @@ module.exports = class extends Command {
         const user = await User.findById(message.member.id);
         const toUser = await User.findById(member.id);
         const bank = await Bank.findById("bank") || new Bank({_id: "bank"});
-        if(user?.asuras < message.args[1]) return message.reply("youDontHaveAsuras");
+        if(user?.granex < message.args[1]) return message.reply("youDontHavegranex");
         if(!toUser) return message.reply("userIsNotInDatabase");
         if(message.args[1] < 100) return message.reply("tooLittle");
 
@@ -27,7 +27,7 @@ module.exports = class extends Command {
         button.setLabel("Confirm");
         button.setCustomID("confirm");
         const msg = await message.replyC("payConfirm", {
-            asuras: message.args[1].toLocaleString(),
+            granex: message.args[1].toLocaleString(),
             user: member.mention,
             components: [{
                 type: 1,
@@ -43,10 +43,10 @@ module.exports = class extends Command {
                 await interaction.deferUpdate();
                 await msg.delete();
                 var rate = Number.parseInt(message.args[1]*0.1);
-                var asuras = Number(message.args[1]-rate);
-                bank.asuras += rate;
-                user.asuras -= message.args[1];
-                toUser.asuras += asuras;
+                var granex = Number(message.args[1]-rate);
+                bank.granex += rate;
+                user.granex -= message.args[1];
+                toUser.granex += granex;
                 bank.save();
                 user.save();
                 toUser.save();

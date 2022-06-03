@@ -33,7 +33,8 @@ module.exports = class extends Command {
             "car",
             "motorcycle",
             "truck",
-            "gun_license"
+            "gun_license",
+            "farm"
         ]
         if(!items.includes(message.args[0])) return message.reply("invalidArg", {try: `\`${message.guild.db.prefix}buy ${items.map(item => item).join(" / ")}\``});
         const user = await User.findById(message.author.id);
@@ -45,10 +46,10 @@ module.exports = class extends Command {
         switch(message.args[0]) {
             case "9mm": {
                 price = 5000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 20});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -56,10 +57,10 @@ module.exports = class extends Command {
                 break;
             case "pt100": {
                 price = 10000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 40});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -67,10 +68,10 @@ module.exports = class extends Command {
                 break;
             case "glock": {
                 price = 12000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 60});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -78,10 +79,10 @@ module.exports = class extends Command {
                 break;
             case "mt-40": {
                 price = 24000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 120});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -89,10 +90,10 @@ module.exports = class extends Command {
                 break;
             case "uzi": {
                 price = 28000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 130});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -100,10 +101,10 @@ module.exports = class extends Command {
                 break;
             case "mp5": {
                 price = 32000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 150});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -111,10 +112,10 @@ module.exports = class extends Command {
                 break;
             case "ump": {
                 price = 33000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 150});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -122,10 +123,10 @@ module.exports = class extends Command {
                 break;
             case "carabina ct-40": {
                 price = 45000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 200});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -133,10 +134,10 @@ module.exports = class extends Command {
                 break;
             case "carabina 556": {
                 price = 48000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 220});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -144,10 +145,10 @@ module.exports = class extends Command {
                 break;
             case "parafal": {
                 price = 56000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 250});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -155,10 +156,10 @@ module.exports = class extends Command {
                 break;
             case "m4a1": {
                 price = 62000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 300});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -166,10 +167,10 @@ module.exports = class extends Command {
                 break;
             case "ak-9": {
                 price = 78000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 400});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -177,10 +178,10 @@ module.exports = class extends Command {
                 break;
             case "ak-47": {
                 price = 81000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 420});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -188,10 +189,10 @@ module.exports = class extends Command {
                 break;
             case "akm": {
                 price = 84000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 430});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -199,10 +200,10 @@ module.exports = class extends Command {
                 break;
             case "scar": {
                 price = 97000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 500});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -210,10 +211,10 @@ module.exports = class extends Command {
                 break;
             case "water": {
                 price = 100;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory.foods.push({food: message.args[0], restore: 200});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -221,10 +222,10 @@ module.exports = class extends Command {
                 break;
             case "hamburguer": {
                 price = 225;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory.foods.push({food: message.args[0], restore: 225});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -232,10 +233,10 @@ module.exports = class extends Command {
                 break;
             case "pizza": {
                 price = 275;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.inventory.foods.push({food: message.args[0], restore: 275});
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -243,10 +244,10 @@ module.exports = class extends Command {
                 break;
             case "car": {
                 price = 25000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.hasCar = true;
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -254,10 +255,10 @@ module.exports = class extends Command {
                 break;
             case "motorcycle": {
                 price = 15000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.hasMotorcycle = true;
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -265,10 +266,10 @@ module.exports = class extends Command {
                 break;
             case "truck": {
                 price = 105000;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.hasTruck = true;
-                bank.asuras += price;
+                bank.granex += price;
                 user.save();
                 bank.save();
                 message.reply("itemBought");
@@ -276,10 +277,23 @@ module.exports = class extends Command {
                 break;
             case "gun_license": {
                 price = 500;
-                if(user?.asuras < price) return message.reply("youDontHaveAsuras");
-                user.asuras -= price;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
                 user.hasGunLicense = true;
-                bank.asuras += price;
+                bank.granex += price;
+                bank.save();
+                user.save();
+                message.reply("itemBought");
+            }
+                break;
+            case "farm": {
+                if(user.farm.in.includes(message.guild.id)) return message.reply("alreadyHasFarm");
+                price = 400000;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
+                user.farm.in.push(message.guild.id);
+                user.farm.has = true;
+                bank.granex += price;
                 bank.save();
                 user.save();
                 message.reply("itemBought");

@@ -6,7 +6,7 @@ module.exports = class extends Command {
         super({
             name: "daily",
             aliases: ["diário", "diario", "bolsafamilia"],
-            description: "Get your daily asuras",
+            description: "Get your daily granex",
             category: "economy"
         });
     }
@@ -17,14 +17,14 @@ module.exports = class extends Command {
             message.reply("dailyWasCollected", {remaining: user.dailyTime});
         }
         else {
-            var asurasGain = Math.floor(Math.random() * (300 - 150) + 150);
-            if(asurasGain > bank.asuras) return message.reply("bankNoAsuras");
-            bank.asuras -= asurasGain;
-            user.asuras += asurasGain;
+            var granexGain = Math.floor(Math.random() * (300 - 150) + 150);
+            if(granexGain > bank.granex) return message.reply("bankNoGranex");
+            bank.granex -= granexGain;
+            user.granex += granexGain;
             user.dailyTime = 8.64e+7 + Date.now();
             bank.save();
             user.save();
-            message.reply("dailyCollected", {asurasGain});
+            message.reply("dailyCollected", {granexGain});
         }
     }
 }

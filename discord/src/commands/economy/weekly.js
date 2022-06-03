@@ -6,7 +6,7 @@ module.exports = class extends Command {
         super({
             name: "weekly",
             aliases: ["semanal"],
-            description: "Get your weekly asuras",
+            description: "Get your weekly granex",
             category: "economy"
         });
     }
@@ -17,14 +17,14 @@ module.exports = class extends Command {
             message.reply("weeklyWasCollected", {remaining: user.weeklyTime});
         }
         else {
-            var asurasGain = Math.floor(Math.random() * (3000 - 1500) + 1500);
-            if(asurasGain > bank.asuras) return message.reply("bankNoAsuras");
-            bank.asuras -= asurasGain;
-            user.asuras += asurasGain;
+            var granexGain = Math.floor(Math.random() * (3000 - 1500) + 1500);
+            if(granexGain > bank.granex) return message.reply("bankNoGranex");
+            bank.granex -= granexGain;
+            user.granex += granexGain;
             user.weeklyTime = 6.048e+8 + Date.now();
             bank.save();
             user.save();
-            message.reply("weeklyCollected", {asurasGain});
+            message.reply("weeklyCollected", {granexGain});
         }
     }
 }
