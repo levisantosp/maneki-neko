@@ -17,12 +17,12 @@ module.exports = class extends Command {
         const guild = await Guild.findById(message.guildID);
         switch(lang) {
             case "pt": 
-                message.reply("🇧🇷 Agora eu irei falar em português neste servidor. Aqui é o Brasil!");
+                message.reply("Agora eu irei falar em português neste servidor. Aqui é o Brasil!");
                 guild.lang = lang;
                 guild.save();
                     break;
             case "en": 
-                message.reply("🇺🇸 Now I\"ll speak in english on this server. This is America!");
+                message.reply("Now I'll speak in english on this server. This is America!");
                 guild.lang = lang;
                 guild.save();
                     break;
