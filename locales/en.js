@@ -11,7 +11,7 @@ module.exports = {
             case "mentionBot": return `Howdy! My prefix on this server is \`${options.prefix}\``
             case "dailyWasCollected": return `You already collected your daily granex. Come back again <t:${parseInt(options.remaining/1000)}:R>`
             case "dailyCollected": return `Congratulations! In the today"s daily you received ${options.granexGain} granex.`
-            case "yourgranex": return `You have ${options.granex} granex.`
+            case "yourGranex": return `You have ${options.granex} granex.`
             case "hisgranex": return `${options.user} has ${options.granex} granex.`
             case "invalidUser": return `Invalid user! Check that the user ID or mention are correct.`
             case "oddEvenWinner": return `Congratulations, you won! You"ve chosen \`${options.chosen}\`, and ${options.number} is ${options.chosen}! You won ${options.granex} granex.`
@@ -85,6 +85,8 @@ module.exports = {
             case "itemStashed": return `Item stashed sucessfully!`
             case "noPlant": return "You don't have this plant."
             case "alreadyHasFarm": return "You already has a farm in this server."
+            case "sellConfirm": return `${options.user} Looks like ${options.author} wants to sell an item to you for ${options.price.toLocaleString()} granex.`
+            case "sellSucess": return "Sucessful sale!"
             default: return content;
         }
     }
