@@ -138,7 +138,7 @@ module.exports = class extends Command {
             }
         }
         if(!functions[item]) return message.reply("missingItem2");
-        const i = functions[item];
-        i();
+        const execute = functions[item];
+        execute();
     }
 }

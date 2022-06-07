@@ -4,7 +4,7 @@ module.exports = class extends Command {
     constructor() {
         super({
             name: "userinfo",
-            descrption: "View a user\"s information",
+            descrption: "View a user's information",
             category: "util",
             botPermissions: ["embedLinks"]
         });

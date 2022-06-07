@@ -176,8 +176,8 @@ module.exports = class extends Command {
                 }
             }
             if(!functions[item]) return message.reply("missingItem");
-            const i = functions[item];
-            i();
+            const execute = functions[item];
+            execute();
         }
         else if(["pizza", "hamburger", "water"].includes(item) && foodInInventory) {
             const functions = {
@@ -216,8 +216,8 @@ module.exports = class extends Command {
                 }
             }
             if(!functions[item]) return message.reply("missingItem");
-            const i = functions[item];
-            i();
+            const execute = functions[item];
+            execute();
         }
     }
 }

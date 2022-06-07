@@ -4,7 +4,7 @@ const user = new Schema({
     _id: String,
     energy: {type: Number, default: 2000},
     deadAt: Number,
-    asuras: {type: Number, default: 0},
+    granex: {type: Number, default: 0},
     job: String,
     exp: {type: Number, default: 0},
     level: {type: Number, default: 0},
@@ -26,12 +26,13 @@ const user = new Schema({
     hasCar: Boolean,
     hasMotorcicle: Boolean,
     hasTruck: Boolean,
-    hasFarm: Boolean,
     certificates: {type: Array, default: []},
-    inventory: {weapons: Array, foods: Array},
+    inventory: {weapons: Array, foods: Array, plants: Array},
     usingWeapon: {weapon: String, damage: Number},
     usingBulletProof: {name: String, protection: Number},
-    hasGunLicense: Boolean
+    hasGunLicense: Boolean,
+    farms: Array,
+    farmTime: {type: Number, default: 0}
 });
 
 module.exports = model("users", user);

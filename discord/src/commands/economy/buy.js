@@ -287,12 +287,16 @@ module.exports = class extends Command {
             }
                 break;
             case "farm": {
-                if(user.farm.in.includes(message.guild.id)) return message.reply("alreadyHasFarm");
+                if(user.farms.filter(farm => farm.id === message.guild.id)[0]) return message.reply("alreadyHasFarm");
                 price = 400000;
                 if(user?.granex < price) return message.reply("youDontHavegranex");
                 user.granex -= price;
-                user.farm.in.push(message.guild.id);
-                user.farm.has = true;
+                user.farms.push({
+                    id: message.guild.id,
+                    chickens: 0,
+                    cows: 0,
+                    plants: 0
+                });
                 bank.granex += price;
                 bank.save();
                 user.save();
