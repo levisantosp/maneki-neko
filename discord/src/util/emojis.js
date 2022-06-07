@@ -12,7 +12,5 @@ module.exports = {
     owner_badge: "<:owner_badge:883524138327769138>",
     donator_badge: "<:donator_badge:883509244761100330>",
     arrow_up: "<:arrow_up:976309316204236880>",
-    energy: "⚡",
-    eris: "<:eris:979070910457872385>",
-    js: "<:javascript:808350126472036352>"
+    energy: "⚡"
 }
