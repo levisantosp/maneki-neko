@@ -6,7 +6,7 @@ module.exports = class extends Command {
         super({
             name: "heal",
             aliases: ["curar"],
-            description: "Heal or restore a user\"s life",
+            description: "Heal or restore a user's life",
             category: "Roleplay"
         });
     }
@@ -21,8 +21,8 @@ module.exports = class extends Command {
         if(toUser.energy < 1) toUser.energy = 400;
         else toUser.energy = 2000;
         toUser.save();
-        user.asuras += 5000 - (5000 * 0.1);
-        bank.asuras += 5000 * 0.1;
+        user.granex += 5000 - (5000 * 0.1);
+        bank.granex += 5000 * 0.1;
         bank.save();
         message.reply("userHealed");
         user.exp += 250;

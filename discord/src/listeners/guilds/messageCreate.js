@@ -88,15 +88,15 @@ module.exports = class extends Listener {
                         if(interaction.message.id != msg.id) return;
                         await interaction.defer(64);
                         if(!guild.announcements) return message.reply("noChannelAnnouncements");
-                        if(user.asuras < 5000) return message.reply("youDontHaveAsuras");
+                        if(user.granex < 5000) return message.reply("youDontHavegranex");
                         message.guild.members.forEach(member => {
                             if(guild.firemans.includes(member.id)) arrayMembers.push(member);
                         });
                         if(arrayMembers.length == 0) return interaction.createMessage(cmd.locale.get("noFiremans"));
                         interaction.createMessage(cmd.locale.get("firemanOnTheWay"));
                         const bank = await Bank.findById("bank");
-                        bank.asuras += 5000;
-                        user.asuras -= 5000;
+                        bank.granex += 5000;
+                        user.granex -= 5000;
                         bank.save();
                         user.save();
                         

@@ -20,8 +20,8 @@ module.exports = class extends Command {
             const vagabundo = await User.findById(member.id);
             if(vagabundo.usingWeapon.weapon && !vagabundo.hasGunLicense) {
                 vagabundo.usingWeapon = null;
-                vagabundo.asuras -= 35000;
-                bank.asuras += 35000;
+                vagabundo.granex -= 35000;
+                bank.granex += 35000;
                 vagabundo.save();
                 bank.save();
                 message.reply("userFined");

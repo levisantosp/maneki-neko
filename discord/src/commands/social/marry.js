@@ -19,8 +19,8 @@ module.exports = class extends Command {
         const bank = await Bank.findById("bank");
         if(user?.marriedWith) return message.reply("alreadyMarried");
         if(toUser?.marriedWith) return message.reply("alreadyMarried2", {user: member.mention});
-        if(user?.asuras < 5000) return message.reply("noAsuras");
-        if(toUser?.asuras < 5000) return message.reply("noAsuras");
+        if(user?.granex < 5000) return message.reply("noGranex");
+        if(toUser?.granex < 5000) return message.reply("noGranex");
 
         const confirm = new Button();
         confirm.setStyle("GREEN");
@@ -41,11 +41,11 @@ module.exports = class extends Command {
                 if(interaction.message.id !== msg.id) return;
                 if(interaction.member.id !== member.id) return interaction.deferUpdate();
                 await msg.delete();
-                bank.asuras += 10000;
-                user.asuras -= 5000;
+                bank.granex += 10000;
+                user.granex -= 5000;
                 user.marriedWith = toUser.id;
                 user.marryTime = Date.now();
-                toUser.asuras -= 5000;
+                toUser.granex -= 5000;
                 toUser.marriedWith = user.id;
                 toUser.marryTime = Date.now();
                 bank.save();
