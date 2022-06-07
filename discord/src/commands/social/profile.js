@@ -56,7 +56,7 @@ module.exports = class extends Command {
         ctx.font = "30px Lato-Regular";
         ctx.fillStyle = "#ffffff";
         ctx.fillText(user.granex.toLocaleString(), 111, 83);
-        await RenderEmote.render(ctx, emojis["asura"], 71, 84);
+        await RenderEmote.render(ctx, emojis["granex"], 71, 84);
 
         var totalEnergy = 2000;
         ctx.font = "30px Lato-Regular";
