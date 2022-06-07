@@ -30,6 +30,7 @@ class App extends Client {
             listeners.forEach(listen => {
                 const Listener = require(`../../listeners/${type}/${listen}`);
                 const listener = new Listener(this);
+                Logger.warn(`[${listener.name}] listener loaded sucessfully`);
                 this.on(listener.name, (...args) => listener.on(...args).catch(err => new Logger(this).error(err)));
             });
         });
