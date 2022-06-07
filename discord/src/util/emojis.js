@@ -4,7 +4,7 @@ module.exports = {
     error: "<:error:869391072051216425>",
     br: "🇧🇷",
     us: "🇺🇸",
-    asura: "<:asura:874481096799186955>",
+    granex: "<:granex:874481096799186955>",
     warn: "<:warn:869393116854108191>",
     ring: "💍",
     confetti: "<a:confetti:975932983213166632>",
