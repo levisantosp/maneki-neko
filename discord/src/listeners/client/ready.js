@@ -30,8 +30,8 @@ module.exports = class extends Listener {
                     var n2 = 0;
                     var n3 = 0;
                     user.farms.forEach(farm => {
-                        if(farm.plants > 0) n += farm.plants * 5;
-                        if(farm.cows > 0) n2 += farm.cows * 5;
+                        if(farm.plants.length > 0) n += farm.plants.length * 5;
+                        if(farm.cows > 0) n2 += farm.cows * 15;
                         if(farm.chickens > 0) n3 += farm.chickens * 5;
                     });
                     granexGain += user.farms.length * 10 + n + n2 + n3;
