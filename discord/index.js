@@ -1,4 +1,3 @@
-const dotenv = require("dotenv");
-dotenv.config();
+require("dotenv").config();
 const {Client} = require("./src/structures");
 Client.login();
