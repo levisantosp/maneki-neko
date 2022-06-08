@@ -86,6 +86,7 @@ module.exports = {
             case "alreadyHasFarm": return "Você já possui uma fazenda neste servidor."
             case "sellConfirm": return `${options.user} Parece que ${options.author} deseja lhe vender um item por ${options.price.toLocaleString()} granex.`
             case "sellSucess": return "Venda bem sucedida!"
+            case "sucessfullyPlanted": return "Plantado com sucesso!"
             default: return content;
         }
     }
