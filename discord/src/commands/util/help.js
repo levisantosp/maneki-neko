@@ -1,6 +1,6 @@
 const {Command, Embed, Button} = require("../../structures");
 
-module.exports = class extends Command {
+module.exports = class HelpCommand extends Command {
     constructor() {
         super({
             name: "help",

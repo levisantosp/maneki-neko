@@ -2,7 +2,7 @@ const {Listener} = require("../../structures");
 const {User} = require("../../../../database");
 const {ComponentInteraction} = require("eris");
 
-module.exports = class extends Listener {
+module.exports = class InteractionCreateListener extends Listener {
     constructor() {
         super({name: "interactionCreate"});
     }

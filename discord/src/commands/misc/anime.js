@@ -2,7 +2,7 @@ const {Command, Embed} = require("../../structures");
 const malScraper = require("mal-scraper");
 const translate = require("@iamtraction/google-translate");
 
-module.exports = class extends Command {
+module.exports = class AnimeCommand extends Command {
     constructor() {
         super({
             name: "anime",

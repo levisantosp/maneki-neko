@@ -6,7 +6,7 @@ const {createCanvas, loadImage} = require("canvas");
 const moment = require("moment");
 const arrayBadges = [];
 
-module.exports = class extends Command {
+module.exports = class ProfileCommand extends Command {
     constructor() {
         super({
             name: "profile",

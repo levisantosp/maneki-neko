@@ -1,7 +1,7 @@
 const {Command} = require("../../structures");
 const {User, Bank} = require("../../../../database");
 
-module.exports = class extends Command {
+module.exports = class BuyCommand extends Command {
     constructor() {
         super({
             name: "buy",

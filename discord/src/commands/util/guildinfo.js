@@ -1,7 +1,7 @@
 const {Command, Embed} = require("../../structures");
 const {Constants} = require("eris");
 
-module.exports = class extends Command {
+module.exports = class GuildInfoCommand extends Command {
     constructor() {
         super({
             name: "guildinfo",

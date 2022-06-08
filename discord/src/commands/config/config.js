@@ -1,7 +1,7 @@
 const {Command, Embed} = require("../../structures");
 const {Guild} = require("../../../../database");
 
-module.exports = class extends Command {
+module.exports = class ConfigCommand extends Command {
     constructor() {
         super({
             name: "config",

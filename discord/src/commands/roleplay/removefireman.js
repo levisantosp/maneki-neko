@@ -1,7 +1,7 @@
 const {Command} = require("../../structures");
 const {User, Guild} = require("../../../../database");
 
-module.exports = class extends Command {
+module.exports = class RemoveFiremanCommand extends Command {
     constructor() {
         super({
             name: "removefireman",

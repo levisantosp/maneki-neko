@@ -2,7 +2,7 @@ const {Command, Embed, SelectMenu} = require("../../structures");
 const {User} = require("../../../../database");
 const {ComponentInteraction} = require("eris");
 
-module.exports = class extends Command {
+module.exports = class JobCommand extends Command {
     constructor() {
         super({
             name: "job",

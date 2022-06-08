@@ -1,7 +1,7 @@
 const {Command, Embed} = require("../../structures");
 const mongoose = require("mongoose");
 
-module.exports = class extends Command {
+module.exports = class RankCommand extends Command {
     constructor() {
         super({
             name: "rank",

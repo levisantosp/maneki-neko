@@ -1,6 +1,6 @@
 const {Command, Embed} = require("../../structures");
 
-module.exports = class extends Command {
+module.exports = class InviteCommand extends Command {
     constructor() {
         super({
             name: "invite",

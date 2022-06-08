@@ -1,6 +1,6 @@
 const {Listener} = require("../../structures");
 
-module.exports = class extends Listener {
+module.exports = class MessageUpdateListener extends Listener {
     constructor() {
         super({name: "messageUpdate"});
     }

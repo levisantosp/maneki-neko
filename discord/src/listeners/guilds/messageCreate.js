@@ -2,7 +2,7 @@ const {Listener, Button, Logger} = require("../../structures");
 const {Constants, Message, ComponentInteraction} = require("eris");
 const {Guild, User, Bank} = require("../../../../database");
 
-module.exports = class extends Listener {
+module.exports = class MessageCreateListener extends Listener {
     constructor() {
         super({name: "messageCreate"});
     }

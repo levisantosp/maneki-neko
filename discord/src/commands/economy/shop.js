@@ -1,7 +1,7 @@
 const {Command, Embed, Button} = require("../../structures");
 const {ComponentInteraction} = require("eris");
 
-module.exports = class extends Command {
+module.exports = class ShopCommand extends Command {
     constructor() {
         super({
             name: "shop",

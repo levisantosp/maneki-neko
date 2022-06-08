@@ -1,7 +1,7 @@
 const {Command} = require("../../structures");
 const {Guild} = require("../../../../database");
 
-module.exports = class extends Command {
+module.exports = class LanguageCommand extends Command {
     constructor() {
         super({
             name: "language",

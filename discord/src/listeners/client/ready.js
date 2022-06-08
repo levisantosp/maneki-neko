@@ -1,7 +1,7 @@
 const {Listener, Logger} = require("../../structures");
 const {User, Bank} = require("../../../../database");
 
-module.exports = class extends Listener {
+module.exports = class ReadyListener extends Listener {
     constructor() {
         super({name: "ready"});
     }

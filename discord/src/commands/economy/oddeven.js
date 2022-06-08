@@ -2,7 +2,7 @@ const {Command, Button} = require("../../structures");
 const {ComponentInteraction} = require("eris");
 const {User} = require("../../../../database");
 
-module.exports = class extends Command {
+module.exports = class OddEvenCommand extends Command {
     constructor() {
         super({
             name: "oddeven",

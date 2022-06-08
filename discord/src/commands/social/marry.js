@@ -2,7 +2,7 @@ const {Command, Button} = require("../../structures");
 const {User, Bank} = require("../../../../database");
 const {ComponentInteraction} = require("eris");
 
-module.exports = class extends Command {
+module.exports = class MarryCommand extends Command {
     constructor() {
         super({
             name: "marry",

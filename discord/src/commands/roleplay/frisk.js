@@ -1,7 +1,7 @@
 const {Command} = require("../../structures");
 const {User} = require("../../../../database");
 
-module.exports = class extends Command {
+module.exports = class FriskCommand extends Command {
     constructor() {
         super({
             name: "frisk",
