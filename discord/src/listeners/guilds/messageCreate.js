@@ -64,6 +64,7 @@ module.exports = class MessageCreateListener extends Listener {
             cmd._locale = require(`../../../../locales/util/${guild.lang}`);
             cmd.locale = require(`../../../../locales/${guild.lang}`);
             var client = message.guild.members.get(this.client.user.id);
+            if(cmd.onlyOwner && message.author.id != process.env.OWNER_ID) return;
             if(guild.allowedChannels[0] && !guild.allowedChannels.includes(message.channel.id) && !message.member.permissions.has("manageMessages")) return message.reply("wrongChannel", {tryIn: guild.allowedChannels.map(channel => `<#${channel}>`).join(", ")});
             if(cmd.permissions[0] && !message.member.permissions.has(cmd.permissions)) return message.reply("dontHavePermission", {permission: cmd.permissions});
             if(cmd.botPermissions[0] && !client.permissions.has(cmd.botPermissions)) return message.reply("botDontHavePermission", {permission: cmd.botPermissions});
