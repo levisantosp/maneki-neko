@@ -34,7 +34,10 @@ module.exports = class extends Command {
             "motorcycle",
             "truck",
             "gun_license",
-            "farm"
+            "farm",
+            "lettuce",
+            "tomato",
+            "carrot"
         ]
         if(!items.includes(message.args[0])) return message.reply("invalidArg", {try: `\`${message.guild.db.prefix}buy ${items.map(item => item).join(" / ")}\``});
         const user = await User.findById(message.author.id);
@@ -287,7 +290,7 @@ module.exports = class extends Command {
             }
                 break;
             case "farm": {
-                if(user.farms.filter(farm => farm.id === message.guild.id)[0]) return message.reply("alreadyHasFarm");
+                if(user?.farms?.filter(farm => farm.id === message.guild.id)[0]) return message.reply("alreadyHasFarm");
                 price = 400000;
                 if(user?.granex < price) return message.reply("youDontHavegranex");
                 user.granex -= price;
@@ -295,8 +298,41 @@ module.exports = class extends Command {
                     id: message.guild.id,
                     chickens: 0,
                     cows: 0,
-                    plants: 0
+                    plants: []
                 });
+                bank.granex += price;
+                bank.save();
+                user.save();
+                message.reply("itemBought");
+            }
+                break;
+            case "lettuce": {
+                price = 25;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
+                user.inventory.plants.push("lettuce");
+                bank.granex += price;
+                bank.save();
+                user.save();
+                message.reply("itemBought");
+            }
+                break;
+            case "tomato": {
+                price = 30;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
+                user.inventory.plants.push("tomato");
+                bank.granex += price;
+                bank.save();
+                user.save();
+                message.reply("itemBought");
+            }
+                break;
+            case "carrot": {
+                price = 30;
+                if(user?.granex < price) return message.reply("youDontHavegranex");
+                user.granex -= price;
+                user.inventory.plants.push("carrot");
                 bank.granex += price;
                 bank.save();
                 user.save();
