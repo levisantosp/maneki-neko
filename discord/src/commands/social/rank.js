@@ -7,7 +7,7 @@ module.exports = class RankCommand extends Command {
             name: "rank",
             aliases: ["ranking", "top"],
             description: "View the top granex",
-            category: "economy",
+            category: "social",
             botPermissions: ["embedLinks"]
         });
     }
