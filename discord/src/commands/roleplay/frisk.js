@@ -24,12 +24,15 @@ module.exports = class FriskCommand extends Command {
             }
             message.reply("friskReply2");
             user.exp += 210;
+            user.energy -= 15;
+            if(user.energy < 1) user.deadAt = Date.now() + 3.6e+6;
             if(user.exp > user.xpRequired) {
                 user.level += 1;
                 user.xpRequired += 136;
                 user.exp = 0;
                 message.channel.createMessage(this._locale.get("levelUp", {level: user.level}));
             }
+            user.save();
         }
     }
 }

@@ -25,6 +25,8 @@ module.exports = class FarmCommand extends Command {
                 user.farms.splice(index, 1);
                 user.farms.push(farm);
                 user.inventory.plants.splice(user.inventory.plants.indexOf(item), 1);
+                user.energy -= 98;
+                if(user.energy < 1) user.deadAt = Date.now() + 3.6e+6;
                 user.save();
                 message.reply("sucessfullyPlanted");
             }

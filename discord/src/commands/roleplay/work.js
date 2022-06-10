@@ -74,6 +74,8 @@ module.exports = class WorkCommand extends Command {
             bank.granex -= granexGain;
             user.granex += granexGain;
             user.exp += xpGain;
+            user.energy -= 157;
+            if(user.energy < 1) user.deadAt = Date.now() + 3.6e+6;
             user.workTime = Date.now() + 3.6e+6;
             message.reply("youWorked", {granexGain, xpGain, job: this._locale.get(user.job)});
             if(user.exp > user.xpRequired) {
