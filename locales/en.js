@@ -67,6 +67,7 @@ module.exports = {
             case "youAreDead": return `You are dead! Try again <t:${parseInt(options.remaining/1000)}:R> or call a fireman by clicking the button below (costs 5.000 granex).`
             case "firemanOnTheWay": return `A fireman is on his way to heal you. Wait until he arrives on the scene.`
             case "noFiremans": return `Unfortunately this server does not have any firefighters...`
+            case "noPolicemans": return "Unfortunately this server does not have any police officer..."
             case "noChannelAnnouncements": return `This server does not have a channel for announcements. Ask someone from the administration to set up a channel and try again.`
             case "announcementChannel": return `${options.channel} has been successfully set as an announcement channel!`
             case "needWeapon": return `You need a weapon to complete this action.`

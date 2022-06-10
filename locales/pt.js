@@ -66,6 +66,7 @@ module.exports = {
             case "youAreDead": return `Você está morto! Tente novamente <t:${parseInt(options.remaining/1000)}:R> ou chame um bombeiro, clicando no botão abaixo (custa 5.000 granex).`
             case "firemanOnTheWay": return `Um bombeiro está a caminho para te curar. Aguarde até que o mesmo compareça ao local.`
             case "noFiremans": return `Infelizmente este servidor não possui nenhum bombeiro...`
+            case "noPolicemans": return "Infelizmente este servidor não possui nenhum policial..."
             case "noChannelAnnouncements": return `Este servidor não possui um canal para os anúncios. Peça para alguém da administração configurar um canal e tente novamente.`
             case "announcementChannel": return `${options.channel} foi setado como canal de anúncios com sucesso!`
             case "needWeapon": return `Você precisa de uma arma para completar esta ação.`
