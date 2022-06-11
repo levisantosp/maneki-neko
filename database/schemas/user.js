@@ -3,6 +3,7 @@ const {Schema, model} = require("mongoose");
 const user = new Schema({
     _id: String,
     energy: {type: Number, default: 2000},
+    energyTime: {type: Number, default: 0},
     deadAt: Number,
     granex: {type: Number, default: 0},
     job: String,
