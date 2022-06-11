@@ -144,10 +144,11 @@ module.exports = class MessageCreateListener extends Listener {
                     guild.exp = 0;
                     guild.level += 1;
                     guild.xpRequired += 336;
-                    if(!guild.announcements) return;
-                    const channel = message.guild.channels.get(guild.announcements);
-                    if(guild.level.toString().endsWith("0")) channel.createMessage(cmd._locale.get("guildLevelUp", {level: guild.level}));
-                    else channel.createMessage(cmd._locale.get("guildLevelUp2", {level: guild.level}));
+                    if(guild.announcements) {
+                        const channel = message.guild.channels.get(guild.announcements);
+                        if(guild.level.toString().endsWith("0")) channel.createMessage(cmd._locale.get("guildLevelUp", {level: guild.level}));
+                        else channel.createMessage(cmd._locale.get("guildLevelUp2", {level: guild.level}));
+                    }
                 }
                 guild.save();
             }
