@@ -8,7 +8,7 @@ module.exports = {
             case "invalidArg": return `Argumento inválido! Tente \`${options.try}\``
             case "error": return `Gomen, gomen... ocorreu um erro inesperado...\n\`${options.error}\``
             case "mentionBot": return `Howdy! Meu prefixo neste servidor é \`${options.prefix}\``
-            case "dailyWasCollected": return `Calma lá, meu patrão! Você já coletou suas granex diárias. Volte novamente <t:${parseInt(options.remaining/1000)}:R>`
+            case "dailyWasCollected": return `Calma lá, meu patrão! Você já coletou seus granex diárias. Volte novamente <t:${parseInt(options.remaining/1000)}:R>`
             case "dailyCollected": return `Parabéns! No daily de hoje você recebeu ${options.granexGain} granex.`
             case "yourGranex": return `Você tem ${options.granex} granex.`
             case "hisgranex": return `${options.user} tem ${options.granex} granex.`
@@ -21,7 +21,7 @@ module.exports = {
             case "oddEvenBet": return `${options.user} Parece que ${options.author} quer apostar ${options.granex} granex com você! Vai encarar ou não?`
             case "youDontHavegranex": return `Você não tem esta quantia de granex.`
             case "dontHavegranex": return `${options.user} não tem esta quantidade de granex.`
-            case "weeklyWasCollected": return `Calma lá, meu patrão! Você já coletou suas granex semanais. Volte novamente <t:${parseInt(options.remaining/1000)}:R>`
+            case "weeklyWasCollected": return `Calma lá, meu patrão! Você já coletou seus granex semanais. Volte novamente <t:${parseInt(options.remaining/1000)}:R>`
             case "weeklyCollected": return `Parabéns! No semanal de hoje você recebeu ${options.granexGain} granex.`
             case "aboutmeChangedTo": return `Sua biografia de perfil foi alterada para \`${options.aboutme}\``
             case "prefixChangedTo": return `Meu prefixo neste servidor foi alterado para \`${options.prefix}\``
