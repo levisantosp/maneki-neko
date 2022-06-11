@@ -45,9 +45,20 @@ module.exports = class ReadyListener extends Listener {
                 }
             }
         }
+        const regainEnergy = async() => {
+            const users = await User.find({energyTime: {$lte: Date.now()}});
+            for(const user of users) {
+                if(user.deadAt) continue;
+                user.energy += 100;
+                user.energyTime = Date.now() + 3.6e+6;
+                user.save();
+                Logger.warn(`(${user.id}) received 5% of energy`);
+            }
+        }
         setInterval(() => {
             reviveUser();
             addGranexPerFarm().catch(err => new Logger(this.client).error(err));
+            regainEnergy();
         }, 10000);
     }
 }
