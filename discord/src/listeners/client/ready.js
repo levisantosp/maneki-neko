@@ -51,6 +51,7 @@ module.exports = class ReadyListener extends Listener {
                 if(user.deadAt) continue;
                 user.energy += 100;
                 user.energyTime = Date.now() + 3.6e+6;
+                if(user.energy > 2000) user.energy = 2000;
                 user.save();
                 Logger.warn(`(${user.id}) received 5% of energy`);
             }
