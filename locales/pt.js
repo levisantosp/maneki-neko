@@ -88,6 +88,8 @@ module.exports = {
             case "sellConfirm": return `${options.user} Parece que ${options.author} deseja lhe vender um item por ${options.price.toLocaleString()} granex.`
             case "sellSucess": return "Venda bem sucedida!"
             case "sucessfullyPlanted": return "Plantado com sucesso!"
+            case "repAlreadyGiven": return `Calma lá, meu patrão! Você já deu uma reputação à alguém. Volte novamente <t:${parseInt(options.remaining/1000)}:R>`
+            case "repGiven": return "Reputação dada com sucesso!"
             default: return content;
         }
     }
