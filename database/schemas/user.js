@@ -23,6 +23,7 @@ const user = new Schema({
     marriedWith: String,
     marryTime: Number,
     reps: {type: Number, default: 0},
+    repTime: {type: Number, default: 0},
     job: String,
     hasCar: Boolean,
     hasMotorcicle: Boolean,
