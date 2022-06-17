@@ -4,7 +4,7 @@ module.exports = class AvatarCommand extends Command {
     constructor() {
         super({
             name: 'avatar',
-            description: 'View a user's avatar',
+            description: 'View a user\'s avatar',
             category: 'util',
             botPermissions: ['embedLinks']
         });

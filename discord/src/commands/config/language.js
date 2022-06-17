@@ -22,7 +22,7 @@ module.exports = class LanguageCommand extends Command {
                 guild.save();
                     break;
             case 'en': 
-                message.reply('Now I'll speak in english on this server. This is America!');
+                message.reply('Now I\'ll speak in english on this server. This is America!');
                 guild.lang = lang;
                 guild.save();
                     break;

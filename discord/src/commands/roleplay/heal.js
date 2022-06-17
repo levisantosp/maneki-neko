@@ -6,7 +6,7 @@ module.exports = class HealCommand extends Command {
         super({
             name: 'heal',
             aliases: ['curar'],
-            description: 'Heal or restore a user's life',
+            description: 'Heal or restore a user\'s life',
             category: 'Roleplay'
         });
     }
