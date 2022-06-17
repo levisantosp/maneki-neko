@@ -7,10 +7,29 @@ module.exports = class ReadyListener extends Listener {
     }
     async on() {
         Logger.send(`Logged as ${this.client.user.username}#${this.client.user.discriminator}`);
-        this.client.editStatus('online', {
-            name: 'I'll come back',
-            type: 0
-        });
+        const editClientStatus = () => {
+            const activities = [
+                {
+                    name: 'to you',
+                    type: 3
+                },
+                {
+                    name: `${this.client.users.filter(user => !user.bot).length} users`,
+                    type: 3
+                },
+                {
+                    name: `with another ${this.client.users.filter(user => !user.bot).length} users`,
+                    type: 0
+                },
+                {
+                    name: 'Genshin Impact',
+                    type: 1,
+                    url: 'https://www.twitch.tv/voidappend'
+                }
+            ];
+            const activity = activities[Math.floor(Math.random() * activities.length)];
+            this.client.editStatus('online', activity);;
+        }
         const reviveUser = async() => {
             const users = await User.find({deadAt: {$lte: Date.now()}});
             for(const user of users) {
@@ -35,7 +54,7 @@ module.exports = class ReadyListener extends Listener {
                         if(farm.chickens > 0) n3 += farm.chickens * 5;
                     });
                     granexGain += user.farms.length * 10 + n + n2 + n3;
-                    if(bank.granex < granexGain) throw new Error('The bank doesn't have granex.');
+                    if(bank.granex < granexGain) throw new Error('The bank doesn\'t have granex.');
                     user.granex += granexGain;
                     user.farmTime = Date.now() + 3.6e+6;
                     bank.granex -= granexGain;
@@ -56,6 +75,7 @@ module.exports = class ReadyListener extends Listener {
                 Logger.warn(`(${user.id}) received 5% of energy`);
             }
         }
+        setInterval(editClientStatus, 30000);
         setInterval(() => {
             reviveUser();
             addGranexPerFarm().catch(err => new Logger(this.client).error(err));
