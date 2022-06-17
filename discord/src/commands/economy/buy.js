@@ -1,298 +1,298 @@
-const {Command} = require("../../structures");
-const {User, Bank} = require("../../../../database");
+const {Command} = require('../../structures');
+const {User, Bank} = require('../../../../database');
 
 module.exports = class BuyCommand extends Command {
     constructor() {
         super({
-            name: "buy",
-            aliases: ["comprar"],
-            description: "Buy an item from shop",
-            category: "economy"
+            name: 'buy',
+            aliases: ['comprar'],
+            description: 'Buy an item from shop',
+            category: 'economy'
         });
     }
     async run(message) {
         const items = [
-            "9mm",
-            "pt100",
-            "glock",
-            "mt-40",
-            "uzi",
-            "mp5",
-            "ump",
-            "carabina ct-40",
-            "carabina 556",
-            "parafal",
-            "m4a1",
-            "ak-9",
-            "ak-47",
-            "akm",
-            "scar",
-            "water",
-            "hamburguer",
-            "pizza",
-            "car",
-            "motorcycle",
-            "truck",
-            "gun_license",
-            "farm",
-            "lettuce",
-            "tomato",
-            "carrot"
+            '9mm',
+            'pt100',
+            'glock',
+            'mt-40',
+            'uzi',
+            'mp5',
+            'ump',
+            'carabina ct-40',
+            'carabina 556',
+            'parafal',
+            'm4a1',
+            'ak-9',
+            'ak-47',
+            'akm',
+            'scar',
+            'water',
+            'hamburguer',
+            'pizza',
+            'car',
+            'motorcycle',
+            'truck',
+            'gun_license',
+            'farm',
+            'lettuce',
+            'tomato',
+            'carrot'
         ]
-        if(!items.includes(message.args[0])) return message.reply("invalidArg", {try: `\`${message.guild.db.prefix}buy ${items.map(item => item).join(" / ")}\``});
+        if(!items.includes(message.args[0])) return message.reply('invalidArg', {try: `\`${message.guild.db.prefix}buy ${items.map(item => item).join(' / ')}\``});
         const user = await User.findById(message.author.id);
-        const bank = await Bank.findById("bank");
+        const bank = await Bank.findById('bank');
         var price;
         var result = user?.inventory?.weapons?.map(weapon => weapon?.weapon);
         var result2 = user?.inventory?.foods?.map(food => food?.food);
-        if(result.includes(message.args[0]) || result2.includes(message.args[0])) return message.reply("alreadyBought");
+        if(result.includes(message.args[0]) || result2.includes(message.args[0])) return message.reply('alreadyBought');
         switch(message.args[0]) {
-            case "9mm": {
+            case '9mm': {
                 price = 5000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 20});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "pt100": {
+            case 'pt100': {
                 price = 10000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 40});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "glock": {
+            case 'glock': {
                 price = 12000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 60});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "mt-40": {
+            case 'mt-40': {
                 price = 24000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 120});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "uzi": {
+            case 'uzi': {
                 price = 28000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 130});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "mp5": {
+            case 'mp5': {
                 price = 32000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 150});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "ump": {
+            case 'ump': {
                 price = 33000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 150});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "carabina ct-40": {
+            case 'carabina ct-40': {
                 price = 45000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 200});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "carabina 556": {
+            case 'carabina 556': {
                 price = 48000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 220});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "parafal": {
+            case 'parafal': {
                 price = 56000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 250});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "m4a1": {
+            case 'm4a1': {
                 price = 62000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 300});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "ak-9": {
+            case 'ak-9': {
                 price = 78000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 400});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "ak-47": {
+            case 'ak-47': {
                 price = 81000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 420});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "akm": {
+            case 'akm': {
                 price = 84000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 430});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "scar": {
+            case 'scar': {
                 price = 97000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory?.weapons?.push({weapon: message.args[0], damage: 500});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "water": {
+            case 'water': {
                 price = 100;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory.foods.push({food: message.args[0], restore: 200});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "hamburguer": {
+            case 'hamburguer': {
                 price = 225;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory.foods.push({food: message.args[0], restore: 225});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "pizza": {
+            case 'pizza': {
                 price = 275;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.inventory.foods.push({food: message.args[0], restore: 275});
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "car": {
+            case 'car': {
                 price = 25000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.hasCar = true;
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "motorcycle": {
+            case 'motorcycle': {
                 price = 15000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.hasMotorcycle = true;
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "truck": {
+            case 'truck': {
                 price = 105000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.hasTruck = true;
                 bank.granex += price;
                 user.save();
                 bank.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "gun_license": {
+            case 'gun_license': {
                 price = 500;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.hasGunLicense = true;
                 bank.granex += price;
                 bank.save();
                 user.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "farm": {
-                if(user?.farms?.filter(farm => farm.id === message.guild.id)[0]) return message.reply("alreadyHasFarm");
+            case 'farm': {
+                if(user?.farms?.filter(farm => farm.id === message.guild.id)[0]) return message.reply('alreadyHasFarm');
                 price = 400000;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
                 user.farms.push({
                     id: message.guild.id,
@@ -303,40 +303,40 @@ module.exports = class BuyCommand extends Command {
                 bank.granex += price;
                 bank.save();
                 user.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "lettuce": {
+            case 'lettuce': {
                 price = 25;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
-                user.inventory.plants.push("lettuce");
+                user.inventory.plants.push('lettuce');
                 bank.granex += price;
                 bank.save();
                 user.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "tomato": {
+            case 'tomato': {
                 price = 30;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
-                user.inventory.plants.push("tomato");
+                user.inventory.plants.push('tomato');
                 bank.granex += price;
                 bank.save();
                 user.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
                 break;
-            case "carrot": {
+            case 'carrot': {
                 price = 30;
-                if(user?.granex < price) return message.reply("youDontHavegranex");
+                if(user?.granex < price) return message.reply('youDontHavegranex');
                 user.granex -= price;
-                user.inventory.plants.push("carrot");
+                user.inventory.plants.push('carrot');
                 bank.granex += price;
                 bank.save();
                 user.save();
-                message.reply("itemBought");
+                message.reply('itemBought');
             }
         }
     }

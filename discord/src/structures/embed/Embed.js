@@ -1,4 +1,4 @@
-const {resolve} = require("./ResolveColor");
+const {resolve} = require('./ResolveColor');
 
 module.exports = class Embed {
     constructor() {
@@ -16,7 +16,7 @@ module.exports = class Embed {
     /**
      * 
      * @param {string} name Embed author
-     * @param {string} iconURL Author"s avatar of the embed
+     * @param {string} iconURL Author's avatar of the embed
      * @param {string} url URL
      * @returns {Embed}
      */
@@ -109,7 +109,7 @@ module.exports = class Embed {
      * @param {string} content Content message
      * @returns {Embed}
      */
-    build(content = "") {
+    build(content = '') {
         return {content, embeds: [this]}
     }
 }

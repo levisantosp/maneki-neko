@@ -1,28 +1,28 @@
-const {Command} = require("../../structures");
-const {User} = require("../../../../database");
+const {Command} = require('../../structures');
+const {User} = require('../../../../database');
 
 module.exports = class StashCommand extends Command {
     constructor() {
         super({
-            name: "stash",
-            aliases: ["guardar"],
-            description: "Stash an item in your inventory",
-            category: "Roleplay"
+            name: 'stash',
+            aliases: ['guardar'],
+            description: 'Stash an item in your inventory',
+            category: 'Roleplay'
         });
     }
     async run(message) {
         const user = await User.findById(message.author.id);
-        const item = message.args.join(" ");
-        if(!item) return message.reply("invalidArg", {try: `${message.guild.db.prefix}use [item]`});
-        if(user?.usingWeapon?.weapon !== item) return message.reply("missingItem2");
+        const item = message.args.join(' ');
+        if(!item) return message.reply('invalidArg', {try: `${message.guild.db.prefix}use [item]`});
+        if(user?.usingWeapon?.weapon !== item) return message.reply('missingItem2');
         const functions = {
-            "9mm": async function() {
+            '9mm': async function() {
                 user.inventory.weapons.push(user.usingWeapon);
                 user.save();
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             },
             pt100: async function() {
                 user.inventory.weapons.push(user.usingWeapon);
@@ -30,7 +30,7 @@ module.exports = class StashCommand extends Command {
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             },
             glock: async function() {
                 user.inventory.weapons.push(user.usingWeapon);
@@ -38,15 +38,15 @@ module.exports = class StashCommand extends Command {
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             },
-            "mt-40": async function() {
+            'mt-40': async function() {
                 user.inventory.weapons.push(user.usingWeapon);
                 user.save();
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             },
             uzi: async function() {
                 user.inventory.weapons.push(user.usingWeapon);
@@ -54,7 +54,7 @@ module.exports = class StashCommand extends Command {
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             },
             mp5: async function() {
                 user.inventory.weapons.push(user.usingWeapon);
@@ -62,7 +62,7 @@ module.exports = class StashCommand extends Command {
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             },
             ump: async function() {
                 user.inventory.weapons.push(user.usingWeapon);
@@ -70,23 +70,23 @@ module.exports = class StashCommand extends Command {
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             },
-            "carabina ct-40": async function() {
+            'carabina ct-40': async function() {
                 user.inventory.weapons.push(user.usingWeapon);
                 user.save();
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             },
-            "carabina 556": async function() {
+            'carabina 556': async function() {
                 user.inventory.weapons.push(user.usingWeapon);
                 user.save();
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             },
             parafal: async function() {
                 user.inventory.weapons.push(user.usingWeapon);
@@ -94,7 +94,7 @@ module.exports = class StashCommand extends Command {
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             },
             m4a1: async function() {
                 user.inventory.weapons.push(user.usingWeapon);
@@ -102,23 +102,23 @@ module.exports = class StashCommand extends Command {
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             },
-            "ak-9": async function() {
+            'ak-9': async function() {
                 user.inventory.weapons.push(user.usingWeapon);
                 user.save();
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             },
-            "ak-47": async function() {
+            'ak-47': async function() {
                 user.inventory.weapons.push(user.usingWeapon);
                 user.save();
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             },
             akm: async function() {
                 user.inventory.weapons.push(user.usingWeapon);
@@ -126,7 +126,7 @@ module.exports = class StashCommand extends Command {
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             },
             scar: async function() {
                 user.inventory.weapons.push(user.usingWeapon);
@@ -134,10 +134,10 @@ module.exports = class StashCommand extends Command {
                 await User.findByIdAndUpdate(user.id, {
                     $set: {usingWeapon: {}}
                 });
-                message.reply("itemStashed");
+                message.reply('itemStashed');
             }
         }
-        if(!functions[item]) return message.reply("missingItem2");
+        if(!functions[item]) return message.reply('missingItem2');
         const execute = functions[item];
         execute();
     }

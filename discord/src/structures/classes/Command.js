@@ -7,7 +7,7 @@ module.exports = class Command {
         this.onlyOwner = options.onlyOwner || false;
         this.permissions = options.permissions || [];
         this.botPermissions = options.botPermissions || [];
-        this.client = require("./Client");
+        this.client = require('./Client');
     }
     async run() {}
 }

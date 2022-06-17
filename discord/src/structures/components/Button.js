@@ -1,4 +1,4 @@
-const {Constants} = require("eris");
+const {Constants} = require('eris');
 
 module.exports = class Button {
     constructor() {
@@ -12,17 +12,17 @@ module.exports = class Button {
     }
 
     /**
-     * @param {"BLUE"|"GRAY"|"GREEN"|"RED"|"LINK"} style Component style
+     * @param {'BLUE'|'GRAY'|'GREEN'|'RED'|'LINK'} style Component style
      * @returns {Button}
      */
     setStyle(style) {
         switch(style.toUpperCase()) {
-            case "BLUE": return this.style = Constants.ButtonStyles.PRIMARY;
-            case "GRAY": return this.style = Constants.ButtonStyles.SECONDARY;
-            case "GREEN": return this.style = Constants.ButtonStyles.SUCCESS;
-            case "RED": return this.style = Constants.ButtonStyles.DANGER;
-            case "LINK": return this.style = Constants.ButtonStyles.LINK;
-            default: throw new Error("Invalid style! Please, choose: \"BLUE\", \"GRAY\", \"GREEN\", \"RED\", \"LINK\"");
+            case 'BLUE': return this.style = Constants.ButtonStyles.PRIMARY;
+            case 'GRAY': return this.style = Constants.ButtonStyles.SECONDARY;
+            case 'GREEN': return this.style = Constants.ButtonStyles.SUCCESS;
+            case 'RED': return this.style = Constants.ButtonStyles.DANGER;
+            case 'LINK': return this.style = Constants.ButtonStyles.LINK;
+            default: throw new Error('Invalid style! Please, choose: \'BLUE\', \'GRAY\', \'GREEN\', \'RED\', \'LINK\'');
         }
     }
 
@@ -57,7 +57,7 @@ module.exports = class Button {
      */
 
     setURL(url) {
-        if(this.style !== 5) throw new Error(`The button style must be "LINK"`);
+        if(this.style !== 5) throw new Error(`The button style must be 'LINK'`);
         else return this.url = url;
     }
 
@@ -66,7 +66,7 @@ module.exports = class Button {
      * @returns {Button}
      */
     setDisabled(disabled = true) {
-        if(typeof disabled !== "boolean") throw new Error("This field must be a boolean");
+        if(typeof disabled !== 'boolean') throw new Error('This field must be a boolean');
         else return this.disabled = disabled;
     }
 }

@@ -1,14 +1,14 @@
-const {Listener, Logger} = require("../../structures");
-const {User, Bank} = require("../../../../database");
+const {Listener, Logger} = require('../../structures');
+const {User, Bank} = require('../../../../database');
 
 module.exports = class ReadyListener extends Listener {
     constructor() {
-        super({name: "ready"});
+        super({name: 'ready'});
     }
     async on() {
         Logger.send(`Logged as ${this.client.user.username}#${this.client.user.discriminator}`);
-        this.client.editStatus("online", {
-            name: "I'll come back",
+        this.client.editStatus('online', {
+            name: 'I'll come back',
             type: 0
         });
         const reviveUser = async() => {
@@ -22,7 +22,7 @@ module.exports = class ReadyListener extends Listener {
         }
         const addGranexPerFarm = async() => {
             const users = await User.find({farmTime: {$lte: Date.now()}});
-            const bank = await Bank.findById("bank");
+            const bank = await Bank.findById('bank');
             for(const user of users) {
                 if(user.farms.length >= 1) {
                     var granexGain = 100;
@@ -35,7 +35,7 @@ module.exports = class ReadyListener extends Listener {
                         if(farm.chickens > 0) n3 += farm.chickens * 5;
                     });
                     granexGain += user.farms.length * 10 + n + n2 + n3;
-                    if(bank.granex < granexGain) throw new Error("The bank doesn't have granex.");
+                    if(bank.granex < granexGain) throw new Error('The bank doesn't have granex.');
                     user.granex += granexGain;
                     user.farmTime = Date.now() + 3.6e+6;
                     bank.granex -= granexGain;

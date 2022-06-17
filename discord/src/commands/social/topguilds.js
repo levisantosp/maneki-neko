@@ -1,19 +1,19 @@
-const {Command, Embed} = require("../../structures");
-const {Guild} = require("../../../../database");
+const {Command, Embed} = require('../../structures');
+const {Guild} = require('../../../../database');
 
 module.exports = class TopGuildsCommand extends Command {
     constructor() {
         super({
-            name: "topguilds",
-            aliases: ["guildstop"],
-            description: "View the top guilds with the most level",
-            category: "social"
+            name: 'topguilds',
+            aliases: ['guildstop'],
+            description: 'View the top guilds with the most level',
+            category: 'social'
         });
     }
     async run(message) {
         const guilds = await Guild.find({level: {$gt: 0}});
         var a;
-        if(message.args[0] == "1" || !message.args[0]) {
+        if(message.args[0] == '1' || !message.args[0]) {
             a = 1;
             guilds.sort((a, b) => {
                 if(a.level === b.level) return b.exp - a.exp;

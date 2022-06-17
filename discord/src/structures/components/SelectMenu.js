@@ -1,5 +1,5 @@
 
-const {Constants} = require("eris");
+const {Constants} = require('eris');
 
 module.exports = class SelectMenu {
     constructor() {

@@ -1,32 +1,32 @@
-const {Command, Button} = require("../../structures");
-const {Bank, User} = require("../../../../database");
-const {ComponentInteraction} = require("eris");
+const {Command, Button} = require('../../structures');
+const {Bank, User} = require('../../../../database');
+const {ComponentInteraction} = require('eris');
 
 module.exports = class SellCommand extends Command {
     constructor() {
         super({
-            name: "sell",
-            aliases: ["vender"],
-            description: "Sell an item of yours to someone else",
-            category: "Roleplay"
+            name: 'sell',
+            aliases: ['vender'],
+            description: 'Sell an item of yours to someone else',
+            category: 'Roleplay'
         });
     }
     async run(message) {
         const user = await User.findById(message.author.id);
-        const bank = await Bank.findById("bank");
+        const bank = await Bank.findById('bank');
         const args = {
             weapon: function(member, toUser, value, item, client, locale) {
                 const hasWeapon = user?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
-                if(!hasWeapon) return message.reply("missingItem");
+                if(!hasWeapon) return message.reply('missingItem');
                 const items = {
-                    "9mm": async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                    '9mm': async function() {
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -35,15 +35,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -56,18 +56,18 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     },
                     pt100: async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -76,15 +76,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -97,18 +97,18 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     },
                     glock: async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -117,15 +117,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -138,18 +138,18 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     },
-                    "mt-40": async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                    'mt-40': async function() {
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -158,15 +158,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -179,18 +179,18 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     },
                     uzi: async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -199,15 +199,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -220,18 +220,18 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     },
                     mp5: async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -240,15 +240,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -261,18 +261,18 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     },
                     ump: async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -281,15 +281,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -302,18 +302,18 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     },
-                    "carabina ct-40": async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                    'carabina ct-40': async function() {
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -322,15 +322,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -343,18 +343,18 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     },
-                    "carabina 556": async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                    'carabina 556': async function() {
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -363,15 +363,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -384,18 +384,18 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     },
                     parafal: async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -404,15 +404,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -425,18 +425,18 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     },
                     m4a1: async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -445,15 +445,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -466,18 +466,18 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     },
-                    "ak-9": async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                    'ak-9': async function() {
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -486,15 +486,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -507,18 +507,18 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     },
-                    "ak-47": async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                    'ak-47': async function() {
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -527,15 +527,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -548,18 +548,18 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     },
                     akm: async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -568,15 +568,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -589,18 +589,18 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     },
                     scar: async function() {
-                        if(toUser.granex < value) return message.reply("dontHavegranex", {user: `<@${toUser.id}>`});
+                        if(toUser.granex < value) return message.reply('dontHavegranex', {user: `<@${toUser.id}>`});
 
                         const button = new Button();
-                        button.setStyle("GREEN");
-                        button.setLabel("Accept");
-                        button.setCustomID("confirm");
-                        var msg = await message.replyC("sellConfirm", {
+                        button.setStyle('GREEN');
+                        button.setLabel('Accept');
+                        button.setCustomID('confirm');
+                        var msg = await message.replyC('sellConfirm', {
                             components: [{
                                 type: 1,
                                 components: [button]
@@ -609,15 +609,15 @@ module.exports = class SellCommand extends Command {
                             author: message.author.mention,
                             user: member.mention
                         });
-                        client.on("interactionCreate", async interaction => {
+                        client.on('interactionCreate', async interaction => {
                             if(interaction instanceof ComponentInteraction) {
-                                if(interaction.data.custom_id != "confirm") return;
+                                if(interaction.data.custom_id != 'confirm') return;
                                 if(interaction.channel.id != message.channel.id) return;
                                 if(interaction.message.id != msg.id) return;
                                 if(interaction.member.id != toUser.id) return;
                                 const _hasWeapon = toUser?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0];
                                 if(_hasWeapon) return interaction.createMessage({
-                                    content: locale.get("alreadyBought"),
+                                    content: locale.get('alreadyBought'),
                                     flags: 64
                                 });
                                 await msg.delete();
@@ -630,24 +630,24 @@ module.exports = class SellCommand extends Command {
                                 user.save();
                                 toUser.save();
                                 bank.save();
-                                message.reply("sellSucess");
+                                message.reply('sellSucess');
                             }
                         });
                     }
                 }
-                if(!items[item]) return message.reply("invalidArg", {try: `${message.guild.db.prefix}sell [user] weapon [weapon]`});
+                if(!items[item]) return message.reply('invalidArg', {try: `${message.guild.db.prefix}sell [user] weapon [weapon]`});
                 const execute = items[item];
                 execute();
             },
             farm: async function(member, toUser, value, item, client, locale) {
                 const hasFarm = user?.farms?.filter(farm => farm.id === message.guild.id)[0];
-                if(!hasFarm) return message.reply("noFarm");
+                if(!hasFarm) return message.reply('noFarm');
 
                 const button = new Button();
-                button.setStyle("GREEN");
-                button.setLabel("Accept");
-                button.setCustomID("confirm");
-                var msg = await message.replyC("sellConfirm", {
+                button.setStyle('GREEN');
+                button.setLabel('Accept');
+                button.setCustomID('confirm');
+                var msg = await message.replyC('sellConfirm', {
                     components: [{
                         type: 1,
                         components: [button]
@@ -656,15 +656,15 @@ module.exports = class SellCommand extends Command {
                     author: message.author.mention,
                     user: member.mention
                 });
-                client.on("interactionCreate", async interaction => {
+                client.on('interactionCreate', async interaction => {
                     if(interaction instanceof ComponentInteraction) {
-                        if(interaction.data.custom_id != "confirm") return;
+                        if(interaction.data.custom_id != 'confirm') return;
                         if(interaction.channel.id != message.channel.id) return;
                         if(interaction.message.id != msg.id) return;
                         if(interaction.member.id != toUser.id) return;
                         await interaction.deferUpdate();
                         if(toUser?.farm?.in?.includes(message.guild.id)) return interaction.createMessage({
-                            content: locale.get("alreadyBought"),
+                            content: locale.get('alreadyBought'),
                             flags: 64
                         });
                         var index = user.farms.indexOf(hasFarm);
@@ -676,7 +676,7 @@ module.exports = class SellCommand extends Command {
                         user.save();
                         toUser.save();
                         bank.save();
-                        message.reply("sellSucess");
+                        message.reply('sellSucess');
                     }
                 });
             }
@@ -684,12 +684,12 @@ module.exports = class SellCommand extends Command {
         const member = this.getMember(message.args[0]);
         const arg = message.args[1];
         const value = message.args[2];
-        const item = message.args.slice(3, 4).join(" ");
-        if(!member || member.id === message.author.id) return message.reply("invalidUser");
-        if(isNaN(value)) return message.reply("invalidArg", {try: `${message.guild.db.prefix}sell [user] weapon/farm/plant [price] [item]`});
+        const item = message.args.slice(3, 4).join(' ');
+        if(!member || member.id === message.author.id) return message.reply('invalidUser');
+        if(isNaN(value)) return message.reply('invalidArg', {try: `${message.guild.db.prefix}sell [user] weapon/farm/plant [price] [item]`});
         const toUser = await User.findById(member.id);
-        if(!toUser) return message.reply("userIsNotInDatabase");
-        if(!args[arg]) return message.reply("invalidArg", {try: `${message.guild.db.prefix}sell [user] weapon/farm/plant [price] [item]`});
+        if(!toUser) return message.reply('userIsNotInDatabase');
+        if(!args[arg]) return message.reply('invalidArg', {try: `${message.guild.db.prefix}sell [user] weapon/farm/plant [price] [item]`});
         const execute = args[arg];
         execute(member, toUser, value, item, this.client, this.locale);
     }
