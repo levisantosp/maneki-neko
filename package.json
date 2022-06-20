@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Levi0100/meow-rp.git"
+    "url": "https://github.com/Levi0100/maneki-neko.git"
   },
   "author": "Levi0100",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Levi0100/meow-rp/issues"
+    "url": "https://github.com/Levi0100/maneki-neko/issues"
   },
   "dependencies": {
     "@iamtraction/google-translate": "^1.1.2",
@@ -28,5 +28,5 @@
     "mongoose": "^6.3.2",
     "node-canvas-with-twemoji-and-discord-emoji": "^1.2.1"
   },
-  "homepage": "https://github.com/Levi0100/meow-rp#readme"
+  "homepage": "https://github.com/Levi0100/maneki-neko#readme"
 }

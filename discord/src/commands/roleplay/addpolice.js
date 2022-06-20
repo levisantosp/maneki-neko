@@ -14,7 +14,7 @@ module.exports = class AddPoliceCommand extends Command {
     async run(message) {
         const arrayRoles = [];
         message.guild.roles.forEach(role => {
-            if(role.name === 'MeowSheriff') arrayRoles.push({name: role.name, id: role.id});
+            if(role.name === 'ManekiSheriff') arrayRoles.push({name: role.name, id: role.id});
         });
         if(!message.member.permissions.has('banMembers') && !arrayRoles[0]) return;
         if(arrayRoles[0] && !message.member.roles.includes(arrayRoles[0].id)) return;

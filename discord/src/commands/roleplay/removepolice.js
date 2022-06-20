@@ -14,9 +14,9 @@ module.exports = class RemovePoliceCommand extends Command {
     async run(message) {
         const arrayRoles = [];
         message.guild.roles.forEach(role => {
-            if(role.name === 'MeowSheriff') arrayRoles.push({name: role.name, id: role.id});
+            if(role.name === 'ManekiSheriff') arrayRoles.push({name: role.name, id: role.id});
         });
-        if(!message.member.permissions.has('banMembers') && !arrayRoles[0]['name'].includes('MeowSheriff')) return;
+        if(!message.member.permissions.has('banMembers') && !arrayRoles[0]['name'].includes('ManekiSheriff')) return;
         if(arrayRoles[0] && !message.member.roles.includes(arrayRoles[0]['id'])) return;
         const member = this.getMember(message.args[0]);
         if(!member || member.id === message.member.id) return message.reply('invalidUser');

@@ -21,15 +21,15 @@ module.exports = class Logger {
         for(const channel of channels) {
            if(channel.id !== '980251329345761330') continue;
            const webhooks = await channel.getWebhooks();
-           var webhook = webhooks.filter(w => w.name === 'Meow Tracker')[0];
+           var webhook = webhooks.filter(w => w.name === 'Maneki Neko Tracker')[0];
            if(!webhook) webhook = await channel.createWebhook({
-               name: 'Meow Tracker',
+               name: 'Maneki Neko Tracker',
                avatar: this.client.user.avatarURL
            });
            this.client.executeWebhook(webhook.id, webhook.token, {
                embed,
                avatarURL: this.client.user.avatarURL,
-               username: 'Meow Tracker'
+               username: 'Maneki Neko Tracker'
            });
            console.log(c.red(`[${moment(Date.now()).format('hh:mm')}] ${error.stack}`));
         }
