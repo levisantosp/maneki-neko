@@ -18,7 +18,7 @@ module.exports = class RobCommand extends Command {
         if(!user.usingWeapon.weapon) return message.reply('needWeapon');
         if(victim.usingBulletProof.protection) user.usingWeapon.damage -= victim.usingBulletProof.protection;
         var array = [message.author.id, member.id];
-        var percentual = Math.floor(Math.random() * 100);
+        var percentual = Math.floor(Math.random() * 100) + 1;
         var index;
         switch(user.usingWeapon.weapon) {
             case '9mm': index            = ((percentual >= 90) ? 0 : 1);
