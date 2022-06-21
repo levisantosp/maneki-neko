@@ -18,7 +18,7 @@ module.exports = class MessageCreateListener extends Listener {
             switch(message.channel.parentID) {
                 case '988470650781962260': guild.lang = 'pt';
                     break;
-                default: guild.lang = 'en'
+                case '988470779773587526': guild.lang = 'en';
             }
             message.reply = function(content, options) {
                 const locale = require(`../../../../locales/${guild.lang}`);
