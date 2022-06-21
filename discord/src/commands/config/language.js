@@ -18,12 +18,12 @@ module.exports = class LanguageCommand extends Command {
         switch(lang) {
             case 'pt': 
                 message.reply('Agora eu irei falar em português neste servidor. Aqui é o Brasil!');
-                guild?.lang = lang;
+                guild.lang = lang;
                 guild.save();
                     break;
             case 'en': 
                 message.reply('Now I\'ll speak in english on this server. This is America!');
-                guild?.lang = lang;
+                guild.lang == lang;
                 guild.save();
                     break;
             default:
