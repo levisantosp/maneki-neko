@@ -11,7 +11,10 @@ const guild = new Schema({
     level: {type: Number, default: 0},
     exp: {type: Number, default: 0},
     xpRequired: {type: Number, default: 150},
-    announcements: String
+    announcements: String,
+    banned: Boolean,
+    bannedReason: String,
+    bannedUntil: Number
 });
 
 module.exports = model('guilds', guild);

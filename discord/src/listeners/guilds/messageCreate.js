@@ -9,10 +9,17 @@ module.exports = class MessageCreateListener extends Listener {
     async on(message) {
         if(message instanceof Message) {
             if(message.author.bot) return;
-            if(message.channel.type === Constants.ChannelTypes.DM) return;
-            await Bank.findById('bank') || new Bank({_id: 'bank'});
+            if(message.channel.type == Constants.ChannelTypes.DM) return;
+            const bank = await Bank.findById('bank') || new Bank({_id: 'bank'});
+            bank.save();
             const guild = await Guild.findById(message.guildID) || new Guild({_id: message.guildID});
+            guild.save();
             const user = await User.findById(message.member.id);
+            switch(message.channel.parentID) {
+                case '988470650781962260': guild.lang = 'pt';
+                    break;
+                default: guild.lang = 'en'
+            }
             message.reply = function(content, options) {
                 const locale = require(`../../../../locales/${guild.lang}`);
                 if(typeof content === 'string') {
@@ -55,12 +62,14 @@ module.exports = class MessageCreateListener extends Listener {
             var args = messageArray.slice(0);
             var cmd = this.client.commands.get(command.slice(guild.prefix.length)) || this.client.commands.get(this.client.aliases.get(command.slice(guild.prefix.length)));
             if(!cmd) return;
+            if(user?.banned) return;
             var g = this.client.guilds.get(message.guildID);
             message.args = args;
             message.guild = {
                 ...g,
                 db: guild
             }
+            if(guild.banned) return this.client.guilds.get(message.guild.id).leave();
             cmd._locale = require(`../../../../locales/util/${guild.lang}`);
             cmd.locale = require(`../../../../locales/${guild.lang}`);
             var client = message.guild.members.get(this.client.user.id);

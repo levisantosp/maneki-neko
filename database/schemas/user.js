@@ -13,6 +13,7 @@ const user = new Schema({
     aboutme: {type: String, default: ''},
     banned: Boolean,
     bannedReason: String,
+    bannedUntil: Number,
     dailyTime: {type: Number, default: 0},
     weeklyTime: {type: Number, default: 0},
     workTime: {type: Number, default: 0},

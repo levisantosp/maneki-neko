@@ -1,5 +1,5 @@
 const {Listener, Logger} = require('../../structures');
-const {User, Bank} = require('../../../../database');
+const {User, Bank, Guild} = require('../../../../database');
 
 module.exports = class ReadyListener extends Listener {
     constructor() {
@@ -65,7 +65,7 @@ module.exports = class ReadyListener extends Listener {
             }
         }
         const regainEnergy = async() => {
-            const users = await User.find({energyTime: {$lte: Date.now()}});
+            const users = await User.find({energy: {$lt: 2000}, energyTime: {$lte: Date.now()}});
             for(const user of users) {
                 if(user.deadAt) continue;
                 user.energy += 100;
@@ -75,11 +75,27 @@ module.exports = class ReadyListener extends Listener {
                 Logger.warn(`(${user.id}) received 5% of energy`);
             }
         }
+        const removeUserFromBlacklist = async() => {
+            const users = await User.find({bannedUntil: {$lte: Date.now()}});
+            for(const user of users) {
+                Logger.warn(`(${user.id}) has been removed from blacklist`);
+                user.delete();
+            }
+        }
+        const removeGuildFromBlackist = async() => {
+            const guilds = await Guild.find({bannedUntil: {$lte: Date.now()}});
+            for(const guild of guilds) {
+                Logger.warn(`(${guild.id}) has been removed from blacklist`);
+                guild.delete();
+            }
+        }
         setInterval(editClientStatus, 30000);
         setInterval(() => {
             reviveUser();
             addGranexPerFarm().catch(err => new Logger(this.client).error(err));
             regainEnergy();
+            removeUserFromBlacklist();
+            removeGuildFromBlackist();
         }, 10000);
     }
 }
