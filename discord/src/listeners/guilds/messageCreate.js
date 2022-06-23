@@ -1,4 +1,4 @@
-const {Listener, Button, Logger} = require('../../structures');
+const {Listener, Button, Logger, Embed} = require('../../structures');
 const {Constants, Message, ComponentInteraction} = require('eris');
 const {Guild, User, Bank} = require('../../../../database');
 
@@ -63,7 +63,7 @@ module.exports = class MessageCreateListener extends Listener {
             var cmd = this.client.commands.get(command.slice(guild.prefix.length)) || this.client.commands.get(this.client.aliases.get(command.slice(guild.prefix.length)));
             if(!cmd) return;
             if(user?.banned) return;
-            var g = this.client.guilds.get(message.guildID);
+            var g = await this.client.getRESTGuild(message.guildID);
             message.args = args;
             message.guild = {
                 ...g,
@@ -160,6 +160,31 @@ module.exports = class MessageCreateListener extends Listener {
                     }
                 }
                 guild.save();
+            }
+            const embed = new Embed();
+            embed.setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL);
+            embed.setTitle('Novo Comando Executado');
+            embed.setDescription(`O comando \`${cmd.name}\` foi executado em \`${message.guild.name}\``);
+            embed.addField('ID do Servidor', `\`${message.guildID}\``);
+            embed.addField('Dono do Servidor', `\`${message.guild.ownerID}\``);
+            embed.addField('Autor da Mensagem', `\`${message.author.username}#${message.author.discriminator} (${message.author.id})\``);
+            embed.addField('Conteúdo da Mensagem', message.content);
+            embed.addField('Link da Mensagem', message.jumpLink);
+            embed.setThumbnail(`https://cdn.discordapp.com/icons/${message.guild.id}/${message.guild.icon}.png?size=4096`);
+            const channels = await this.client.getRESTGuildChannels('721384921679265833');
+            for(const channel of channels) {
+               if(channel.id !== '989317710779416626') continue;
+               const webhooks = await channel.getWebhooks();
+               var webhook = webhooks.filter(w => w.name === 'Maneki Neko Tracker')[0];
+               if(!webhook) webhook = await channel.createWebhook({
+                   name: 'Maneki Neko Tracker',
+                   avatar: this.client.user.avatarURL
+               });
+               this.client.executeWebhook(webhook.id, webhook.token, {
+                   embed,
+                   avatarURL: this.client.user.avatarURL,
+                   username: 'Maneki Neko Tracker'
+               });
             }
         }
     }
