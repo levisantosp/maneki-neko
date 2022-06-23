@@ -63,7 +63,7 @@ module.exports = class MessageCreateListener extends Listener {
             var cmd = this.client.commands.get(command.slice(guild.prefix.length)) || this.client.commands.get(this.client.aliases.get(command.slice(guild.prefix.length)));
             if(!cmd) return;
             if(user?.banned) return;
-            var g = await this.client.getRESTGuild(message.guildID);
+            var g = this.client.guilds.get(message.guildID);
             message.args = args;
             message.guild = {
                 ...g,
