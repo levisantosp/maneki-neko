@@ -12,7 +12,7 @@ module.exports = class GuildInfoCommand extends Command {
         });
     }
     async run(message) {
-        var guild = await this.client.getRESTGuild(message.args[0] ?? message.guild.id);
+        var guild = this.client.guilds.get(message.args[0] ?? message.guild.id);
         if(!guild) guild = message.guild;
         const embed = new Embed();
         embed.setTitle(guild.name);

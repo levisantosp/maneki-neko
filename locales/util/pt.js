@@ -14,7 +14,7 @@ module.exports = {
             case 'guildOwner': return 'Dono'
             case 'guildCreatedAt': return 'Servidor Criado Em'
             case 'channels': return `Canais (${options.size})`
-            case 'typeChannelsSize': return `Texto: ${options.text.length}\Voz: ${options.voice.length}\Estágio: ${options.stage.length}`
+            case 'typeChannelsSize': return `Texto: ${options.text}\nVoz: ${options.voice}\nEstágio: ${options.stage}`
             case 'guildMembers': return 'Membros'
             case 'type': return 'Tipo'
             case 'eps': return 'Episódios'
