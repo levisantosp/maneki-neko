@@ -12,6 +12,7 @@ module.exports = class AnimeCommand extends Command {
         });
     }
     async run(message) {
+        if(!message.channel.nsfw) return message.reply('channelIsNotNSFW');
         const anime = message.args[0];
         if(!anime) return message.reply('invalidArg', {try: `${message.guild.db.prefix}anime <anime>`});
         const data = await malScraper.getInfoFromName(anime);
