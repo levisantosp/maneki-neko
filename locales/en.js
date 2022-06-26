@@ -91,6 +91,7 @@ module.exports = {
             case 'sucessfullyPlanted': return 'Sucessfully planted!'
             case 'repAlreadyGiven': return `You already given a reputation to somebody! Come back again <t:${parseInt(options.remaining/1000)}:R>`
             case 'repGiven': return 'Sucessfully given reputation!'
+            case 'channelIsNotNSFW': return 'This command only works in NSFW channels.'
             default: return content;
         }
     }
