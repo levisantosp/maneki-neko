@@ -93,7 +93,7 @@ module.exports = class ReadyListener extends Listener {
                 guild.delete();
             }
         }
-        setInterval(editClientStatus, 5000);
+        setInterval(editClientStatus, 15000);
         setInterval(() => {
             reviveUser();
             addGranexPerFarm().catch(err => new Logger(this.client).error(err));
