@@ -7,10 +7,10 @@ module.exports = class ReadyListener extends Listener {
     }
     async on() {
         Logger.send(`Logged as ${this.client.user.username}#${this.client.user.discriminator}`);
-        const editClientStatus = () => {
+        const editClientStatus = async() => {
             const activities = [
                 {
-                    name: 'to you',
+                    name: 'with you',
                     type: 3
                 },
                 {
@@ -18,7 +18,7 @@ module.exports = class ReadyListener extends Listener {
                     type: 3
                 },
                 {
-                    name: `with another ${this.client.users.filter(user => !user.bot).length} users`,
+                    name: `with another ${(await User.find({energy: {$gte: 1}})).length} users`,
                     type: 0
                 },
                 {
