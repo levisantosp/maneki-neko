@@ -19,12 +19,16 @@ module.exports = class ReadyListener extends Listener {
                 },
                 {
                     name: `with another ${(await User.find({energy: {$gte: 1}})).length} users`,
-                    type: 0
+                    type: 5
                 },
                 {
                     name: 'Genshin Impact',
                     type: 1,
                     url: 'https://www.twitch.tv/voidappend'
+                },
+                {
+                    name: `Banco: 💸 ${(await Bank.findById('bank')).granex.toLocaleString()}`,
+                    type: 0
                 }
             ];
             const activity = activities[Math.floor(Math.random() * activities.length)];
@@ -89,7 +93,7 @@ module.exports = class ReadyListener extends Listener {
                 guild.delete();
             }
         }
-        setInterval(editClientStatus, 30000);
+        setInterval(editClientStatus, 5000);
         setInterval(() => {
             reviveUser();
             addGranexPerFarm().catch(err => new Logger(this.client).error(err));
