@@ -75,6 +75,8 @@ module.exports = {
             case 'inUse': return 'Em Uso'
             case 'guildLevelUp': return `Este servidor acaba de upar para o **nível ${options.level}**!\nComo resultado, foram abertas +10 vagas para bombeiros e +10 vagas para policiais! Tá esperando o quê? Aliste-se já!`
             case 'guildLevelUp2': return `Este servidor acaba de upar para o **nível ${options.level}**!`
+            case 'dblTitle': return 'Vote em Mim!'
+            case 'dblDescription': return 'Vote em mim para me ajudar a ser divulgada para mais e mais pessoas aqui na plataforma! Por agora, você não ganha nada além do meu agradecimento, mas em breve, ganhará!'
             default: return content;
         }
     }
