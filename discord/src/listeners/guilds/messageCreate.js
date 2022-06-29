@@ -148,18 +148,19 @@ module.exports = class MessageCreateListener extends Listener {
                 new Logger(this.client).error(err);
             });
             if(['Roleplay', 'economy'].includes(cmd.category)) {
-                guild.exp += Math.floor(Math.random() * 100);
-                if(guild.exp > guild.xpRequired) {
-                    guild.exp = 0;
-                    guild.level += 1;
-                    guild.xpRequired += 336;
-                    if(guild.announcements) {
+            const x = await Guild.findById(message.guild.id);
+            x.exp += Math.floor(Math.random() * 100);
+                if(x.exp > x.xpRequired) {
+                    x.exp = 0;
+                    x.level += 1;
+                    x.xpRequired += 336;
+                    if(x.announcements) {
                         const channel = message.guild.channels.get(guild.announcements);
-                        if(guild.level.toString().endsWith('0')) channel.createMessage(cmd._locale.get('guildLevelUp', {level: guild.level}));
-                        else channel.createMessage(cmd._locale.get('guildLevelUp2', {level: guild.level}));
+                        if(x.level.toString().endsWith('0')) channel.createMessage(cmd._locale.get('guildLevelUp', {level: x.level}));
+                        else channel.createMessage(cmd._locale.get('guildLevelUp2', {level: x.level}));
                     }
                 }
-                guild.save();
+                x.save();
             }
             const embed = new Embed();
             embed.setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL);
