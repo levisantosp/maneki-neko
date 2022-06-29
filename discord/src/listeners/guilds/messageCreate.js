@@ -120,6 +120,7 @@ module.exports = class MessageCreateListener extends Listener {
                 });
                     return;
             }
+            else guild.save();
             cmd.getUser = async function(args) {
                 try {
                     if(isNaN(args)) {
