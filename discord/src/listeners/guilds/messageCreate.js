@@ -12,7 +12,7 @@ module.exports = class MessageCreateListener extends Listener {
             if(message.channel.type == Constants.ChannelTypes.DM) return;
             const bank = await Bank.findById('bank') || new Bank({_id: 'bank'});
             bank.save();
-            const guild = await Guild.findById(message.guildID) || new Guild({_id: message.guild.id});
+            const guild = await Guild.findById(message.guildID) || new Guild({_id: message.guildID});
             const user = await User.findById(message.member.id);
             switch(message.channel.parentID) {
                 case '988470650781962260': guild.lang = 'pt';
