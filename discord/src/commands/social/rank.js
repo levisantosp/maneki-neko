@@ -49,8 +49,8 @@ module.exports = class RankCommand extends Command {
             }
             else a = 1;
             users.forEach(async x => {
-                const user = await this.client.getRESTUser(x.id);
-                embed.addField(`${a++}° ${user.username}#${user.discriminator}`, `${x.granex.toLocaleString()} granex`);
+                const user = this.client.users.get(x.id);
+                if(user) embed.addField(`${a++}° ${user.username}#${user.discriminator}`, `${x.granex.toLocaleString()} granex`);
             });
             message.reply(embed.build());
         });
