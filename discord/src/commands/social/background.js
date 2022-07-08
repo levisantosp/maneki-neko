@@ -1,7 +1,7 @@
 const {Command, Embed, Button} = require('../../structures');
 const {User} = require('../../../../database');
-const {ImgurClient} = require('imgur');
-const client = new ImgurClient({clientId: process.env.IMGUR_CLIENT_ID, clientSecret: process.env.IMGUR_CLIENT_SECRET});
+//const {ImgurClient} = require('imgur');
+//const client = new ImgurClient({clientId: process.env.IMGUR_CLIENT_ID, clientSecret: process.env.IMGUR_CLIENT_SECRET});
 
 module.exports = class BackgroundCommand extends Command {
     constructor() {
@@ -13,6 +13,7 @@ module.exports = class BackgroundCommand extends Command {
         });
     }
     async run(message) {
+        return message.reply('This command has been temporarily disabled');
         const user = await User.findById(message.author.id);
         if(!user) return message.reply('userIsNotInDatabase');
         if(user.waitingBackground) return message.reply('waitingBackground');
