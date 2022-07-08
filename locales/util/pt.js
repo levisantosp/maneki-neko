@@ -76,7 +76,7 @@ module.exports = {
             case 'guildLevelUp': return `Este servidor acaba de upar para o **nível ${options.level}**!\nComo resultado, foram abertas +10 vagas para bombeiros e +10 vagas para policiais! Tá esperando o quê? Aliste-se já!`
             case 'guildLevelUp2': return `Este servidor acaba de upar para o **nível ${options.level}**!`
             case 'dblTitle': return 'Vote em Mim!'
-            case 'dblDescription': return 'Vote em mim para me ajudar a ser divulgada para mais e mais pessoas aqui na plataforma! Por agora, você não ganha nada além do meu agradecimento, mas em breve, ganhará!'
+            case 'dblDescription': return 'Vote em mim para me ajudar a ser divulgada para mais e mais pessoas aqui na plataforma!\n\nSabia que votando em mim você pode ganhar até 800 granex? E sabia que, ao votar em mim tanto na **Top.gg** como na **discordbotlist.com** você ganha 1600 granex?\n\nTá esperando o quê? Vote já!'
             default: return content;
         }
     }

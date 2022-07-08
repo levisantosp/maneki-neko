@@ -13,18 +13,23 @@ module.exports = class DiscordBotListCommand extends Command {
     async run(message) {
         const embed = new Embed();
         const topgg = new Button();
-        const bestlist = new Button();
+        const dbl = new Button();
+        topgg.setStyle('LINK');
+        topgg.setLabel('Top.gg');
+        topgg.setEmoji('995012387218407494');
+        topgg.setURL('https://top.gg/bot/789196560415064085/vote');
+        dbl.setStyle('LINK');
+        dbl.setLabel('discordbotlist.com');
+        dbl.setEmoji('995013888854741053');
+        dbl.setURL('https://discordbotlist.com/bots/maneki-neko/upvote');
         embed.setTitle(this._locale.get('dblTitle'));
         embed.setDescription(this._locale.get('dblDescription'));
         embed.setThumbnail(this.client.user.avatarURL);
-        topgg.setStyle('LINK');
-        topgg.setLabel('Top.gg');
-        topgg.setURL('https://top.gg/bot/789196560415064085');
         message.reply({
             embed,
             components: [{
                 type: 1,
-                components: [topgg]
+                components: [topgg, dbl]
             }]
         });
     }
