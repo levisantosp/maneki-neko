@@ -1,17 +1,13 @@
 const {Listener, Embed} = require('../../structures');
-const {Guild} = require('../../../../database');
 
-module.exports = class GuildCreateListener extends Listener {
+module.exports = class GuildDeleteListener extends Listener {
     constructor() {
-        super({name: 'guildCreate'});
+        super({name: 'guildDelete'});
     }
     async on(guild) {
-        const g = await Guild.findById(guild.id);
-        if(g?.banned) guild.leave();
-
-        const owner = this.client.users.get(guild.ownerID);
+        const owner = await this.client.getRESTUser(guild.ownerID);
         const embed = new Embed();
-        embed.setTitle(`Fui adicionada em um servidor!`);
+        embed.setTitle(`Fui removida de um servidor!`);
         embed.setThumbnail(guild.iconURL);
         embed.addField('Guild', `\`${guild.name} (${guild.id})\``);
         embed.addField('Dono', `\`${owner.username}#${owner.discriminator} (${owner.id})\``);
@@ -19,7 +15,7 @@ module.exports = class GuildCreateListener extends Listener {
         embed.setFooter(`Atualmente estou em ${this.client.guilds.size} servidores`);
         const channels = await this.client.getRESTGuildChannels('721384921679265833');
         for(const channel of channels) {
-            if(channel.id !== '996780045433589792') continue;
+            if(channel.id !== '996780137448210552') continue;
             const webhooks = await channel.getWebhooks();
             var webhook = webhooks.filter(w => w.name === 'Maneki Neko Tracker')[0];
             if(!webhook) webhook = await channel.createWebhook({

@@ -1,6 +1,6 @@
 {
   "name": "maneki-neko",
-  "version": "2022.07.08-canary",
+  "version": "2022.07.13-beta",
   "description": "🤖 A powerful Discord bot, made with eris library in JavaScript. With ❤️ roleplay commands, 🔧 configuration commands, 💸 economy commands, 🌐 utility commands, and more...",
   "main": "main.js",
   "scripts": {
