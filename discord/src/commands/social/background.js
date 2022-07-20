@@ -9,24 +9,25 @@ module.exports = class BackgroundCommand extends Command {
             name: 'background',
             aliases: ['wallpaper', 'wp', 'bg'],
             description: 'Select you profile background',
+            syntax: 'background [attachment]',
             category: 'social'
         });
     }
     async run(message) {
-        return message.reply('This command has been temporarily disabled');
         const user = await User.findById(message.author.id);
         if(!user) return message.reply('userIsNotInDatabase');
         if(user.waitingBackground) return message.reply('waitingBackground');
         if(!message.attachments[0]) return message.reply('attachFile');
         const attachment = message.attachments[0];
-        const img = await client.upload({image: attachment.url, type: 'url'});
-        if(!img.success) return message.reply('imgurFalse');
-        user.waitingBackground = img.data.link;
+        //const img = await client.upload({image: attachment.url, type: 'url'});
+        //if(!img.success) return message.reply('imgurFalse');
+        //user.waitingBackground = img.data.link;
+        user.waitingBackground = attachment.url;
         
         const embed = new Embed();
         embed.setTitle('Novo background enviado para análise');
         embed.setDescription(`${message.author.username}#${message.author.discriminator} enviou um background para análise!`);
-        embed.setImage(img.data.link);
+        embed.setImage(attachment.url);
         embed.setThumbnail(message.author.avatarURL);
         embed.setFooter(user.id);
         const channel = this.client.getChannel('979035224556056586');
