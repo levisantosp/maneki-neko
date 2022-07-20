@@ -14,6 +14,8 @@ module.exports = class MessageCreateListener extends Listener {
             bank.save();
             const guild = await Guild.findById(message.guildID) || new Guild({_id: message.guildID});
             const user = await User.findById(message.member.id);
+            var prefix = process.env.PREFIX;
+            if(guild.prefix) prefix = guild.prefix;
             switch(message.channel.parentID) {
                 case '988470650781962260': guild.lang = 'pt';
                     break;
@@ -54,12 +56,12 @@ module.exports = class MessageCreateListener extends Listener {
                     embeds: options.embeds || []
                 });
             }
-            if(message.content === `<@${this.client.user.id}>` || message.content === `<@!${this.client.user.id}>`) return message.reply('mentionBot', {prefix: guild.prefix});
-            if(!message.content.toLowerCase().startsWith(guild.prefix)) return;
+            if(message.content === `<@${this.client.user.id}>` || message.content === `<@!${this.client.user.id}>`) return message.reply('mentionBot', {prefix: prefix});
+            if(!message.content.toLowerCase().startsWith(prefix)) return;
             var messageArray = message.content.split(' ');
             var command = messageArray.shift().toLowerCase();
             var args = messageArray.slice(0);
-            var cmd = this.client.commands.get(command.slice(guild.prefix.length)) || this.client.commands.get(this.client.aliases.get(command.slice(guild.prefix.length)));
+            var cmd = this.client.commands.get(command.slice(prefix.length)) || this.client.commands.get(this.client.aliases.get(command.slice(prefix.length)));
             if(!cmd) return;
             if(user?.banned) return;
             var g = this.client.guilds.get(message.guildID);
