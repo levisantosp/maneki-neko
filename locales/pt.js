@@ -91,6 +91,7 @@ module.exports = {
             case 'repAlreadyGiven': return `Calma lá, meu patrão! Você já deu uma reputação à alguém. Volte novamente <t:${parseInt(options.remaining/1000)}:R>`
             case 'repGiven': return 'Reputação dada com sucesso!'
             case 'channelIsNotNSFW': return 'Este comando só funciona em canais NSFW.'
+            case 'noCommand': return 'Este comando não existe!'
             default: return content;
         }
     }
