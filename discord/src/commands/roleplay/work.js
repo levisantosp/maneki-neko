@@ -23,52 +23,52 @@ module.exports = class WorkCommand extends Command {
             var xpGain;
             switch(user.job) {
                 case 'trashman':
-                    granexGain = 100;
-                    xpGain = 25;
+                    granexGain = 575;
+                    xpGain = 120;
                         break;
                 case 'newsagent':
-                    granexGain = 150;
-                    xpGain = 50;
+                    granexGain = 600;
+                    xpGain = 170;
                         break;
                 case 'ubereats':
-                    granexGain = 200;
-                    xpGain = 100;
+                    granexGain = 650;
+                    xpGain = 310;
                         break;
                 case 'uber':
-                    granexGain = 250;
-                    xpGain = 150;
+                    granexGain = 800;
+                    xpGain = 420;
                         break;
                 case 'tanker':
-                    granexGain = 300;
-                    xpGain = 200;
+                    granexGain = 1200;
+                    xpGain = 530;
                         break;
                 case 'trucker':
-                    granexGain = 350;
-                    xpGain = 250;
+                    granexGain = 1400;
+                    xpGain = 640;
                         break;
                 case 'postoffice':
-                    granexGain = 400;
-                    xpGain = 300;
+                    granexGain = 1500;
+                    xpGain = 750;
                         break;
                 case 'fireman':
-                    granexGain = 450;
-                    xpGain = 350;
+                    granexGain = 2100;
+                    xpGain = 860;
                         break;
                 case 'police':
-                    granexGain = 500;
-                    xpGain = 400;
+                    granexGain = 2200;
+                    xpGain = 970;
                         break;
                 case 'mafiaboss':
-                    granexGain = 550;
-                    xpGain = 450;
+                    granexGain = 4600;
+                    xpGain = 1080;
                         break;
                 case 'lawyer':
-                    granexGain = 600;
-                    xpGain = 500;
+                    granexGain = 4900;
+                    xpGain = 1120;
                         break;
                 case 'farmer':
-                    granexGain = 650;
-                    xpGain = 550;
+                    granexGain = 5000;
+                    xpGain = 1230;
             }
             if(granexGain > bank.granex) return message.reply('bankNoGranex');
             bank.granex -= granexGain;

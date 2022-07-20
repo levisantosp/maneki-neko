@@ -8,6 +8,11 @@ module.exports = class GuildInfoCommand extends Command {
             aliases: ['serverinfo'],
             description: 'View a guild\'s information',
             category: 'util',
+            syntax: 'guildinfo <guild>',
+            examples: [
+                'guildinfo',
+                'guildinfo 721384921679265833'
+            ],
             botPermissions: ['embedLinks']
         });
     }

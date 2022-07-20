@@ -8,6 +8,11 @@ module.exports = class AnimeCommand extends Command {
             name: 'anime',
             description: 'View a anime\'s information',
             category: 'misc',
+            syntax: 'anime [anime]',
+            examples: [
+                'anime Mushoku Tensei',
+                'anime Date A Live'
+            ],
             botPermissions: ['embedLinks']
         });
     }

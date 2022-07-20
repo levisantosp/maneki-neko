@@ -7,6 +7,10 @@ module.exports = class AboutMeCommand extends Command {
             name: 'aboutme',
             aliases: ['biography', 'bio', 'sobremim', 'biografia'],
             description: 'Set your profile biography',
+            syntax: 'aboutme [aboutme]',
+            examples: [
+                'aboutme Hello, world!'
+            ],
             category: 'social'
         });
     }

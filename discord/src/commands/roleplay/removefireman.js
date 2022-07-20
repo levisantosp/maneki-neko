@@ -8,6 +8,11 @@ module.exports = class RemoveFiremanCommand extends Command {
             aliases: ['removerbombeiro', 'removebombeiro'],
             description: 'Remove a member as a server fireman',
             category: 'Roleplay',
+            syntax: 'removefireman [member]',
+            examples: [
+                'removefireman @Levi_',
+                'removefireman 441932495693414410'
+            ],
             botPermissions: ['addReactions']
         });
     }

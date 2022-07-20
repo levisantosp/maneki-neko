@@ -8,6 +8,11 @@ module.exports = class MarryCommand extends Command {
             name: 'marry',
             aliases: ['casar'],
             description: 'Marry the person you love (?)',
+            syntax: 'marry [member]',
+            examples: [
+                'marry @Levi_',
+                'marry 441932495693414410'
+            ],
             category: 'social'
         });
     }

@@ -6,7 +6,13 @@ module.exports = class ConfigCommand extends Command {
         super({
             name: 'config',
             aliases: ['configuration', 'configurar'],
-            description: '',
+            description: 'Configure me so I that work correctly',
+            syntax: 'config allowed_channels/announcements',
+            examples: [
+                'config allowed_channels [channel]',
+                'config allowed_channels list',
+                'config announcements [channel]'
+            ],
             category: 'config',
             permissions: ['manageGuild']
         });

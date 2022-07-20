@@ -7,6 +7,11 @@ module.exports = class RepCommand extends Command {
             name: 'rep',
             aliases: ['reputation'],
             description: 'Give a reputation for somebody',
+            syntax: 'rep [user]',
+            examples: [
+                'rep @Levi_',
+                'rep 441932495693414410'
+            ],
             category: 'social'
         });
     }

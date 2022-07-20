@@ -6,7 +6,13 @@ module.exports = class FarmCommand extends Command {
         super({
             name: 'farm',
             aliases: ['fazenda', 'ranch', 'rancho'],
-            description: '',
+            description: '_ _',
+            syntax: 'farm plant lettuce/carrot/tomato',
+            examples: [
+                'farm plant lettuce',
+                'farm plant carrot',
+                'farm plant tomato'
+            ],
             category: 'Roleplay'
         });
     }

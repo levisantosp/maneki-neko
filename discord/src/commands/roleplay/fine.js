@@ -7,6 +7,11 @@ module.exports = class FineCommand extends Command {
             name: 'fine',
             aliases: ['multar'],
             description: 'Fine a user',
+            syntax: 'fine [member]',
+            examples: [
+                'fine @Levi_',
+                'fine 441932495693414410'
+            ],
             category: 'Roleplay'
         });
     }

@@ -8,6 +8,13 @@ module.exports = class RankCommand extends Command {
             aliases: ['ranking', 'top'],
             description: 'View the top granex',
             category: 'social',
+            syntax: 'rank <page>',
+            examples: [
+                'rank',
+                'rank 2',
+                'rank 5',
+                'rank 10'
+            ],
             botPermissions: ['embedLinks']
         });
     }

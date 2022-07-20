@@ -6,6 +6,11 @@ module.exports = class UserInfoCommand extends Command {
             name: 'userinfo',
             descrption: 'View a user\'s information',
             category: 'util',
+            syntax: 'userinfo <user>',
+            examples: [
+                'userinfo',
+                'userinfo 721384921679265833'
+            ],
             botPermissions: ['embedLinks']
         });
     }

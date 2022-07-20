@@ -7,6 +7,7 @@ module.exports = class HealCommand extends Command {
             name: 'heal',
             aliases: ['curar'],
             description: 'Heal or restore a user\'s life',
+            syntax: 'heal [member]',
             category: 'Roleplay'
         });
     }

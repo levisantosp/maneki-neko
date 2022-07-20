@@ -8,6 +8,11 @@ module.exports = class AddFiremanCommand extends Command {
             aliases: ['adicionarbombeiro', 'addbombeiro'],
             description: 'Add a member as a server fireman',
             category: 'Roleplay',
+            syntax: 'addfireman [member]',
+            examples: [
+                'addfireman @Levi_',
+                'addfireman 441932495693414410'
+            ],
             botPermissions: ['addReactions']
         });
     }

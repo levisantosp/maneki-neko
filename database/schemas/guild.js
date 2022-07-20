@@ -2,7 +2,7 @@ const {Schema, model} = require('mongoose');
 
 const guild = new Schema({
     _id: String,
-    prefix: {type: String, default: '.'},
+    prefix: String,
     lang: {type: String, default: 'en'},
     allowedChannels: {type: Array, default: []},
     plan: String,

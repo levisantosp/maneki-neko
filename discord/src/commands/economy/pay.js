@@ -8,6 +8,11 @@ module.exports = class PayCommand extends Command {
             name: 'pay',
             aliases: ['pagar'],
             description: 'Give granex to somebody',
+            syntax: 'pay [user] [quantity]',
+            examples: [
+                'pay @Levi_ 500',
+                'pay 441932495693414410 500'
+            ],
             category: 'economy'
         });
     }

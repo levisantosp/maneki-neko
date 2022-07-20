@@ -7,6 +7,7 @@ module.exports = class BuyCommand extends Command {
             name: 'buy',
             aliases: ['comprar'],
             description: 'Buy an item from shop',
+            syntax: 'buy [item]',
             category: 'economy'
         });
     }

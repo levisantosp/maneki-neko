@@ -7,6 +7,11 @@ module.exports = class PrefixCommand extends Command {
             name: 'prefix',
             description: 'Change my default prefix',
             category: 'config',
+            syntax: 'prefix [prefix]',
+            examples: [
+                'prefix !',
+                'prefix -'
+            ],
             permissions: ['manageGuild']
         });
     }

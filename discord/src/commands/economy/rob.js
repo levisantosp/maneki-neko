@@ -7,6 +7,7 @@ module.exports = class RobCommand extends Command {
             name: 'rob',
             aliases: ['roubar'],
             description: 'Rob a server member',
+            syntax: 'rob [user]',
             category: 'economy'
         });
     }

@@ -7,6 +7,11 @@ module.exports = class StashCommand extends Command {
             name: 'stash',
             aliases: ['guardar'],
             description: 'Stash an item in your inventory',
+            syntax: 'stash [item]',
+            examples: [
+                'stash glock',
+                'stash m4a1'
+            ],
             category: 'Roleplay'
         });
     }

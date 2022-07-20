@@ -7,6 +7,11 @@ module.exports = class UseCommand extends Command {
             name: 'use',
             aliases: ['usar', 'utilizar'],
             description: 'Use an item that is in your inventory',
+            syntax: 'use [item]',
+            examples: [
+                'use glock',
+                'use m4a1',
+            ],
             category: 'Roleplay',
         });
     }

@@ -8,6 +8,11 @@ module.exports = class SellCommand extends Command {
             name: 'sell',
             aliases: ['vender'],
             description: 'Sell an item of yours to someone else',
+            syntax: 'sell [item]',
+            examples: [
+                'sell glock',
+                'sell m4a1'
+            ],
             category: 'Roleplay'
         });
     }

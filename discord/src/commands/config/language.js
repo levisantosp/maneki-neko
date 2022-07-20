@@ -8,6 +8,11 @@ module.exports = class LanguageCommand extends Command {
             aliases: ['lang', 'idioma'],
             category: 'config',
             description: 'Changes the language that I responding in a server',
+            syntax: 'language pt/en',
+            examples: [
+                'language pt',
+                'language en'
+            ],
             permissions: ['manageGuild']
         });
     }

@@ -8,7 +8,11 @@ module.exports = class LevelCommand extends Command {
             name: 'level',
             description: 'Show your level',
             category: 'social',
-            botPermissions: ['attachFiles']
+            syntax: 'level <user>',
+            examples: [
+                'level @Levi_',
+                'level 441932495693414410'
+            ]
         });
     }
     async run(message) {

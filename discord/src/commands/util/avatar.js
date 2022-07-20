@@ -6,6 +6,12 @@ module.exports = class AvatarCommand extends Command {
             name: 'avatar',
             description: 'View a user\'s avatar',
             category: 'util',
+            syntax: 'avatar <user>',
+            examples: [
+                'avatar',
+                'avatar @Levi_',
+                'avatar 441932495693414410'
+            ],
             botPermissions: ['embedLinks']
         });
     }

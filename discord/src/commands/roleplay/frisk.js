@@ -7,6 +7,11 @@ module.exports = class FriskCommand extends Command {
             name: 'frisk',
             aliases: ['revistar'],
             description: 'Frisk a user',
+            syntax: 'frisk [member]',
+            examples: [
+                'frisk @Levi_',
+                'frisk 441932495693414410'
+            ],
             category: 'Roleplay'
         });
     }

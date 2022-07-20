@@ -7,6 +7,12 @@ module.exports = class GranexCommand extends Command {
             name: 'granex',
             aliases: ['money', 'bal', 'balance', 'atm'],
             description: 'View your granex',
+            syntax: 'granex <user>',
+            examples: [
+                'granex',
+                'granex @Levi_',
+                'granex 441932495693414410'
+            ],
             category: 'economy'
         });
     }

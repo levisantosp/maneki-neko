@@ -8,6 +8,11 @@ module.exports = class AddPoliceCommand extends Command {
             aliases: ['adicionarpolicial', 'addpolicial'],
             description: 'Add a member as a server police',
             category: 'Roleplay',
+            syntax: 'addpolice [member]',
+            examples: [
+                'addpolice @Levi_',
+                'addpolice 441932495693414410'
+            ],
             botPermissions: ['addReactions']
         });
     }

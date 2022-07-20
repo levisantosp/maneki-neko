@@ -7,6 +7,11 @@ module.exports = class CallCommand extends Command {
             name: 'call',
             aliases: ['chamar', 'ligar'],
             description: 'Call the firefighters or police',
+            syntax: 'call fireman/police [reason]',
+            examples: [
+                'call fireman',
+                'call police I was robbed'
+            ],
             category: 'Roleplay'
         });
     }

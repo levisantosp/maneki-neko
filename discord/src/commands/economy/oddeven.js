@@ -8,6 +8,13 @@ module.exports = class OddEvenCommand extends Command {
             name: 'oddeven',
             aliases: ['ímparpar', 'imparpar'],
             description: 'Bet granex by playing odd or even.',
+            syntax: 'oddeven odd/even/bet',
+            examples: [
+                'oddeven odd',
+                'oddeven even',
+                'oddeven bet @Levi_ 200 odd',
+                'oddeven bet 441932495693414410 250 even'
+            ],
             category: 'economy'
         });
     }
@@ -16,7 +23,7 @@ module.exports = class OddEvenCommand extends Command {
             case 'bet':
                 const member = this.getMember(message.args[0]);
                 if(!member) return message.reply('invalidUser');
-                const user = await User.findById(message.author.id) || new User({_id: message.author.id});
+                const user = await User.findById(message.author.id);
                 const toUser = await User.findById(member.id);
                 if(!toUser) return message.reply('userIsNotInDatabase');
                 var granex = message.args[2];

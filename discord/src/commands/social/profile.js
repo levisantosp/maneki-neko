@@ -13,6 +13,12 @@ module.exports = class ProfileCommand extends Command {
             aliases: ['perfil'],
             description: 'View your user profile',
             category: 'social',
+            syntax: 'profile <user>',
+            examples: [
+                'profile',
+                'profile @Levi_',
+                'profile 441932495693414410'
+            ],
             botPermissions: ['attachFiles']
         });
     }

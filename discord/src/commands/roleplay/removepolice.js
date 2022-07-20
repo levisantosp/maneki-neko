@@ -8,6 +8,11 @@ module.exports = class RemovePoliceCommand extends Command {
             aliases: ['removerpolicial', 'removepolicial'],
             description: 'Remove a member as a server police',
             category: 'Roleplay',
+            syntax: 'removepolice [member]',
+            examples: [
+                'removepolice @Levi_',
+                'removepolice 441932495693414410'
+            ],
             botPermissions: ['addReactions']
         });
     }
