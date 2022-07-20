@@ -21,7 +21,7 @@ module.exports = class OddEvenCommand extends Command {
     async run(message) {
         switch(message.args[0]) {
             case 'bet':
-                const member = this.getMember(message.args[0]);
+                const member = this.getMember(message.args[1]);
                 if(!member) return message.reply('invalidUser');
                 const user = await User.findById(message.author.id);
                 const toUser = await User.findById(member.id);
