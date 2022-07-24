@@ -45,6 +45,7 @@ module.exports = class RankCommand extends Command {
             const embed = new Embed();
             embed.setTitle(`Top ${message.args[0] ? message.args[0]*10 : 10}`);
             embed.setThumbnail(this.client.users.get(users[0].id).avatarURL);
+            embed.setFooter(`You: #${users.findIndex(x => x.id === message.author.id) + 1}`);
 
             var a;
             if(message.args[0]) {
