@@ -73,7 +73,7 @@ module.exports = class JobCommand extends Command {
                             break;
                     case 'ubereats':
                         if(user.level < 10) return message.reply('noLevel', {level: 10});
-                        if(!user.hasMotorcicle) return message.reply('noMotorcicle');
+                        if(!user.hasMotorcycle) return message.reply('noMotorcycle');
                         user.job = 'ubereats';
                         user.save();
                         message.reply('nowYouAre', {job: this._locale.get('ubereats')});
