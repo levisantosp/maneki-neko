@@ -43,7 +43,7 @@ module.exports = {
             case 'certificateDelivered': return `Agora você pode ser um \`${options.job}\` em qualquer servidor!`
             case 'noLevel': return `Você precisa ser nível ${options.level} para pegar este emprego.`
             case 'noCar': return `Você precisa comprar um carro na loja para poder pegar este emprego.`
-            case 'noMotorcicle': return `Você precisa comprar uma moto na loja para poder pegar este emprego.`
+            case 'noMotorcycle': return `Você precisa comprar uma moto na loja para poder pegar este emprego.`
             case 'noFarm': return `Você precisa comprar uma fazenda.`
             case 'youDontHaveJob': return `Você não possui emprego! Pegue um usando \`${options.usage}\``
             case 'workHasCollected': return `Você já trabalhou! Volte novamente <t:${parseInt(options.remaining/1000)}:R>`
