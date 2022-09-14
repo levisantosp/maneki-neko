@@ -11,7 +11,7 @@ module.exports = class WorkCommand extends Command {
             botPermissions: ['embedLinks']
         })
     }
-    async run(message) {
+    async run (message) {
         const user = await User.findById(message.author.id)
         const bank = await Bank.findById('bank') || new Bank({ _id: 'bank' })
 
@@ -75,7 +75,7 @@ module.exports = class WorkCommand extends Command {
             bank.granex -= granexGain
             user.granex += granexGain
             user.exp += xpGain
-            user.energy -= 157
+            user.energy -= 657
             if (user.energy < 1) user.deadAt = Date.now() + 3.6e+6
 
             user.workTime = Date.now() + 3.6e+6
