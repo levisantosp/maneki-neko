@@ -13,7 +13,7 @@ module.exports = class FarmCommand extends Command {
                 'farm plant carrot',
                 'farm plant tomato'
             ],
-            category: 'Roleplay'
+            category: 'RPG'
         })
     }
     async run (message) {

@@ -13,7 +13,7 @@ module.exports = class SellCommand extends Command {
                 'sell glock',
                 'sell m4a1'
             ],
-            category: 'Roleplay'
+            category: 'RPG'
         })
     }
     async run (message) {

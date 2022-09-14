@@ -12,7 +12,7 @@ module.exports = class StashCommand extends Command {
                 'stash glock',
                 'stash m4a1'
             ],
-            category: 'Roleplay'
+            category: 'RPG'
         })
     }
     async run (message) {
