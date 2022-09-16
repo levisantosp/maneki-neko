@@ -160,6 +160,8 @@ module.exports = class Battle {
                     damage -= def
                     var energy = player2.energy - damage
 
+                    if (energy < 0) energy = 0
+
                     const user1 = this.client.users.get(player1.id)
                     const user2 = this.client.users.get(player2.id)
 
@@ -208,7 +210,7 @@ module.exports = class Battle {
                                         id: player.id,
                                         usingWeapon: player.usingWeapon,
                                         usingBulletProof: player.usingBulletProof,
-                                        energy
+                                        energy: parseInt(energy)
                                     }
                                 )
 
