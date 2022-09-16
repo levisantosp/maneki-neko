@@ -315,6 +315,36 @@
                     "value": "Granex: {granex}\nArtifacts: {artifact} ({type})"
                 }
             }
+        },
+        "artifacts": {
+            "embed": {
+                "title": "Your Artifacts",
+                "field": "Artifact {id}",
+                "description": "Level {level}\n{exp}/{xpRequired} EXP\nDamage: {damage}\n % damage: {percentDamage}\nDef: {def}\n% def: {percentDef}"
+            },
+            "empty": "Empty... just like my creator's bank account.",
+            "upgrade_with": {
+                "copper": "Melhorar com Cobre",
+                "iron": "Melhorar com Ferro",
+                "ruby": "Melhorar com Rubi",
+                "gold": "Melhorar com Ouro",
+                "platinum": "Melhorar com Platina",
+                "diamond": "Melhorar com Diamante"
+            },
+            "you_dont_have_this_artifact": "It was not possible to identify an artifact with the ID `{id}` in your inventory.",
+            "you_dont_have_this_ore": "You don't have this ore.",
+            "artifact_upgraded": "Artifact upgraded to level {level}!\nYou've spent {granex} for this.",
+            "artifact_upgraded2": "done!\nYou've spent {granex} for this",
+            "artifact_is_upgraded": "This artifact is in maximum level!",
+            "equip_a_weapon": "You need equip a weapon first.",
+            "artifact_equiped": "Artifact equiped successfully!\n**Type:** {type}\n**Damage:** {damage}\n**% damage:** {percentDamage}",
+            "artifact_equiped2": "Artefato equipado com sucesso!\n**Type:** {type}\n**Def:** {def}\n**% def:** {percentDef}",
+            "equip_a_vest": "You need equip a vest first."
+        },
+        "template": {
+            "you_already_use_this": "You're already using this template.",
+            "you_dont_have_this": "You don't have this template.",
+            "confirm": "Now you are using the `{template}` template."
         }
     },
     "helper": {
