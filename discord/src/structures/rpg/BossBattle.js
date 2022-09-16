@@ -69,9 +69,6 @@ module.exports = class BossBattle {
                         )
                     }
                     else {
-                        console.log(`Boss energy: ${this.boss.energy}`)
-                        console.log(`Player energy: ${this.user.energy}`)
-    
                         var damage = this.user.usingWeapon.damage ?? 0
                         damage += this.user.usingWeapon.artifact.damage ?? 0
                         damage += parseInt(this.user.usingWeapon.damage ?? 0 * this.user.usingWeapon.artifact.percentDamage)
