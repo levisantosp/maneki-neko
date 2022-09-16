@@ -22,7 +22,7 @@ module.exports = class HealCommand extends Command {
 
         if (!toUser) return message.reply('helper.user_is_not_in_database')
         if (toUser.energy < 1) toUser.energy = 4000
-        else toUser.energy = 2000
+        else toUser.energy = 20000
 
         toUser.save()
         user.granex += 5000 - (5000 * 0.1)
