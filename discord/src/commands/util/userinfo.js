@@ -25,7 +25,6 @@ module.exports = class UserInfoCommand extends Command {
             embed.addField(this.locale.get('commands.userinfo.id'), `\`${member.id}\``, true)
             embed.addField(this.locale.get('commands.userinfo.created_at'), `<t:${parseInt(member.createdAt / 1000)}:F> <t:${parseInt(member.createdAt / 1000)}:R>`, true)
             embed.addField(this.locale.get('commands.userinfo.joinedAt'), `<t:${parseInt(member.joinedAt / 1000)}:F> <t:${parseInt(member.joinedAt / 1000)}:R>`, true)
-            embed.addField(this.locale.get('commands.userinfo.roles'), member.roles.map(roleId => `<@&${roleId}>`).join(', '), true)
             embed.setThumbnail(member.avatarURL)
             message.reply(embed.build())
         }
