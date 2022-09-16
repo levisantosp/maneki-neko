@@ -21,7 +21,7 @@ module.exports = class HealCommand extends Command {
         const toUser = await User.findById(member.id)
 
         if (!toUser) return message.reply('helper.user_is_not_in_database')
-        if (toUser.energy < 1) toUser.energy = 400
+        if (toUser.energy < 1) toUser.energy = 4000
         else toUser.energy = 2000
 
         toUser.save()
