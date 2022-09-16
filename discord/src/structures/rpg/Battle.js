@@ -75,6 +75,8 @@ module.exports = class Battle {
 
                     var energy = player2.energy - damage
 
+                    if (energy < 0) energy = 0
+
                     var index = this.hg.players.findIndex(p => p.id === player1.id)
                     var player = this.hg.players.filter(p => p.id === player1.id)[0]
 
@@ -85,7 +87,7 @@ module.exports = class Battle {
                                 id: player.id,
                                 usingWeapon: player.usingWeapon,
                                 usingBulletProof: player.usingBulletProof,
-                                energy
+                                energy: parseInt(energy)
                             }
                         )
                     }
@@ -98,7 +100,7 @@ module.exports = class Battle {
                         embed.setDescription(locale.get(guild.lang, 'helper.hg.attack_yourself',
                             {
                                 player: `${user.username}#${user.discriminator}`,
-                                energy: damage
+                                energy: parseInt(damage)
                             }
                         ))
 
