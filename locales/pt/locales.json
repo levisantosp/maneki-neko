@@ -1,0 +1,409 @@
+{
+    "commands": {
+        "config": {
+            "embed": {
+                "title": "Lista de Canais Permitidos Comandos"
+            },
+            "limit_channels": "Este servidor chegou ao limite de canais permitidos comandos. ({limit})",
+            "invalid_channel": "Canal inválido! Verifique se a menção ou ID do canal estão corretos.",
+            "announcement_channel": "{channel} foi setado como canal de anúncios com sucesso!",
+            "allowed_channels_set": "{channel} foi adicionado com sucesso!"
+        },
+        "prefix": {
+            "prefix_changed_to": "Meu prefixo neste servidor foi alterado para `{prefix}`"
+        },
+        "buy": {
+            "alreadyBought": "Você já comprou isto!",
+            "item_bought": "Item comprado com sucesso!"
+        },
+        "daily": {
+            "has_been_collected": "Calma lá, meu patrão! Você já coletou seus granex diários. Volte novamente <t:{remaining}:R>",
+            "congrats": "Parabéns! No daily de hoje você recebeu {granexGain} granex."
+        },
+        "granex": {
+            "your": "Você tem {granex} granex",
+            "his": "{user} tem {granex} granex"
+        },
+        "oddeven": {
+            "button": {
+                "label": "Encarar"
+            },
+            "confirm": "{user} Parece que {author} quer apostar {granex} granex com você! Vai encarar ou não?",
+            "winner": "Parabéns, você venceu! Você escolheu `{chosen}` e `{number}` é `{chosen}`. Você ganhou {granex} granex.",
+            "loser": "Parabéns, você perdeu! Você escolheu `{chosen}` e `{number}` não é `{chosen}`. Você perdeu {granex} granex.",
+            "winner2": "Parabéns, você venceu! Você escolheu `{chosen}` e `{number}` é `{chosen}`.",
+            "loser2": "Parabéns, você perdeu! Você escolheu `{chosen}` e `{number}` não é `{chosen}`."
+        },
+        "pay": {
+            "value_is_to_little": "O valor especificado é muito pequeno... tente transferir um valor maior ou igual a 100, afinal, eu preciso cobrar aquela taxa de 10% pela transação.",
+            "button": {
+                "label": "Confirmar"
+            },
+            "confirm": "Você tem certeza que deseja transferir {granex} granex para {user}?",
+            "confirmed": "Transação realizada com sucesso!"
+        },
+        "rob": {
+            "need_weapon": "Você precisa de uma arma para conseguir roubar.",
+            "has_been_robbed": "Calma lá, meu patrão! Tenta roubar novamente <t:{remaining}:R>",
+            "success": "Roubo efetuado com sucesso! Você conseguiu roubar {value} granex deste jogador",
+            "fail": "Ih, rapaz! A polícia te pegou bem no ato. Você pagou uma multa de {value} granex por falhar no roubo."
+        },
+        "shop": {
+            "choose": "Selecione um item.",
+            "embed": {
+                "weapons": {
+                    "title": "Loja de Armas",
+                    "description": "Para comprar qualquer arma, basta usar `{usage}`.\n\n**9mm:** Dano: 20 | <:granex:874481096799186955> 5.000 `(10% de chance de sucesso em assaltos)`\n**PT 100:** Dano: 40 | <:granex:874481096799186955> 10.000 `(15% de chance de sucesso em assaltos)`\n**Glock:** Dano: 60 | <:granex:874481096799186955> 12.000 `(20% de chance de sucesso em assaltos)`\n**MT-40:** Dano: 120 | <:granex:874481096799186955> 24.000 `(25% de chance de sucesso em assaltos)`\n**Uzi:** Dano: 130 | <:granex:874481096799186955> 28.000 `(30% de chance de sucesso em assaltos)`\n**MP5:** Dano: 150 | <:granex:874481096799186955> 32.000 `(35% de chance de sucesso em assaltos)`\n**UMP:** Dano: 150 | <:granex:874481096799186955> 33.000 `(40% de chance de sucesso em assaltos)`\n**Carabina CT-40:** Dano: 200 | <:granex:874481096799186955> 45.000 `(45% de chance de sucesso em assaltos)`\n**Carabina 556:** Dano: 220 | <:granex:874481096799186955> 48.000 `(50% de chance em assaltos)`\n**ParaFal:** Dano: 250 | <:granex:874481096799186955> 56.000 `(55% de chance de sucesso em assaltos)`\n**M4A1:** Dano: 300 | <:granex:874481096799186955> 62.000 `(60% de chance de sucesso em assaltos)`\n**AK-9:** Dano: 400 | <:granex:874481096799186955> 78.000 `(65% de chance de sucesos em assaltos)`\n**AK-47:** Dano: 420 | <:granex:874481096799186955> 81.000 | `(70% de chance de sucesso em assaltos)`\n**AKM:** Dano: 430 | <:granex:874481096799186955> 84.000 `(75% de chance de sucesso em assaltos)`\n**SCAR:** Dano: 500 | <:granex:874481096799186955> 97.000 `(80% de chance de sucesso em assaltos)`\n**Porte de Arma:** <:granex:874481096799186955> 500\n**Colete:** Defesa: 120 | <:granex:874481096799186955> 6.000 granex"
+                },
+                "foods": {
+                    "title": "Loja de Alimentos",
+                    "description": "Para comprar qualquer alimento, basta usar `{usage}`.\n\n**Água:** <:granex:874481096799186955> 100 (restaura 10% de energia)\n**Hamburguer:** <:granex:874481096799186955> 225 (restaura 35% de energia)\n**Pizza:** <:granex:874481096799186955> 275 (restaura 40% de energia)`"
+                },
+                "vehicles": {
+                    "title": "Loja de Veículos",
+                    "description": "Para comprar qualquer automóvel, basta usar `{usage}`\n\n**Moto:** <:granex:874481096799186955> 15.000 `(pode ser usada para trabalhar de uber eats)`\n**Carro:** <:granex:874481096799186955> 25.000 `(pode ser usado para trabalhar de uber)`\n**Caminhão:** <:granex:874481096799186955> 105.000 `(pode ser usado para trabalhar de caminhoneiro)`"
+                },
+                "farm": {
+                    "title": "Loja da Fazenda",
+                    "description": "Para comprar qualquer item relacionado a fazenda, ou até mesmo a fazenda, use `{usage}`.\n**Fazenda:** <:granex:874481096799186955> 400.000 `(libera o emprego de fazendeiro)`\n**Galinha:** <:granex:874481096799186955> 100 `(aumenta o lucro da fazenda em 5%)`\n**Vaca:** <:granex:874481096799186955> 550 `(aumenta o lucro da fazenda em 15%)`\n**Alface:** <:granex:874481096799186955> 25 `(aumenta o lucro da fazenda em 5%)`\n**Tomate:** <:granex:874481096799186955> 30 `(aumenta o lucro da fazenda em 5%)`\n**Cenoura:** <:granex:874481096799186955> 30 `(aumenta o lucro da fazenda em 5%)`"
+                },
+                "templates": {
+                    "description": "**Template Verde:** <:granex:874481096799186955> 1.000\n**Template Vermelho:** <:granex:874481096799186955> 2.500\n**Template Amarelo:** <:granex:874481096799186955> 5.000\n**Template Laranja:** <:granex:874481096799186955> 10.000"
+                }
+            },
+            "closed": "É fim de semana... a loja encontra-se fechada.",
+            "closed2": "A loja é aberta de segunda-feira à sexta-feira, das 06:00 até às 20:00.",
+            "you_already_have_this": "Você já possui isto."
+        },
+        "weekly": {
+            "has_been_collected": "Calma lá, meu patrão! Você já coletou seus granex semanais. Volte novamente <t:{remaining}:R>",
+            "congrats":"Parabéns! No semanal de hoje você recebeu {granexGain} granex."
+        },
+        "dbl": {
+            "embed": {
+                "title": "Vote em Mim",
+                "description": "Vote em mim para me ajudar a ser divulgada para mais e mais pessoas aqui na plataforma!\n\n Sabia que votando em mim você pode ganhar até 800 granex? E sabia que, ao votar em mim tanto na **Top.gg** como na **discordbotlist.com** você ganha 2300 granex?\n\n Tá esperando o quê? Vote já!"
+            }
+        },
+        "invite": {
+            "embed": {
+                "title": "Me Adicione!",
+                "description": "Você pode me convidar para o seu servidor ou para o servidor que você administra clicando no botão abaixo.\n\nPrecisando de ajuda? Entre no meu servidor Discord para sanar suas dúvidas clicando no botão abaixo!"
+            },
+            "button": {
+                "label": "Me adicione!"
+            }
+        },
+        "addfireman": {
+            "not_a_fireman": "Este jogador não pode ser um bombeiro neste servidor por não possuir o certificado de bombeiro.",
+            "too_much_fireman": "O limite de bombeiros já foi atingido neste servidor.",
+            "added": "{user} agora é um bombeiro neste servidor."
+        },
+        "addpolice": {
+            "not_a_police": "Este jogador não pode ser um policial neste servidor por não possuir o certificado de policial.",
+            "too_much_police": "O limite de policiais já foi atingido neste servidor.",
+            "added": "{user} agora é um policial neste servidor."
+        },
+        "call": {
+            "no_channel": "Este servidor não tem um canal definido para anúncios. Peça para que a administração configure e tente novamente.",
+            "no_policemans": "Este servidor não possui nenhum policial",
+            "policeman_announcement": "Alô, policiais de plantão!\nTemos um chamado do jogador {user} em {channel}.\n\n**Motivo:** `{reason}`\n{jumpLink}\n\n{users}"
+        },
+        "farm": {
+            "no_farm": "Você precisa comprar uma fazenda primeiro.",
+            "no_plant": "Você não possui esta planta.",
+            "successfully_planted": "Plantado com sucesso"
+        },
+        "fine": {
+            "fined": "jogador multado com sucesso!\nVale a pena lembrar que a multa é de 35.000 granex e, após pagar a multa, o jogador tem sua arma confiscada."
+        },
+        "frisk": {
+            "reply": "Este jogador está armado e não possui porte de arma de fogo. Use `{prefix}fine [user]` para multá-lo e apreender a arma.",
+            "reply2": "Este jogador não tem nada de ilegal."
+        },
+        "heal": {
+            "healed": "Jogador curado com sucesso!"
+        },
+        "inventory": {
+            "embed": {
+                "title": "Seu Inventário",
+                "field1": "Alimentos",
+                "field2": "Armas",
+                "field3": "Em uso",
+                "field4": "Minérios",
+                "field5": "Artefatos",
+                "description": "Vazio... igual a conta bancária do meu criador."
+            }
+        },
+        "job": {
+            "embed": {
+                "title": "Empregos Disponíveis",
+                "field": {
+                    "trashman": "Lixeiro",
+                    "newsagent": "Jornaleiro",
+                    "tanker": "Petroleiro",
+                    "trucker": "Caminhoneiro",
+                    "postoffice": "Correio",
+                    "fireman": "Bombeiro",
+                    "police": "Policial",
+                    "mafiaboss":"Chefe da Máfia",
+                    "lawyer": "Advogado",
+                    "farmer": "Fazendeiro"
+                },
+                "description": {
+                    "trashman": "Renda: 575 granex e 120 EXP",
+                    "newsagent": "Requisitos: Nível 5;\n Renda: 600 granex e 170 EXP",
+                    "ubereats": "Requisitos: Nível 10, 1 moto;\n Renda: 650 granex e 310 EXP",
+                    "uber": "Requisitos: Nível 15, 1 carro;\n Renda: 800 granex e 420 EXP",
+                    "tanker": "Requisitos: Nível 20;\n Renda: 1200 granex e 530 EXP",
+                    "trucker": "Requisitos: Nível 25;\n Renda: 1400 granex e 640 EXP",
+                    "postoffice": "Requisitos: Nível 30;\n Renda: 1500 granex e 750 EXP",
+                    "fireman": "Requisitos: Nível 35;\n Renda: 2100 granex e 860 EXP",
+                    "police": "Requisitos: Nível 40;\n Renda: 2200 granex e 970 EXP",
+                    "mafiaboss": "Requisitos: Nível 45;\n Renda: 4600 granex e 1080 EXP",
+                    "lawyer": "Requisitos: Nível 50;\n Renda: 4900 granex e 1120 EXP",
+                    "farmer": "Requisitos: Nível 55, 1 fazenda;\n Renda: 5000 granex e 1230 EXP"
+                }
+            },
+            "menu": {
+                "placeholder": "Selecione um"
+            },
+            "reply": "Agora você é um `{job}`.",
+            "reply2": "Certificado concluído com sucesso! Agora você pode ser um `{job}` em qualquer servidor!",
+            "no_level": "Você precisa ser um jogador de nível {level} ou superior para pegar este emprego.",
+            "no_motorcycle": "Você precisa de uma motoca para pegar este emprego.",
+            "no_car": "Você precisa de um possante para pegar este emprego.",
+            "no_truck": "Você precisa de um caminhão para pegar este emprego."
+        },
+        "removefireman": {
+            "not_a_fireman": "Este jogador não é um bombeiro neste servidor.",
+            "removed": "{user} não é mais um bombeiro neste servidor."
+        },
+        "removepolice": {
+            "not_a_police": "Este jogador não é um policial neste servidor.",
+            "removed": "{user} não é mais um policial neste servidor."
+        },
+        "sell": {
+            "missing_item": "Você não possui este item.",
+            "confirm": "{user} Parece que {author} deseja lhe vender um item por {price} granex.",
+            "success": "Venda bem sucedida.",
+            "button": {
+                "label": "Aceitar"
+            }
+        },
+        "stash": {
+            "stashed": "Item guardado com sucesso!",
+            "missing_item": "Você não está usando este item."
+        },
+        "use": {
+            "using": "Agora você está usando este item.",
+            "restore_energy": "Foram restaurados {percentual}% de sua energia."
+        },
+        "work": {
+            "you_dont_have_job": "Você não possui nenhum emprego. Pegue um usando `{usage}`.",
+            "has_been_collected": "Calma lá, meu patrão! Tente trabalhar novamente <t:{remaining}:R>",
+            "congrats": "Você trabalhou duro como `{job}`, recebendo {granexGain} granex e {xpGain} EXP."
+        },
+        "aboutme": {
+            "reply": "Sua biografia de perfil foi alterada para `{aboutme}`"
+        },
+        "background": {
+            "waiting": "Você já enviou um background para a equipe analisar, seu cabeçudo. Aguarde até que ele seja avaliado e tente novamente.",
+            "attach_file": "Anexe um arquivo. O tipo recomendável é PNG/JPG, a resolução recomendável é 1920x1080 pixels.",
+            "success": "Background enviado para a análise!\nA previsão é de que o seu brackground seja avaliado em até 1 dia útil após o envio."
+        },
+        "divorce": {
+            "not_married": "Você não está casado com este jogador!",
+            "confirm": "Você tem certeza que deseja se divorciar de {user}?",
+            "success": "Divórcio concluído com sucesso! Espero que arrume alguém melhor..."
+        },
+        "marry": {
+            "already_married": "Você já está casado!",
+            "already_married2": "{user} já está casado com alguém.",
+            "no_granex": "Para que se casem, você e o seu pretendende precisam ter 5,000 granex em mãos.",
+            "request": "{user} Você aceita se casar com {author} na saúde, na doença; na riqueza, na pobreza, até que a morte os separem?",
+            "got_married": "Vocês se casaram! Felicidades aos dois! Meu casal..."
+        },
+        "rank": {
+            "embed": {
+                "title": "Top {top} jogadores com mais granex"
+            },
+            "your_position": "Sua posição: #{pos}"
+        },
+        "rep": {
+            "has_been_given": "Calma lá, meu patrão! Você pode dar outra reputação <t:{remaining}:R>",
+            "success": "Você deu uma reputação para {user} com sucesso!"
+        },
+        "botinfo": {
+            "embed": {
+                "title": "Howdy! Me chamo Maneki Neko",
+                "description": "Olá! Eu sou a Maneki Neko, e sou um poderoso bot para Discord com múltiplas funcionalidades, tais como configuração, economia, social, miscelânea, RPG, e utilidade, além de poder interagir em português brasileiro e inglês americano.\n\nAtualmente estou em {guilds} servidores, conheço {users} pessoas diferentes e possuo {commands} comandos.\n\nFui desenvolvida em [Node.js](https://nodejs.org/en/) utilizando a livraria [Eris](https://abal.moe/Eris/).\n[`{dev}`](https://github.com/Levi0100) é o meu developer."
+            }
+        },
+        "guildinfo": {
+            "embed": {
+                "field1": "ID do Servidor",
+                "field2": "Dono do Servidor",
+                "field3": "Data de Criação",
+                "field5": "Canais ({size})",
+                "field5_value": "Texto: {text}\nVoz: {voice}\nEstágio: {stage}",
+                "field6": "Membros"
+            }
+        },
+        "help": {
+            "no_command": "Este comando não existe",
+            "command_name": "Nome",
+            "command_syntax": "Sintaxe",
+            "command_example": "Exemplos",
+            "command_aliases": "Aliases",
+            "command_permissions": "Permissões",
+            "command_bot_permissions": "Minhas Permissões",
+            "embed": {
+                "footer": "[] = obrigatório; <> = opicional",
+                "title": "Meus Comandos",
+                "description": "Para ver mais informações a respeito de devido comando, use `{usage}`.\nPrecisando de ajuda? Entre no meu servidor Discord para sanar suas dúvidas clicando no botão abaixo!"
+            }
+        },
+        "userinfo": {
+            "tag": "Tag do Usuário",
+            "id": "ID do Usuário",
+            "created_at": "Data de Criação da Conta",
+            "roles": "Cargos",
+            "joinedAt": "Entrou em"
+        },
+        "mine": {
+            "has_been_mined": "Calma lá, meu patrão! Você pode minerar novamente <t:{remaining}:R>",
+            "congrats": "Você minerou {g}g de {ore} com sucesso!"
+        },
+        "convert": {
+            "dont_have": "Você não possui este minério.",
+            "dont_have_this_amount": "Você não possui esta quantia em gramas do minério informado.",
+            "congrats": "{g}g de {ore} foram convertidas para {granexGain} granex."
+        },
+        "hg": {
+            "embed": {
+                "description": "**Jogadores aguardando:** {players}/{maxPlayers}\n\nPara participar do HG basta clicar no botão abaixo!\nÉ recomendável que você utilize armas boas com artefatos bons e coletes bons com artefatos bons, pois isso aumenta a sua chance de vencer.\n\nA partida se inicia <t:{startsIn}:R>"
+            },
+            "button": {
+                "label": "Participar"
+            },
+            "dont_have_weapon": "Você precisa equipar uma arma para entrar no HG.",
+            "you_already_entered": "Você já está participando do HG.",
+            "entered": "Você entrou no HG com sucesso!",
+            "hg_is_closed": "A partida do HG já começou! Aguarde até que ela termine e tente novamente."
+        },
+        "boss": {
+            "cleiton": {
+                "description": "O boss mais sanguinário de todos!\n\nPossuindo incríveis 200,000 HP, é o boss mais poderoso, podendo causar um dano entre 2300 e 5788 nas suas vítimas.",
+                "started": "Partida contra o boss **Cleiton Trovoada** iniciada",
+                "attack": "**Cleiton Trovoada** atacou você e lhe tirou {damage} de dano",
+                "tried_attack": "**Cleiton Trovoada** tentou atacar você mas falhou miseravelmente"
+            },
+            "vladimir": {
+                "description": "O boss que tem a melhor defesa de todas!\n\nPossuindo incríveis 90,000 HP, é o boss que tem a melhor defesa e tem um dano comparável ao do boss **Cleiton Trovoada**.",
+                "started": "Partida contra o boss **Vladimir** iniciada",
+                "attack": "**Vladimir** atacou você e lhe tirou {damage} de dano",
+                "tried_attack": "**Vladimir** tentou atacar você mas falhou miseravelmente"
+            },
+            "button": {
+                "label": "Invocar"
+            },
+            "summoning": "Invocando o boss...",
+            "summoned": "Invocado com Sucesso",
+            "attack": "Você atacou o boss e tirou {damage} de dano",
+            "dont_have_weapon": "Você precisa equipar uma arma para lutar com o boss.",
+            "you_win": "Você derrotou o boss!",
+            "you_lost": "Você perdeu para o boss...",
+            "embed": {
+                "field": {
+                    "name": "Recompensas",
+                    "value": "Granex: {granex}\nArtefato: {artifact} ({type})"
+                }
+            }
+        },
+        "artifacts": {
+            "embed": {
+                "title": "Seus Artefatos",
+                "field": "Artefato {id}",
+                "description": "Nível {level}\n{exp}/{xpRequired} EXP\nDano: {damage}\nDano %: {percentDamage}\nDefesa: {def}\nDefesa %: {percentDef}"
+            },
+            "empty": "Vazio... igual a conta bancária do meu criador.",
+            "upgrade_with": {
+                "copper": "Melhorar com Cobre",
+                "iron": "Melhorar com Ferro",
+                "ruby": "Melhorar com Rubi",
+                "gold": "Melhorar com Ouro",
+                "platinum": "Melhorar com Platina",
+                "diamond": "Melhorar com Diamante"
+            },
+            "you_dont_have_this_artifact": "Não foi possível identificar um artefato com o ID `{id}` no seu inventário.",
+            "you_dont_have_this_ore": "Você não possui este minério.",
+            "artifact_upgraded": "Artefato upado para o nível {level}!\nVocê gastou {granex} granex para isto",
+            "artifact_upgraded2": "Feito!\nVocê gastou {granex} granex para isto.",
+            "artifact_is_upgraded": "Este artefato está em seu nível máximo!",
+            "equip_a_weapon": "Você precisa equipar uma arma primeiro.",
+            "artifact_equiped": "Artefato equipado com sucesso!\n**Tipo:** {type}\n**Dano:** {damage}\n**Dano %:** {percentDamage}",
+            "artifact_equiped2": "Artefato equipado com sucesso!\n**Tipo:** {type}\n**Defesa:** {def}\n**Defesa %:** {percentDef}",
+            "equip_a_vest": "Você precisa equipar um colete primeiro."
+        },
+        "template": {
+            "you_already_use_this": "Você já está usando este template.",
+            "you_dont_have_this": "Você não possui este template.",
+            "confirm": "Agora você está usando o template `{template}`"
+        }
+    },
+    "helper": {
+        "invalid_arg": "Argumento inválido! Tente: `{try}`",
+        "mention_bot": "Howdy! Meu prefixo neste servidor é `{prefix}`",
+        "wrong_channel": "Você não pode executar comandos neste canal! Tente em: {tryIn}",
+        "permissions": {
+            "user": "Você precisa da permissão `{permission}` para executar este comando!",
+            "bot": "Eu preciso da permissão `{permission}` para que este comando possa ser utilizado!"
+        },
+        "you_are_dead": "Você está morto! Tente novamente <t:{remaining}:R> ou chame um bombeiro clicando no botão abaixo (custa 5.000 granex).",
+        "error": "Gomen, gomen... ocorreu um erro inesperado...\n`{error}`",
+        "fireman_on_the_way": "Um bombeiro está a caminho para te curar. Aguarde até que o mesmo compareça ao local.",
+        "fireman_announcement": "Alô, bombeiros de plantão!\nTemos um chamado de {user} em {channel}. Ele está sem vida e precisa ser curado!\n{jumpLink}\n\n{users}",
+        "no_firemans": "Este servidor não possui nenhum bombeiro...",
+        "jobs": {
+            "trashman": "Lixeiro",
+            "newsagent": "Jornaleiro",
+            "ubereats": "Uber Eats",
+            "uber": "Uber",
+            "tanker": "Petroleiro",
+            "trucker": "Caminhoneiro",
+            "postoffice": "Correio",
+            "fireman": "Bombeiro",
+            "police": "Policial",
+            "mafiaboss": "Chefe da Máfia",
+            "lawyer": "Advogado",
+            "farmer": "Fazendeiro"
+        },
+        "guild_level_up": "Este servidor acaba de upar para o nível **{level}**!\nComo resultado, foram abertas +10 vagas para bombeiros e +10 vagas para policiais! Tá esperando o quê? Aliste-se já!",
+        "guild_level_up_2": "Este servidor acaba de upar para o nível **{level}**!",
+        "bank_doesnt_have_granex": "Ih, rapaz! Parace que o banco ficou sem dinheiro e esta transação não pôde ser concluída.",
+        "user_is_not_in_database": "Este usuário não está salvo no banco de dados.",
+        "you_dont_have_granex": "Você não possui esta quantia de granex!",
+        "doesnt_have_granex": "{user} não possui esta quantia de granex.",
+        "invalid_user": "Usuário inválido! Verifique se a menção ou ID do usuário estão corretos",
+        "arg_is_NaN": "O argumento fornecido (`{arg}`) precisa ser um número.",
+        "community": "Comunidade e Suporte",
+        "level_up": "<a:confetti:975932983213166632> Parabéns, você upou para o nível {level}! Continue interagindo comigo para upar ainda mais.",
+        "accept": "Aceitar",
+        "married_with": "Casado com {username}#{discrim}",
+        "alone": "Solteirão",
+        "confirm": "Confirmar",
+        "tax": "**ALERTA DE IMPOSTO**\n\nTodos os jogadores que possuem 100 ou mais granex tiveram 1% desse valor retidos ao banco.\nEste processo ocorre para manter a economia ativa e evitar que o banco fique pobre rs.\n\n**Como o Imposto Funciona**\n\nÉ simples, se você tem 100 granex ou mais, eu simplesmente vou retirar 1% desses granex e transferir eles para o banco. Segue o cálculo:\n\nSe você tem 1 milhão de granex, basta multiplicar este valor por `0.01` e você verá quanto é 1% de 1 milhão — `1000000 * 0.01 = 10000` — sendo assim, 10,000 granex serão descontados de você. Vale lembrar também que este cálculo serve para qualquer valor de granex que você tiver.",
+        "hg": {
+            "started": "Partida de HG iniciada",
+            "attack": "`{player1}` atacou `{player2}` com uma `{weapon}` e tirou {damage} de dano",
+            "attack_yourself": "`{player}` se feriu sozinho e perdeu {energy} de vida",
+            "tried_attack": "`{player1}` tentou atacar `{player2}` com uma `{weapon}` mas falhou miseravelmente",
+            "player_death": "`{player}` morreu",
+            "suicide": "`{player}` cometeu suicídio",
+            "winner": "`{player}` foi o grande vencedor da partida!\n**Prêmio:** {granex} granex e {exp} EXP\n\nSe você não venceu, boa sorte na próxima."
+        },
+        "call": "Chamar",
+        "your_first_time": "Aparentemente é sua primeira vez por aqui. Comece usando o comando `{prefix}daily`."
+    }
+}

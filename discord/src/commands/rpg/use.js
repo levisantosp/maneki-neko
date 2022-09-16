@@ -24,13 +24,15 @@ module.exports = class UseCommand extends Command {
         const weaponInInventory = user?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0]
         const foodInInventory = user?.inventory?.foods?.filter(food => food.food === item)[0]
 
-        if (!['pizza', 'hamburger', 'water'].includes(item) && !weaponInInventory) {
+        console.log(foodInInventory)
+
+        if (!['pizza', 'hamburguer', 'water'].includes(item) && !weaponInInventory) {
             message.reply('commands.sell.missing_item')
         }
-        else if (['pizza', 'hamburger', 'water'].includes(item) && !foodInInventory) {
+        else if (['pizza', 'hamburguer', 'water'].includes(item) && !foodInInventory) {
             message.reply('commands.sell.missing_item')
         }
-        else if (!['pizza', 'hamburger', 'water'].includes(item) && weaponInInventory) {
+        else if (!['pizza', 'hamburguer', 'water'].includes(item) && weaponInInventory) {
             const functions = {
                 '9mm': function () {
                     var weapons = user.inventory.weapons
@@ -187,11 +189,11 @@ module.exports = class UseCommand extends Command {
             const execute = functions[item]
             execute()
         }
-        else if (['pizza', 'hamburger', 'water'].includes(item) && foodInInventory) {
+        else if (['pizza', 'hamburguer', 'water'].includes(item) && foodInInventory) {
             const functions = {
                 pizza: function () {
                     user.energy += 8000
-                    if (user.energy > 2000) user.energy = 2000
+                    if (user.energy > 20000) user.energy = 20000
                     var foods = user.inventory.foods
                     var food = user.inventory.foods.filter(food => food.food === item)[0]
                     var index = foods.indexOf(food)
@@ -200,9 +202,9 @@ module.exports = class UseCommand extends Command {
                     user.save()
                     message.reply('commands.use.restore_energy', { percentual: 40 })
                 },
-                hamburger: function () {
+                hamburguer: function () {
                     user.energy += 7000
-                    if (user.energy > 2000) user.energy = 2000
+                    if (user.energy > 20000) user.energy = 20000
                     var foods = user.inventory.foods
                     var food = user.inventory.foods.filter(food => food.food === item)[0]
                     var index = foods.indexOf(food)
@@ -213,7 +215,7 @@ module.exports = class UseCommand extends Command {
                 },
                 water: function () {
                     user.energy += 2000
-                    if (user.energy > 2000) user.energy = 2000
+                    if (user.energy > 20000) user.energy = 20000
                     var foods = user.inventory.foods
                     var food = user.inventory.foods.filter(food => food.food === item)[0]
                     var index = foods.indexOf(food)

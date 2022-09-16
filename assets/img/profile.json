@@ -1,0 +1,9 @@
+{
+    "templates": {
+        "default": "https://imgur.com/1wp1OvT.png",
+        "green": "https://imgur.com/GpsZ1SN.png",
+        "red": "https://imgur.com/DBsFHQ9.png",
+        "yellow": "https://imgur.com/XDy2VPj.png",
+        "orange": "https://imgur.com/FNAZhrh.png"
+    }
+}

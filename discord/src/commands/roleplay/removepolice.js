@@ -1,5 +1,5 @@
-const {Command} = require('../../structures');
-const {User, Guild} = require('../../../../database');
+const {Command} = require('../../structures')
+const {User, Guild} = require('../../../../database')
 
 module.exports = class RemovePoliceCommand extends Command {
     constructor() {
@@ -14,31 +14,31 @@ module.exports = class RemovePoliceCommand extends Command {
                 'removepolice 441932495693414410'
             ],
             botPermissions: ['addReactions']
-        });
+        })
     }
-    async run(message) {
-        const arrayRoles = [];
+    async run (message) {
+        const arrayRoles = []
         message.guild.roles.forEach(role => {
-            if(role.name === 'ManekiSheriff') arrayRoles.push({name: role.name, id: role.id});
-        });
-        if(!message.member.permissions.has('banMembers') && !arrayRoles[0]['name'].includes('ManekiSheriff')) return;
-        if(arrayRoles[0] && !message.member.roles.includes(arrayRoles[0]['id'])) return;
-        const member = this.getMember(message.args[0]);
-        if(!member || member.id === message.member.id) return message.reply('invalidUser');
-        const guild = await Guild.findById(message.guild.id);
-        const user = await User.findById(member.id);
-        if(!user?.certificates?.includes('police')) return message.reply('notAPolice');
-        if(!guild.polices.includes(member.id)) {
-            var emoji = await this.client.getRESTGuildEmoji('786013941364424704', '869391072051216425');
-            return message.addReaction(`${emoji.name}:${emoji.id}`);
-        }
+            if(role.name === 'ManekiSheriff') arrayRoles.push({name: role.name, id: role.id})
+        })
 
-        var index = guild.polices.indexOf(user.id);
-        guild.polices.splice(index, 1);
-        guild.polices = guild.polices;
-        user.job = '';
-        user.save();
-        guild.save();
-        message.reply('policeRemoved', {user: member.mention});
+        if(!message.member.permissions.has('banMembers') && !arrayRoles[0]['name'].includes('ManekiSheriff')) return
+        if(arrayRoles[0] && !message.member.roles.includes(arrayRoles[0]['id'])) return
+
+        const member = this.getMember(message.args[0])
+        if(!member || member.id === message.member.id) return message.reply('helper.invalid_user')
+
+        const guild = await Guild.findById(message.guild.id)
+        const user = await User.findById(member.id)
+
+        if(!guild?.polices.includes(user?.id)) return message.reply('commands.removepolice.not_a_police')
+
+        var index = guild.polices.indexOf(user.id)
+        guild.polices.splice(index, 1)
+        guild.polices = guild.polices
+        user.job = ''
+        user.save()
+        guild.save()
+        message.reply('commands.removepolice.removed', {user: member.mention})
     }
 }

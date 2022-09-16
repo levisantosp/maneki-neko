@@ -1,0 +1,375 @@
+{
+    "commands": {
+        "config": {
+            "embed": {
+                "title": "List of Allowed Channels Commands"
+            },
+            "limit_channels": "This server has reached the limit allowed channels commands. ({limit})",
+            "invalid_channel": "Invalid channel! Verify if channel mention or ID are correct.",
+            "announcement_channel": "{channel} was set as announcements channel successfully!",
+            "allowed_channels_set": "{channel} was add successfully!"
+        },
+        "prefix": {
+            "prefix_changed_to": "My prefix on this server has been changed to `{prefix}`"
+        },
+        "buy": {
+            "alreadyBought": "You already bought this!",
+            "item_bought": "Item successfully bought!"
+        },
+        "daily": {
+            "has_been_collected": "Calm down, headship! You already collected your daily granex. Come back again <t:{remaining}:R>",
+            "congrats": "Congratulations! In the today's daily you received {granexGain} granex."
+        },
+        "granex": {
+            "your": "You have {granex} granex",
+            "his": "{user} has {granex} granex"
+        },
+        "oddeven": {
+            "button": {
+                "label": "Accept"
+            },
+            "confirm": "{user} Looks like {author} wants to be bet {granex} granex with you! Do you accept?",
+            "winner": "Congratulations, you won! You've chosen `{chosen}` and `{number}` is `{chosen}`. You received {granex} granex.",
+            "loser": "Congratulations, you lost! You've chosen `{chosen}` and `{number}` isn't `{chosen}`. You've lost {granex} granex.",
+            "winner2": "Congratulations, you won! You've chosen `{chosen}` and `{number}` is `{chosen}`.",
+            "loser2": "Congratulations, you lost! You've chosen `{chosen}` and `{number}` isn't `{chosen}`."
+        },
+        "pay": {
+            "value_is_to_little": "The specified value is too little... try transfer a value greater than 100, after all, I need to collect that 10% tax.",
+            "button": {
+                "label": "Confirm"
+            },
+            "confirm": "Are you sure that you want transfer {granex} granex to {user}?",
+            "confirmed": "Transaction successful!"
+        },
+        "rob": {
+            "need_weapon": "You need a weapon to get to steal.",
+            "success": "Successful robbery! You managed to steal {value} granex from this player.",
+            "has_been_robbed": "Calm down, headship! Try stealing again <t:{remaining}:R>",
+            "fail": "Oh, boy! Looks like that police caught you right in the act. You paid a {value} granex fine for failing."
+        },
+        "shop": {
+            "choose": "Select an Item.",
+            "embed": {
+                "weapons": {
+                    "title": "Weapons Shop",
+                    "description": "To buy any weapon, use `{usage}`.\n\n**9mm:** Damage: 20 | <:granex:874481096799186955> 5.000 `(10% chance of success in robberies)`\n**PT 100:** Damage: 40 | <:granex:874481096799186955> 10.000 `(15% chance of success in robberies)`\n**Glock:** Damage: 60 | <:granex:874481096799186955> 12.000 `(20% chance of success in robberies)`\n**MT-40:** Damage: 120 | <:granex:874481096799186955> 24.000 `(25% chance of success in robberies)`\n**Uzi:** Damage: 130 | <:granex:874481096799186955> 28.000 `(30% chance of success in robberies)`\n**MP5:** Damage: 150 | <:granex:874481096799186955> 32.000 `(35% chance of success in robberies)`\n**UMP:** Damage: 150 | <:granex:874481096799186955> 33.000 `(40% chance of success in robberies)`\n**Carabina CT-40:** Damage: 200 | <:granex:874481096799186955> 45.000 `(45% chance of success in robberies)`\n**Carabina 556:** Damage: 220 | <:granex:874481096799186955> 48.000 `(50% de chance em assaltos)`\n**ParaFal:** Damage: 250 | <:granex:874481096799186955> 56.000 `(55% chance of success in robberies)`\n**M4A1:** Damage: 300 | <:granex:874481096799186955> 62.000 `(60% chance of success in robberies)`\n**AK-9:** Damage: 400 | <:granex:874481096799186955> 78.000 `(65% de chance de sucesos em assaltos)`\n**AK-47:** Damage: 420 | <:granex:874481096799186955> 81.000 | `(70% chance of success in robberies)`\n**AKM:** Damage: 430 | <:granex:874481096799186955> 84.000 `(75% chance of success in robberies)`\n**SCAR:** Damage: 500 | <:granex:874481096799186955> 97.000 `(80% chance of success in robberies)`\n**Gun License:** <:granex:874481096799186955> 500\n**Bulletproof Vest:** Defense: 120 | <:granex:874481096799186955> 6.000"
+                },
+                "foods": {
+                    "title": "Foods Shop",
+                    "description": "To buy any food, use `{usage}`.\n\n**Water:** <:granex:874481096799186955> 100 (restore 10% from energy)\n**Hamburguer:** <:granex:874481096799186955> 225 (restore 35% from energy)\n**Pizza:** <:granex:874481096799186955> 275 (restore 40% from energy)`"
+                },
+                "vehicles": {
+                    "title": "Vehicles Shop",
+                    "description": "To buy any vehicle, use `{usage}`\n\n**Motorcycle:** <:granex:874481096799186955> 15.000 `(can be used to work at uber eats)`\n**Car:** <:granex:874481096799186955> 25.000 `(can be used to work at uber)`\n**Truck:** <:granex:874481096799186955> 105.000 `(can be used to work at trucker)`"
+                },
+                "farm": {
+                    "title": "Farm Shop",
+                    "description": "Para comprar qualquer item relacionado a fazenda, ou até mesmo a fazenda, use `{usage}`.\n**Fazenda:** <:granex:874481096799186955> 400.000 `(libera o emprego de fazendeiro)`\n**Galinha:** <:granex:874481096799186955> 100 `(aumenta o lucro da fazenda em 5%)`\n**Vaca:** <:granex:874481096799186955> 550 `(aumenta o lucro da fazenda em 15%)`\n**Alface:** <:granex:874481096799186955> 25 `(aumenta o lucro da fazenda em 5%)`\n**Tomate:** <:granex:874481096799186955> 30 `(aumenta o lucro da fazenda em 5%)`\n**Cenoura:** <:granex:874481096799186955> 30 `(aumenta o lucro da fazenda em 5%)`"
+                }
+            },
+            "closed": "It is weekend... the shop is closed.",
+            "closed2": "The store is open Monday through Friday from 06:00 to 20:00."
+        },
+        "weekly": {
+            "has_been_collected": "Calm down, headship! You already collected your weekly granex. Come back again <t:{remaining}:R>",
+            "congrats": "Congratulations! In the today's weekly you received {granexGain} granex."
+        },
+        "dbl": {
+            "embed": {
+                "title": "Vote for Me",
+                "description": "Vote for me to help me to be promoted to more and more people here on the platform!\n\n Did you know that by voting for me you can win up to 800 granex? And did you know that by voting for me on both the **top.gg** and **discordbotlist.com** you can win 2300 granex? What are you waiting for? Vote now!"
+            }
+        },
+        "invite": {
+            "embed": {
+                "title": "Add Me!",
+                "description": "You can invite me to your server or to server that you manage clicking in the button below.\n\nDo you need help? Enter in my Discord server and ask your questions there!"
+            },
+            "button": {
+                "label": "Add Me!"
+            }
+        },
+        "addfireman": {
+            "not_a_fireman": "This player cannot be a fireman on this server because he does not have the fireman certificate.",
+            "too_much_fireman": "The fireman limit has already been reached on this server.",
+            "added": "{user} now is a fireman from this server."
+        },
+        "addpolice": {
+            "not_a_police": "This player cannot be a policeman on this server because he does not have the policeman certificate.",
+            "too_much_police": "The policeman limit has already been reached on this server.",
+            "added": "{user} now is a policeman from this server."
+        },
+        "call": {
+            "no_channel": "This server does not have a channel set for announcements. Please ask the administration to set it up and try again.",
+            "no_policemans": "This server doesn't have policemen",
+            "policeman_announcement": "Hello, police officers on duty!\nWe have a call from the player {user} in {channel}.\n\n**Reason:** `{reason}`\n{jumpLink}\n\n{users}"
+        },
+        "farm": {
+            "no_farm": "You need buy a farm first.",
+            "no_plant": "You don't have this plant.",
+            "successfully_planted": "Planted successfully"
+        },
+        "fine": {
+            "fined": "PLayer fined successfully!\nIt is worth remembering that the fine is 35,000 granex, and after paying the fine, the player has his gun confiscated."
+        },
+        "frisk": {
+            "reply": "This player is armed and does not carry a gun licence. Use `{prefix}fine [user]` to fined him.",
+            "reply2": "There is nothing illegal about this player."
+        },
+        "heal": {
+            "healed": "Player healed successfully!"
+        },
+        "inventory": {
+            "embed": {
+                "title": "Your Inventory",
+                "field1": "Foods",
+                "field2": "Weapons",
+                "field3": "In use",
+                "field4": "Ores",
+                "field5": "Artifacts",
+                "description": "Empty... just like my creator's bank account."
+            }
+        },
+        "job": {
+            "embed": {
+                "title": "Available Jobs",
+                "field": {
+                    "trashman": "Trashman",
+                    "newsagent": "Newsagent",
+                    "tanker": "Tanker",
+                    "trucker": "Trucker",
+                    "postoffice": "Post Office",
+                    "fireman": "Fireman",
+                    "police": "Policeman",
+                    "mafiaboss":"Mafia Boss",
+                    "lawyer": "Lawyer",
+                    "farmer": "Farmer"
+                },
+                "description": {
+                    "trashman": "Income: 575 granex and 120 EXP",
+                    "newsagent": "Requirements: Level 5;\n Income: 600 granex and 170 EXP",
+                    "ubereats": "Requirements: Level 10, 1 moto;\n Income: 650 granex and 310 EXP",
+                    "uber": "Requirements: Level 15, 1 carro;\n Income: 800 granex and 420 EXP",
+                    "tanker": "Requirements: Level 20;\n Income: 1200 granex and 530 EXP",
+                    "trucker": "Requirements: Level 25;\n Income: 1400 granex and 640 EXP",
+                    "postoffice": "Requirements: Level 30;\n Income: 1500 granex and 750 EXP",
+                    "fireman": "Requirements: Level 35;\n Income: 2100 granex and 860 EXP",
+                    "police": "Requirements: Level 40;\n Income: 2200 granex and 970 EXP",
+                    "mafiaboss": "Requirements: Level 45;\n Income: 4600 granex and 1080 EXP",
+                    "lawyer": "Requirements: Level 50;\n Income: 4900 granex and 1120 EXP",
+                    "farmer": "Requirements: Level 55, 1 fazenda;\n Income: 5000 granex and 1230 EXP"
+                }
+            },
+            "menu": {
+                "placeholder": "Select one"
+            },
+            "reply": "Now you are a `{job}`.",
+            "reply2": "Certified done successfully! Now you can be a `{job}` in any server!",
+            "no_level": "You need to be a player of level {level} or higher to get this job.",
+            "no_motorcycle": "You need a motorcycle to get this job.",
+            "no_car": "You need a car to get this job.",
+            "no_truck": "You need a truck to get this job."
+        },
+        "removefireman": {
+            "not_a_fireman": "This player is not a fireman on this server.",
+            "removed": "{user} is no longer a fireman on this server."
+        },
+        "removepolice": {
+            "not_a_police": "This player is not a policeman on this server.",
+            "removed": "{user} is no longer a policeman on this server."
+        },
+        "sell": {
+            "missing_item": "You don't have this item.",
+            "confirm": "{user} Looks like {author} wants to be sell a item per {price} granex.",
+            "success": "Successful sale.",
+            "button": {
+                "label": "Accept"
+            }
+        },
+        "stash": {
+            "stashed": "Item stashed successfully!",
+            "missing_item": "You don't using this item."
+        },
+        "use": {
+            "using": "Now you are using this item.",
+            "restore_energy": "Have been restored {percentual}% from your energy."
+        },
+        "work": {
+            "you_dont_have_job": "You don't have any job. Get one using `{usage}`.",
+            "has_been_collected": "Calm down, headship! Try works again <t:{remaining}:R>",
+            "congrats": "You work hard as `{job}`, receiving {granexGain} granex and {xpGain} EXP."
+        },
+        "aboutme": {
+            "reply": "You profile biography has been changed to `{aboutme}`"
+        },
+        "background": {
+            "waiting": "You already sent a background to analisys. Wait until it is evaluated and try again.",
+            "attach_file": "Attach a file. The recommended type is PNG/JPG, the recommended resolution is 1920x1080 pixels.",
+            "success": "Background sent for analysis!\nIt is expected that your background will be evaluated within 1 business day after submission."
+        },
+        "divorce": {
+            "not_married": "You aren't married with this player!",
+            "confirm": "Are you sure that you want divorce from {user}?",
+            "success": "Divorce successfully concluded! I hope you find someone better..."
+        },
+        "marry": {
+            "already_married": "You are already married!",
+            "already_married2": "{user} are already married with someone.",
+            "no_granex": "In order to get married, you and your suitor need to have 5,000 granex on hand.",
+            "request": "{user} Do you agree to marry {author} in health, in sickness; in wealth, in poverty, until death do you part?",
+            "got_married": "You got married! Congratulations to both of you!"
+        },
+        "rank": {
+            "embed": {
+                "title": "Top {top} with more granex"
+            },
+            "your_position": "Your position: #{pos}"
+        },
+        "rep": {
+            "has_been_given": "Calm down, headship! You can give another reputation <t:{remaining}:R>",
+            "success": "You give a reputation for {user} successfully!"
+        },
+        "botinfo": {
+            "embed": {
+                "title": "Howdy! I'm Maneki Neko",
+                "description": "Howdy! I'm Maneki Neko, and I'm a powerful Discord bot with multiple features, such as configuration, economy, social, miscellaneous, RPG, e utils, besides being able to interact in Brazilian Portuguese and American English.\n\nI'm currently on {guilds} guilds, I know {users} diferent people and I have {commands} commands.\n\nI was developed in [Node.js](https://nodejs.org/en/) using the [Eris](https://abal.moe/Eris/) library.\n[`{dev}`](https://github.com/Levi0100) is my developer."
+            }
+        },
+        "guildinfo": {
+            "embed": {
+                "field1": "Guild ID",
+                "field2": "Guild Owner",
+                "field3": "Created At",
+                "field5": "Channels ({size})",
+                "field5_value": "Text: {text}\nVoice: {voice}\nStage: {stage}",
+                "field6": "Members"
+            }
+        },
+        "help": {
+            "no_command": "This command not exists",
+            "command_name": "Name",
+            "command_syntax": "Syntax",
+            "command_example": "Examples",
+            "command_aliases": "Aliases",
+            "command_permissions": "Permissions",
+            "command_bot_permissions": "My Permissions",
+            "embed": {
+                "footer": "[] = required; <> = opitional",
+                "title": "My Commands",
+                "description": "To see more information about a given command, use `{usage}`.\nNeed help? Join my Discord server to answer your questions by clicking the button below!"
+            }
+        },
+        "userinfo": {
+            "tag": "User Tag",
+            "id": "User ID",
+            "created_at": "Account Create At",
+            "roles": "Roles",
+            "joinedAt": "Joined at"
+        },
+        "mine": {
+            "has_been_mined": "Calm down, headship! You can mine again <t:{remaining}:R>",
+            "congrats": "You've mined {g}g of {ore} successfully!"
+        },
+        "convert": {
+            "dont_have": "You don't have this ore.",
+            "dont_have_this_amount": "You do not have this amount in grams of the ore reported.",
+            "congrats": "{g}g of {ore} has been converted to {granexGain} granex."
+        },
+        "hg": {
+            "embed": {
+                "description": "**Players waiting:** {players}/{maxPlayers}\n\nTo participate in the HG just click the button below!\nIt is recommended that you use good weapons with good artifacts and good vests with good artifacts, as this increases your chance of winning.\n\nThe match starts <t:{startsIn}:R>"
+            },
+            "button": {
+                "label": "Participate"
+            },
+            "dont_have_weapon": "You need to equip a weapon to enter the HG.",
+            "you_already_entered": "You are already participating in HG.",
+            "entered": "You have successfully entered HG!",
+            "hg_is_closed": "The HG match has already started! Wait until it finishes and try again."
+        },
+        "boss": {
+            "cleiton": {
+                "description": "The bloodiest boss of all!\n\nPossessing an incredible 200,000 HP, it is the most powerful boss, and can deal between 2300 and 5788 damage to its victims.",
+                "started": "Match with **Cleiton Trovoada** boss started",
+                "attack": "**Cleiton Trovoada** attack you and did {damage} of damage",
+                "tried_attack": "**Cleiton Trovoada** tried attack you but failed miserably"
+            },
+            "vladimir": {
+                "description": "The boss that has the best defense of all!\n\nPossessing an incredible 90,000 HP, it is the boss with the best defense and has comparable damage to the **Cleiton Trovoada** boss.",
+                "started": "Match with **Vladimir** boss started",
+                "attack": "**Vladimir** attack you and did {damage} of damage",
+                "tried_attack": "**Vladimir** tried attack you but failed miserably"
+            },
+            "button": {
+                "label": "Summon"
+            },
+            "summoning": "Summoning the boss...",
+            "summoned": "Successfully summonded",
+            "attack": "You attack the boss and did {damage} of damage",
+            "dont_have_weapon": "You need equip a weapon to fight with the boss.",
+            "you_win": "You have defeated the boss!",
+            "you_lost": "You lose to te boss...",
+            "embed": {
+                "field": {
+                    "name": "Rewards",
+                    "value": "Granex: {granex}\nArtifacts: {artifact} ({type})"
+                }
+            }
+        }
+    },
+    "helper": {
+        "invalid_arg": "Invalid argument! Try: `{try}`",
+        "mention_bot": "Howdy! My prefix on this server is `{prefix}`",
+        "wrong_channel": "Você não pode executar comandos neste canal! Tente em: {tryIn}",
+        "permissions": {
+            "user": "You need the `{permission}` permission ro execute this command!",
+            "bot": "I need the `{permission}` permission to this commands works!"
+        },
+        "you_are_dead": "You are dead! Try again <t:{remaining}:R> or call a fireman clicking the button below (costs 5,000 granex).",
+        "error": "Gomen, gomen... an unexpected error has ocurred...\n`{error}`",
+        "fireman_on_the_way": "A fireman is on his way to heal you. Wait until he arrives on the scene.",
+        "fireman_announcement": "Hello, firemen on duty!\n We have a call from {user} on the channel {channel}. He is lifeless and needs to be healed!\n{jumpLink}\n\n{users}",
+        "no_firemans": "This server doesn't have any firemen...",
+        "jobs": {
+            "trashman": "Trashman",
+            "newsagent": "Newsagent",
+            "ubereats": "Uber Eats",
+            "uber": "Uber",
+            "tanker": "Tanker",
+            "trucker": "Trucker",
+            "postoffice": "Post Office",
+            "fireman": "Fireman",
+            "police": "Policeman",
+            "mafiaboss": "Mafia Boss",
+            "lawyer": "Lawyer",
+            "farmer": "Farmer"
+        },
+        "guild_level_up": "This server has just been upgraded to Level **{level}**! As a result, 10 more firefighter slots and 10 more police slots have opened up! What are you waiting for? Join now!",
+        "guild_level_up_2": "This server has just been upgraded to Level **{level}**!",
+        "bank_doesnt_have_granex": "Oh, boy! It seems that the bank ran out of money and this transaction could not be completed.",
+        "user_is_not_in_database": "This user is not saved in the database.",
+        "you_dont_have_granex": "You don't have this amount of granex!",
+        "doesnt_have_granex": "{user} doesn't have this amount of granex.",
+        "invalid_user": "Invalid user! Check that the mention or user ID is correct.",
+        "arg_is_NaN": "The given argument (`{arg}`) must be a number.",
+        "community": "Community and Support",
+        "level_up": "<a:confetti:975932983213166632> Congratulations, you have upgraded to level {level}! Keep interacting with me to level up even more.",
+        "accept": "Accept",
+        "married_with": "Married with {username}#{discrim}",
+        "alone": "Alone",
+        "confirm": "Confirm",
+        "tax": "**TAX ALERT**\n\nAll players that have 100 or more granex have 1% of that amount withheld from the bank. This is to keep the economy going and keep the bank from going broke lol.\n\n**How the Tax Works**\n\n It's simple, if you have 100 granex or more, I will simply take 1% of that granex and transfer it to the bank. Here's how it works:\nIf you have 1 million granex, just multiply that by `0.01` and you will see what 1% of 1 million is — `1000000 * 0.01 = 10000` — so 10,000 granex will be taken from you. Also remember that this calculation works for any amount of granex you have.",
+        "hg": {
+            "started": "HG match started",
+            "attack": "`{player1}` attacked `{player2}` with a `{weapon}` and did {damage} of damage",
+            "attack_yourself": "`{player}` got hurt himself and lose {energy} of life",
+            "tried_attack": "`{player1}` tried attack `{player2}` with a `{weapon}` but failed miserably",
+            "player_death": "`{player}` died",
+            "suicide": "`{player}` committed suicide",
+            "winner": "`{player}` was the big winner of the match!\n**Award:** {granex} granex and {exp} EXP\n\nIf you didn't win, good luck next time."
+        },
+        "call": "Call",
+        "your_first_time": "Apparently is your first time here. Start with `{prefix}daily` command."
+    }
+}
