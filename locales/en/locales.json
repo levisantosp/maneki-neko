@@ -264,7 +264,6 @@
             "tag": "User Tag",
             "id": "User ID",
             "created_at": "Account Create At",
-            "roles": "Roles",
             "joinedAt": "Joined at"
         },
         "mine": {
