@@ -17,7 +17,7 @@ module.exports = class ShopCommand extends Command {
         const day = new Date().getDay()
 
         if (day === 0 || day === 6) return message.reply('commands.shop.closed')
-        //if (hours < 6 || hours >= 20) return message.reply('commands.shop.closed2')
+        if (hours < 6 || hours >= 20) return message.reply('commands.shop.closed2')
 
         const weapon = new Button()
             .setStyle('GRAY')

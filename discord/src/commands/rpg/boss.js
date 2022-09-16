@@ -31,7 +31,7 @@ module.exports = class BossCommand extends Command {
                 button.setLabel(this.locale.get('commands.boss.button.label'))
                 button.setCustomID('cleiton-trovoada')
 
-                //if (new Date().getDay() !== 1) button.setDisabled()
+                if (new Date().getDay() !== 1) button.setDisabled()
 
                 var msg = await message.reply(
                     {
