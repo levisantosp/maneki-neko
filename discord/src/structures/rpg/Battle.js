@@ -29,12 +29,12 @@ module.exports = class Battle {
         this.channel = channel
 
         const guild = await Guild.findById(channel.guild.id)
-        if (this.guild.hg.players.length === 1) return this.checkWinner(guild)
+        if (this.guild.hg.players.length === 1) return this.checkWinner(this.guild)
 
         if (this.guild.hg.startsIn < Date.now() && !this.guild.hg.closed) {
             this.guild.hg.closed = true
 
-            embed.setDescription(locale.get(guild.lang, 'helper.hg.started'))
+            embed.setDescription(locale.get(this.guild.lang, 'helper.hg.started'))
 
             const client = channel.guild.members.get(this.client.user.id)
 
@@ -92,12 +92,12 @@ module.exports = class Battle {
                     )
                 }
 
-                this.checkPlayers(guild, channel)
+                this.checkPlayers(this.guild)
 
                 const user = this.client.users.get(player1.id)
 
                 if (energy > 0) {
-                    embed.setDescription(locale.get(guild.lang, 'helper.hg.attack_yourself',
+                    embed.setDescription(locale.get(this.guild.lang, 'helper.hg.attack_yourself',
                         {
                             player: `${user.username}#${user.discriminator}`,
                             energy: parseInt(damage)
@@ -127,7 +127,7 @@ module.exports = class Battle {
                     }
                 }
                 else {
-                    embed.setDescription(locale.get(guild.lang, 'helper.hg.suicide',
+                    embed.setDescription(locale.get(this.guild.lang, 'helper.hg.suicide',
                         {
                             player: `${user.username}#${user.discriminator}`
                         }
@@ -168,7 +168,7 @@ module.exports = class Battle {
 
                 const args = {
                     fail: async () => {
-                        embed.setDescription(locale.get(guild.lang, 'helper.hg.tried_attack',
+                        embed.setDescription(locale.get(this.guild.lang, 'helper.hg.tried_attack',
                             {
                                 player1: `${user1.username}#${user1.discriminator}`,
                                 player2: `${user2.username}#${user2.discriminator}`,
@@ -199,9 +199,7 @@ module.exports = class Battle {
                         }
                     },
                     success: async () => {
-                        var energy = player2.energy - damage
-
-                        console.log(energy)
+                        var energy = parseInt(player2.energy - damage)
 
                         var index = this.guild.hg.players.findIndex(p => p.id === player2.id)
                         var player = this.guild.hg.players.filter(p => p.id === player2.id)[0]
@@ -214,16 +212,17 @@ module.exports = class Battle {
                                     id: player.id,
                                     usingWeapon: player.usingWeapon,
                                     usingBulletProof: player.usingBulletProof,
-                                    energy: parseInt(energy)
+                                    energy
                                 }
                             )
 
-                            embed.setDescription(locale.get(guild.lang, 'helper.hg.attack',
+                            embed.setDescription(locale.get(this.guild.lang, 'helper.hg.attack',
                                 {
                                     player1: `${user1.username}#${user1.discriminator}`,
                                     player2: `${user2.username}#${user2.discriminator}`,
                                     damage: parseInt(damage),
-                                    weapon: player1.usingWeapon.weapon
+                                    weapon: player1.usingWeapon.weapon,
+                                    energy
                                 }
                             ))
 
@@ -249,7 +248,7 @@ module.exports = class Battle {
                                 )
                             }
 
-                            this.checkPlayers(guild)
+                            this.checkPlayers(this.guild)
                         }
                     }
                 }

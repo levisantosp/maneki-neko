@@ -24,8 +24,6 @@ module.exports = class UseCommand extends Command {
         const weaponInInventory = user?.inventory?.weapons?.filter(weapon => weapon.weapon === item)[0]
         const foodInInventory = user?.inventory?.foods?.filter(food => food.food === item)[0]
 
-        console.log(foodInInventory)
-
         if (!['pizza', 'hamburguer', 'water'].includes(item) && !weaponInInventory) {
             message.reply('commands.sell.missing_item')
         }

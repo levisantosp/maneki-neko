@@ -13,8 +13,6 @@ module.exports = class MessageCreateListener extends Listener {
         const user = await User.findById(message.content ? message.content : message.embeds[0].footer.replace(' • Vote você também!', ''))
         const _user = await this.client.getRESTUser(message.content ? message.content : message.embeds[0].footer.replace(' • Vote você também!', ''))
 
-        return console.log(user.id + ' votou no bot')
-
         if (!user) return
         if (bank.granex < 800) throw new Error('The bank doesn\'t have granex')
 

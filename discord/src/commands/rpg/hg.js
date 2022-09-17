@@ -67,7 +67,7 @@ module.exports = class HGCommand extends Command {
                         id: user.id,
                         usingWeapon: user.usingWeapon,
                         usingBulletProof: user.usingBulletProof,
-                        energy: 2000
+                        energy: 20000
                     }
                 )
                 guild.save()
