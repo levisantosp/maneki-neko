@@ -22,7 +22,7 @@ module.exports = class BossBattle {
                 name: 'vladimir',
                 energy: 90000,
                 minDamage: 2300,
-                maxDamage: 2005,
+                maxDamage: 3005,
                 def: 600
             }
         }
