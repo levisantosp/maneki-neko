@@ -92,7 +92,7 @@ module.exports = class Battle {
                     )
                 }
 
-                this.checkPlayers(this.guild)
+                this.checkPlayers()
 
                 const user = this.client.users.get(player1.id)
 
@@ -248,7 +248,7 @@ module.exports = class Battle {
                                 )
                             }
 
-                            this.checkPlayers(this.guild)
+                            this.checkPlayers()
                         }
                     }
                 }
@@ -260,7 +260,8 @@ module.exports = class Battle {
         this.guild.save()
     }
 
-    async checkPlayers(guild) {
+    async checkPlayers() {
+        const guild = await Guild.findById(this._guild)
         const player = guild.hg.players.filter(player => player.energy <= 0)[0]
 
         if (player) {
