@@ -201,7 +201,7 @@ module.exports = class Battle {
                     },
                     success: async () => {
                         var energy = player2.energy - damage
-                        
+
                         console.log(energy)
 
                         var index = this.guild.hg.players.findIndex(p => p.id === player2.id)
@@ -263,15 +263,15 @@ module.exports = class Battle {
     }
 
     async checkPlayers(guild) {
-        const player = this.guild.hg.players.filter(player => player.energy <= 0)[0]
+        const player = guild.hg.players.filter(player => player.energy <= 0)[0]
 
         if (player) {
-            var index = this.guild.hg.players.findIndex(p => p.id === player.id)
+            var index = guild.hg.players.findIndex(p => p.id === player.id)
 
-            this.guild.hg.players.splice(index)
-            this.guild.save()
+            guild.hg.players.splice(index)
+            guild.save()
 
-            const channel = this.client.getChannel(this.guild.hg.channelInteract)
+            const channel = this.client.getChannel(guild.hg.channelInteract)
 
             if (channel) {
                 const user = this.client.users.get(player.id)
