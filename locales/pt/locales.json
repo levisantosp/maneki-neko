@@ -289,7 +289,8 @@
             "dont_have_weapon": "Você precisa equipar uma arma para entrar no HG.",
             "you_already_entered": "Você já está participando do HG.",
             "entered": "Você entrou no HG com sucesso!",
-            "hg_is_closed": "A partida do HG já começou! Aguarde até que ela termine e tente novamente."
+            "hg_is_closed": "A partida do HG já começou! Aguarde até que ela termine e tente novamente.",
+            "entered2": "A partida de HG será anunciada em {channel}."
         },
         "boss": {
             "cleiton": {

@@ -285,7 +285,8 @@
             "dont_have_weapon": "You need to equip a weapon to enter the HG.",
             "you_already_entered": "You are already participating in HG.",
             "entered": "You have successfully entered HG!",
-            "hg_is_closed": "The HG match has already started! Wait until it finishes and try again."
+            "hg_is_closed": "The HG match has already started! Wait until it finishes and try again.",
+            "entered2": "The HG match will be announced in {channel}."
         },
         "boss": {
             "cleiton": {

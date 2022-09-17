@@ -152,9 +152,14 @@ module.exports = class ReadyListener extends Listener {
         }
 
         const startHG = async () => {
-            const hg = await HG.findById('hg')
-            if (hg.startsIn <= Date.now()) {
-                new Battle()
+            const guilds = await Guild.find(
+                {
+                    'hg.startsIn': { $lte: Date.now() }
+                }
+            )
+            
+            for (const guild of guilds) {
+                new Battle(guild)
                 .startBattle()
             }
         }

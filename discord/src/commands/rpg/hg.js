@@ -1,5 +1,5 @@
 const { Command, Embed, Button } = require('../../structures')
-const { User, HG } = require('../../../../database')
+const { User, Guild } = require('../../../../database')
 const { ComponentInteraction } = require('eris')
 
 module.exports = class HGCommand extends Command {
@@ -12,18 +12,18 @@ module.exports = class HGCommand extends Command {
         })
     }
     async run(message) {
-        const hg = await HG.findById('hg')
+        const guild = await Guild.findById(message.guild.id)
 
-        if (hg.closed) return message.reply('commands.hg.hg_is_closed')
+        if (guild.hg.closed) return message.reply('commands.hg.hg_is_closed')
 
         const embed = new Embed()
         embed.setTitle('Hunger Games')
         embed.setThumbnail('https://imgur.com/QrRYEgk.png')
         embed.setDescription(this.locale.get('commands.hg.embed.description',
             {
-                players: hg.players.length,
-                maxPlayers: hg.maxPlayers,
-                startsIn: parseInt(hg.startsIn / 1000)
+                players: guild.hg.players.length,
+                maxPlayers: guild.hg.maxPlayers,
+                startsIn: parseInt(guild.hg.startsIn / 1000)
             }
         ))
 
@@ -53,15 +53,15 @@ module.exports = class HGCommand extends Command {
                 await interaction.defer(64)
 
                 const user = await User.findById(interaction.member.id)
-                const _hg = await HG.findById('hg')
-                const player = _hg.players.filter(player => player.id === interaction.member.id)[0]
+                const { hg } = await Guild.findById(message.guild.id)
+                const player = hg.players.filter(player => player.id === interaction.member.id)[0]
 
                 if (player) return interaction.createMessage(this.locale.get('commands.hg.you_already_entered'))
                 if (!user?.usingWeapon.weapon) return interaction.createMessage(this.locale.get('commands.hg.dont_have_weapon'))
 
-                if (!hg.channelsInteract.includes(message.channel.id)) hg.channelsInteract.push(message.channel.id)
+                if (!guild.hg.channelInteract) guild.hg.channelInteract = message.channel.id
 
-                hg.players.push(
+                guild.hg.players.push(
                     {
                         id: user.id,
                         usingWeapon: user.usingWeapon,
@@ -69,15 +69,16 @@ module.exports = class HGCommand extends Command {
                         energy: 2000
                     }
                 )
-                hg.save()
+                guild.save()
 
                 interaction.createMessage(this.locale.get('commands.hg.entered'))
+                if (guild.hg.channelInteract !== message.channel.id) interaction.createFollowup(this.locale.get('commands.hg.entered2', { channel: `<#${guild.hg.channelInteract}>` }))
 
                 embed.setDescription(this.locale.get('commands.hg.embed.description',
                     {
-                        players: hg.players.length,
-                        maxPlayers: hg.maxPlayers,
-                        startsIn: parseInt(hg.startsIn / 1000)
+                        players: guild.hg.players.length,
+                        maxPlayers: guild.hg.maxPlayers,
+                        startsIn: parseInt(guild.hg.startsIn / 1000)
                     }))
 
                 msg.edit({ embed })

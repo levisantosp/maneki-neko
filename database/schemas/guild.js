@@ -14,7 +14,15 @@ const guild = new Schema({
     announcements: String,
     banned: Boolean,
     bannedReason: String,
-    bannedUntil: Number
+    bannedUntil: Number,
+    hg: {
+        closed: { type: Boolean, default: false },
+        players: { type: Array, default: [] },
+        maxPlayers: { type: Number, default: 20 },
+        startsIn: { type: Number, default: 0 },
+        lastWinner: String,
+        channelInteract: String
+    }
 })
 
 module.exports = model('guilds', guild)
