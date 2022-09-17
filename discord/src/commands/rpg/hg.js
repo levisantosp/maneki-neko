@@ -56,6 +56,7 @@ module.exports = class HGCommand extends Command {
                 const { hg } = await Guild.findById(message.guild.id)
                 const player = hg.players.filter(player => player.id === interaction.member.id)[0]
 
+                if (hg.closed) return interaction.createMessage(this.locale.get('commands.hg.hg_is_closed'))
                 if (player) return interaction.createMessage(this.locale.get('commands.hg.you_already_entered'))
                 if (!user?.usingWeapon.weapon) return interaction.createMessage(this.locale.get('commands.hg.dont_have_weapon'))
 
