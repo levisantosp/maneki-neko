@@ -1,4 +1,4 @@
-const { User, Bank, HG, Guild } = require('../../../../database')
+const { User, Bank, Guild } = require('../../../../database')
 const Embed = require('../embed/Embed')
 const locale = require('../../../../locales')
 
@@ -8,10 +8,9 @@ module.exports = class Battle {
         this._guild = guild
     }
     async startBattle() {
-        //this.hg = await HG.findById('hg')
         this.guild = await Guild.findById(this._guild)
 
-        if (this.guild.hg.players.length < 3 && !this.guild.hg.closed) return
+        if (this.guild.hg.players.length < 2 && !this.guild.hg.closed) return
 
         const embed = new Embed()
         embed.setTitle('Hunger Games')
