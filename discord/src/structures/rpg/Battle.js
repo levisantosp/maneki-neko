@@ -201,6 +201,9 @@ module.exports = class Battle {
                     },
                     success: async () => {
                         var energy = player2.energy - damage
+                        
+                        console.log(energy)
+
                         var index = this.guild.hg.players.findIndex(p => p.id === player2.id)
                         var player = this.guild.hg.players.filter(p => p.id === player2.id)[0]
 
