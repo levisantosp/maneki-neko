@@ -145,6 +145,19 @@ module.exports = class MessageCreateListener extends Listener {
                     new Logger(this.client).error(err);
                 }
             }
+
+            const b = new Button()
+            b.setStyle('LINK')
+            b.setLabel('Meu servidor')
+            b.setURL(process.env.SUPPORT_SERVER)
+
+            message.replyC('Hey, dia 26/09 eu vou passar por uma drástica mudança! Para ficar sabendo de tudo, entre no meu servidor!', {
+                components: [{
+                    type: 1,
+                    components: [b]
+                }]
+            })
+
             cmd.run(message).catch(err => {
                 message.reply('error', {error: err});
                 new Logger(this.client).error(err);
