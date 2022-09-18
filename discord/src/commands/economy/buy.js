@@ -15,8 +15,7 @@ module.exports = class BuyCommand extends Command {
         const hours = new Date().getHours()
         const day = new Date().getDay()
 
-        if (day === 0 || day === 6) return message.reply('commands.shop.closed')
-        if (hours < 6 || hours >= 20) return message.reply('commands.shop.closed2')
+        if (hours < 6 || hours >= 20) return message.reply('commands.shop.closed')
         
         const items = [
             '9mm',
@@ -47,13 +46,17 @@ module.exports = class BuyCommand extends Command {
             'carrot',
             'bulletproof'
         ]
+
         if (!items.includes(message.args[0])) return message.reply('helper.invalid_arg', {try: `\`${message.guild.db.prefix}buy ${items.map(item => item).join(' / ')}\``})
         const user = await User.findById(message.author.id)
         const bank = await Bank.findById('bank')
+
         var price
         var result = user?.inventory?.weapons?.map(weapon => weapon?.weapon)
         var result2 = user?.inventory?.foods?.map(food => food?.food)
+
         if (result.includes(message.args[0]) || result2.includes(message.args[0])) return message.reply('commands.buy.alreadyBought')
+
         switch(message.args[0]) {
             case '9mm': {
                 price = 5000
