@@ -1,5 +1,5 @@
-const {Command} = require('../../structures')
-const {User, Bank} = require('../../../../database')
+const { Command } = require('../../structures')
+const { User, Bank } = require('../../../../database')
 
 module.exports = class BuyCommand extends Command {
     constructor() {
@@ -11,12 +11,12 @@ module.exports = class BuyCommand extends Command {
             category: 'economy'
         })
     }
-    async run (message) {
+    async run(message) {
         const hours = new Date().getHours()
         const day = new Date().getDay()
 
         if (hours < 6 || hours >= 20) return message.reply('commands.shop.closed')
-        
+
         const items = [
             '9mm',
             'pt100',
@@ -47,7 +47,7 @@ module.exports = class BuyCommand extends Command {
             'bulletproof'
         ]
 
-        if (!items.includes(message.args[0])) return message.reply('helper.invalid_arg', {try: `\`${message.guild.db.prefix}buy ${items.map(item => item).join(' / ')}\``})
+        if (!items.includes(message.args[0])) return message.reply('helper.invalid_arg', { try: `\`${message.guild.db.prefix}buy ${items.map(item => item).join(' / ')}\`` })
         const user = await User.findById(message.author.id)
         const bank = await Bank.findById('bank')
 
@@ -55,14 +55,14 @@ module.exports = class BuyCommand extends Command {
         var result = user?.inventory?.weapons?.map(weapon => weapon?.weapon)
         var result2 = user?.inventory?.foods?.map(food => food?.food)
 
-        if (result.includes(message.args[0]) || result2.includes(message.args[0])) return message.reply('commands.buy.alreadyBought')
+        if (result.includes(message.args[0]) || result2.includes(message.args[0]) || user?.usingWeapon.weapon === message.args[0] || user?.usingBulletProof.name) return message.reply('commands.buy.alreadyBought')
 
-        switch(message.args[0]) {
+        switch (message.args[0]) {
             case '9mm': {
                 price = 5000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 20})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 20 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -73,7 +73,7 @@ module.exports = class BuyCommand extends Command {
                 price = 10000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 40})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 40 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -84,7 +84,7 @@ module.exports = class BuyCommand extends Command {
                 price = 12000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 60})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 60 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -95,7 +95,7 @@ module.exports = class BuyCommand extends Command {
                 price = 24000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 120})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 120 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -106,7 +106,7 @@ module.exports = class BuyCommand extends Command {
                 price = 28000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 130})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 130 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -117,7 +117,7 @@ module.exports = class BuyCommand extends Command {
                 price = 32000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 150})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 150 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -128,7 +128,7 @@ module.exports = class BuyCommand extends Command {
                 price = 33000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 150})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 150 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -139,7 +139,7 @@ module.exports = class BuyCommand extends Command {
                 price = 45000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 200})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 200 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -150,7 +150,7 @@ module.exports = class BuyCommand extends Command {
                 price = 48000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 220})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 220 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -161,7 +161,7 @@ module.exports = class BuyCommand extends Command {
                 price = 56000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 250})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 250 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -172,7 +172,7 @@ module.exports = class BuyCommand extends Command {
                 price = 62000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 300})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 300 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -183,7 +183,7 @@ module.exports = class BuyCommand extends Command {
                 price = 78000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 400})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 400 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -194,7 +194,7 @@ module.exports = class BuyCommand extends Command {
                 price = 81000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 420})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 420 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -205,7 +205,7 @@ module.exports = class BuyCommand extends Command {
                 price = 84000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 430})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 430 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -216,7 +216,7 @@ module.exports = class BuyCommand extends Command {
                 price = 97000
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory?.weapons?.push({weapon: message.args[0], damage: 500})
+                user.inventory?.weapons?.push({ weapon: message.args[0], damage: 500 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -227,7 +227,7 @@ module.exports = class BuyCommand extends Command {
                 price = 100
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory.foods.push({food: message.args[0], restore: 200})
+                user.inventory.foods.push({ food: message.args[0], restore: 200 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -238,7 +238,7 @@ module.exports = class BuyCommand extends Command {
                 price = 225
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory.foods.push({food: message.args[0], restore: 225})
+                user.inventory.foods.push({ food: message.args[0], restore: 225 })
                 bank.granex += price
                 user.save()
                 bank.save()
@@ -249,7 +249,7 @@ module.exports = class BuyCommand extends Command {
                 price = 275
                 if (user?.granex < price) return message.reply('helper.you_dont_have_granex')
                 user.granex -= price
-                user.inventory.foods.push({food: message.args[0], restore: 275})
+                user.inventory.foods.push({ food: message.args[0], restore: 275 })
                 bank.granex += price
                 user.save()
                 bank.save()

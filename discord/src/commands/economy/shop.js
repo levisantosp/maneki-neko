@@ -126,7 +126,7 @@ module.exports = class ShopCommand extends Command {
                         break
                     case 'green-template': {
                         if (user.granex < 1000) return interaction.createMessage(this.locale.get('helper.you_dont_have_granex'))
-                        if (user.templates.includes('green')) return interaction.createMessage(this.locale.get('commands.shop.you_already_have_this'))
+                        if (user.templates.includes('green') || user.profileTemplate === 'green') return interaction.createMessage(this.locale.get('commands.shop.you_already_have_this'))
 
                         user.granex -= 1000
                         user.templates.push('green')
@@ -141,7 +141,7 @@ module.exports = class ShopCommand extends Command {
                         break
                     case 'red-template': {
                         if (user.granex < 2500) return interaction.createMessage(this.locale.get('helper.you_dont_have_granex'))
-                        if (user.templates.includes('red')) return interaction.createMessage(this.locale.get('commands.shop.you_already_have_this'))
+                        if (user.templates.includes('red') || user.profileTemplate === 'red') return interaction.createMessage(this.locale.get('commands.shop.you_already_have_this'))
 
                         user.granex -= 2500
                         user.templates.push('red')
@@ -156,7 +156,7 @@ module.exports = class ShopCommand extends Command {
                         break
                     case 'yellow-template': {
                         if (user.granex < 5000) return interaction.createMessage(this.locale.get('helper.you_dont_have_granex'))
-                        if (user.templates.includes('yellow')) return interaction.createMessage(this.locale.get('commands.shop.you_already_have_this'))
+                        if (user.templates.includes('yellow') || user.profileTemplate === 'yellow') return interaction.createMessage(this.locale.get('commands.shop.you_already_have_this'))
 
                         user.granex -= 5000
                         user.templates.push('yellow')
@@ -171,7 +171,7 @@ module.exports = class ShopCommand extends Command {
                         break
                     case 'orange-template': {
                         if (user.granex < 10000) return interaction.createMessage(this.locale.get('helper.you_dont_have_granex'))
-                        if (user.templates.includes('orange')) return interaction.createMessage(this.locale.get('commands.shop.you_already_have_this'))
+                        if (user.templates.includes('orange') || user.profileTemplate === 'orange') return interaction.createMessage(this.locale.get('commands.shop.you_already_have_this'))
 
                         user.granex -= 10000
                         user.templates.push('orange')
