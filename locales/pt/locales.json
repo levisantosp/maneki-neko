@@ -71,8 +71,7 @@
                     "description": "**Template Verde:** <:granex:874481096799186955> 1.000\n**Template Vermelho:** <:granex:874481096799186955> 2.500\n**Template Amarelo:** <:granex:874481096799186955> 5.000\n**Template Laranja:** <:granex:874481096799186955> 10.000"
                 }
             },
-            "closed": "É fim de semana... a loja encontra-se fechada.",
-            "closed2": "A loja é aberta de segunda-feira à sexta-feira, das 06:00 até às 20:00.",
+            "closed": "A loja é aberta das 06:00 até às 20:00.",
             "you_already_have_this": "Você já possui isto."
         },
         "weekly": {

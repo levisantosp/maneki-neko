@@ -68,8 +68,7 @@
                     "description": "Para comprar qualquer item relacionado a fazenda, ou até mesmo a fazenda, use `{usage}`.\n**Fazenda:** <:granex:874481096799186955> 400.000 `(libera o emprego de fazendeiro)`\n**Galinha:** <:granex:874481096799186955> 100 `(aumenta o lucro da fazenda em 5%)`\n**Vaca:** <:granex:874481096799186955> 550 `(aumenta o lucro da fazenda em 15%)`\n**Alface:** <:granex:874481096799186955> 25 `(aumenta o lucro da fazenda em 5%)`\n**Tomate:** <:granex:874481096799186955> 30 `(aumenta o lucro da fazenda em 5%)`\n**Cenoura:** <:granex:874481096799186955> 30 `(aumenta o lucro da fazenda em 5%)`"
                 }
             },
-            "closed": "It is weekend... the shop is closed.",
-            "closed2": "The store is open Monday through Friday from 06:00 to 20:00."
+            "closed": "The store is open from 06:00 to 20:00."
         },
         "weekly": {
             "has_been_collected": "Calm down, headship! You already collected your weekly granex. Come back again <t:{remaining}:R>",
