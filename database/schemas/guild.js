@@ -18,7 +18,7 @@ const guild = new Schema({
     hg: {
         closed: { type: Boolean, default: false },
         players: { type: Array, default: [] },
-        maxPlayers: { type: Number, default: 20 },
+        maxPlayers: { type: Number, default: 10 },
         startsIn: { type: Number, default: 0 },
         lastWinner: String,
         channelInteract: String
