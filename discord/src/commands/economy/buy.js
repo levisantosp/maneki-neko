@@ -13,7 +13,6 @@ module.exports = class BuyCommand extends Command {
     }
     async run(message) {
         const hours = new Date().getHours()
-        const day = new Date().getDay()
 
         if (hours < 6 || hours >= 20) return message.reply('commands.shop.closed')
 

@@ -49,6 +49,7 @@ module.exports = class BossCommand extends Command {
                     if (interaction instanceof ComponentInteraction) {
                         if (interaction.data.custom_id !== 'cleiton-trovoada') return
                         if (interaction.message.id !== msg.id) return
+                        if (interaction.channel.id !== message.channel.id) return
                         if (interaction.member.id !== message.author.id) return interaction.deferUpdate()
 
                         if (!user.usingWeapon.weapon) return interaction.createMessage(
