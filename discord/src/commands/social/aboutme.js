@@ -1,5 +1,5 @@
-const {Command} = require('../../structures');
-const {User} = require('../../../../database');
+const { Command } = require('../../structures')
+const { User } = require('../../../../database')
 
 module.exports = class AboutMeCommand extends Command {
     constructor() {
@@ -12,14 +12,16 @@ module.exports = class AboutMeCommand extends Command {
                 'aboutme Hello, world!'
             ],
             category: 'social'
-        });
+        })
     }
-    async run(message) {
-        var aboutme = message.args.join(' ');
-        if(!aboutme) return message.reply('invalidArg', {try: `${message.guild.db.prefix}aboutme <aboutme>`});
-        const user = await User.findById(message.author.id);
-        user.aboutme = aboutme;
-        user.save();
-        message.reply('aboutmeChangedTo', {aboutme});
+    async run (message) {
+        var aboutme = message.args.join(' ')
+        if (!aboutme) return message.reply('helper.invalid_arg', { try: `${message.guild.db.prefix}aboutme [aboutme]` })
+
+        const user = await User.findById(message.author.id)
+        user.aboutme = aboutme
+        user.save()
+
+        message.reply('commands.aboutme.reply', { aboutme })
     }
 }

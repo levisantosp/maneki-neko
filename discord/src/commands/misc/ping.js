@@ -1,4 +1,4 @@
-const {Command} = require('../../structures');
+const { Command } = require('../../structures')
 
 module.exports = class PingCommand extends Command {
     constructor() {
@@ -6,9 +6,9 @@ module.exports = class PingCommand extends Command {
             name: 'ping',
             category: 'misc',
             description: 'Bot latency'
-        });
+        })
     }
-    async run(message) {
-        message.reply('botLatency', {latency: message.guild.shard.latency});
+    async run (message) {
+        message.reply(`Pong! \`${message.guild.shard.latency}ms\``)
     }
 }

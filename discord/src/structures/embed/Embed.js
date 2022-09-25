@@ -1,17 +1,17 @@
-const {resolve} = require('./ResolveColor');
+const { resolve } = require('./ResolveColor')
 
 module.exports = class Embed {
     constructor() {
-        this.author = null;
-        this.title = null;
-        this.url = null;
-        this.description = null;
-        this.fields = [];
-        this.image = null;
-        this.thumbnail = null;
-        this.timestamp = null;
-        this.footer = null;
-        this.color = 0x7289DA;
+        this.author = null
+        this.title = null
+        this.url = null
+        this.description = null
+        this.fields = []
+        this.image = null
+        this.thumbnail = null
+        this.timestamp = new Date()
+        this.footer = null
+        this.color = 0x7289DA
     }
     /**
      * 
@@ -21,7 +21,7 @@ module.exports = class Embed {
      * @returns {Embed}
      */
     setAuthor(name, icon_url, url) {
-        return this.author = {name, icon_url, url}
+        return this.author = { name, icon_url, url }
     }
     /**
      * 
@@ -29,7 +29,7 @@ module.exports = class Embed {
      * @returns {Embed}
      */
     setTitle(title) {
-        return this.title = title;
+        return this.title = title
     }
     /**
      * 
@@ -37,7 +37,7 @@ module.exports = class Embed {
      * @returns {Embed}
      */
     setDescription(description) {
-        return this.description = description.toString().substring(0, 2048);
+        return this.description = description.toString().substring(0, 2048)
     }
     /**
      * 
@@ -45,7 +45,7 @@ module.exports = class Embed {
      * @returns {Embed}
      */
     setColor(color) {
-        return this.color = resolve(color);
+        return this.color = resolve(color)
     }
     /**
      * 
@@ -59,7 +59,7 @@ module.exports = class Embed {
             name: name.toString().substring(0, 256),
             value: value.toString().substring(0, 1024),
             inline: inline
-        });
+        })
     }
     /**
      * 
@@ -67,14 +67,14 @@ module.exports = class Embed {
      * @returns {Embed}
      */
     setThumbnail(url) {
-        return this.thumbnail = {url}
+        return this.thumbnail = { url }
     }
     /**
      * 
      * @param {string} url URL of an image
      */
     setImage(url) {
-        return this.image = {url};
+        return this.image = { url }
     }
     /**
      * 
@@ -82,7 +82,7 @@ module.exports = class Embed {
      * @returns {Embed}
      */
     setURL(url) {
-        return this.url = url;
+        return this.url = url
     }
     /**
      * 
@@ -90,7 +90,7 @@ module.exports = class Embed {
      * @returns {Embed}
      */
     setTimestamp(timestamp = new Date()) {
-        return this.timestamp = timestamp;
+        return this.timestamp = timestamp
     }
     /**
      * 
@@ -110,6 +110,6 @@ module.exports = class Embed {
      * @returns {Embed}
      */
     build(content = '') {
-        return {content, embeds: [this]}
+        return { content, embeds: [this] }
     }
 }
