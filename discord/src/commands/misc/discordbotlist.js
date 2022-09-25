@@ -14,6 +14,7 @@ module.exports = class DiscordBotListCommand extends Command {
         const embed = new Embed()
         const topgg = new Button()
         const dbl = new Button()
+        const bestlist = new Button()
 
         topgg.setStyle('LINK')
         topgg.setLabel('Top.gg')
@@ -25,6 +26,10 @@ module.exports = class DiscordBotListCommand extends Command {
         dbl.setEmoji('995013888854741053')
         dbl.setURL('https://discordbotlist.com/bots/maneki-neko/upvote')
 
+        bestlist.setStyle('LINK')
+        bestlist.setLabel('Bestlist')
+        bestlist.setURL('https://bestlist.online/vote/789196560415064085')
+
         embed.setTitle(this.locale.get('commands.dbl.embed.title'))
         embed.setDescription(this.locale.get('commands.dbl.embed.description'))
         embed.setThumbnail(this.client.user.avatarURL)
@@ -33,7 +38,7 @@ module.exports = class DiscordBotListCommand extends Command {
             embed,
             components: [{
                 type: 1,
-                components: [topgg, dbl]
+                components: [topgg, dbl, bestlist]
             }]
         })
     }
