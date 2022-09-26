@@ -1,21 +1,23 @@
-const { Constants } = require('eris')
+import { Constants } from 'eris'
 
-module.exports = class Button {
+export default class Button {
+    private type: number
+    private style: number
+    private label: any
+    private custom_id: any
+    private emoji: any
+    private url: any
+    private disabled: any
+
     constructor() {
         this.type = Constants.ComponentTypes.BUTTON
-        this.style = null
-        this.label = null
-        this.custom_id = null
-        this.emoji = null
-        this.url = null
-        this.disabled = null
     }
 
     /**
      * @param {'BLUE'|'GRAY'|'GREEN'|'RED'|'LINK'} style Component style
      * @returns {Button}
      */
-    setStyle(style) {
+    setStyle(style: string) {
         switch (style.toUpperCase()) {
             case 'BLUE': this.style = Constants.ButtonStyles.PRIMARY
             break
@@ -36,7 +38,7 @@ module.exports = class Button {
      * @param {string} label Button text
      * @returns {Button}
      */
-    setLabel(label) {
+    setLabel(label: string) {
         this.label = label
         return this
     }
@@ -45,7 +47,7 @@ module.exports = class Button {
      * @param {string} customID Button ID
      * @returns {Button}
      */
-    setCustomID(customID) {
+    setCustomID(customID: string) {
         this.custom_id = customID
         return this
     }
@@ -64,8 +66,7 @@ module.exports = class Button {
      * @param {string} url Button URL
      * @returns {Button}
      */
-
-    setURL(url) {
+    setURL(url: string) {
         if (this.style !== 5) throw new Error(`The button style must be 'LINK'`)
         this.url = url
         return this

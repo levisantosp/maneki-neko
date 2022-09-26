@@ -1,13 +1,18 @@
-const { Client, Collection } = require('eris')
-const { readdirSync } = require('fs')
-const { connect } = require('mongoose')
-const Logger = require('../util/Logger')
+import { Client, ClientOptions } from 'eris'
+import { readdirSync } from 'fs'
+import { connect } from 'mongoose'
+import { Logger } from '..'
 
-class App extends Client {
-    constructor(token, options) {
+export default class App extends Client {
+    commands: Map<string, any>
+    aliases: Map<string, any>
+    slashCommands: Map<string, any>
+
+    constructor(token: string, options: ClientOptions) {
         super(token, options)
-        this.commands = new Collection()
-        this.aliases = new Collection()
+        this.commands = new Map()
+        this.aliases = new Map()
+        this.slashCommands = new Map()
     }
     async login() {
         var commandModule = readdirSync('discord/src/commands')
@@ -15,8 +20,8 @@ class App extends Client {
         commandModule.forEach(module => {
             var commands = readdirSync(`discord/src/commands/${module}`)
 
-            commands.forEach(cmd => {
-                const Command = require(`../../commands/${module}/${cmd}`)
+            commands.forEach(async cmd => {
+                const Command = await import(`../../commands/${module}/${cmd}`)
                 const command = new Command(this)
 
                 this.commands.set(command.name, command)
@@ -33,8 +38,8 @@ class App extends Client {
         listenerType.forEach(type => {
             var listeners = readdirSync(`discord/src/listeners/${type}`)
 
-            listeners.forEach(listen => {
-                const Listener = require(`../../listeners/${type}/${listen}`)
+            listeners.forEach(async listen => {
+                const Listener = await import(`../../listeners/${type}/${listen}`)
                 const listener = new Listener(this)
 
                 Logger.warn(`[${listener.name}] listener loaded sucessfully`)
@@ -47,7 +52,8 @@ class App extends Client {
         this.connect()
     }
 }
-module.exports = new App(process.env.TOKEN, {
+
+export const app = new App(process.env.TOKEN, {
     restMode: true,
     compress: true,
     defaultImageFormat: 'png',

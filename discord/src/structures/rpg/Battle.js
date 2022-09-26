@@ -4,7 +4,7 @@ const locale = require('../../../../locales')
 
 module.exports = class Battle {
     constructor(guild) {
-        this.client = require('../classes/Client')
+        this.client = require('../classes/App')
         this._guild = guild
     }
     async startBattle() {

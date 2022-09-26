@@ -1,13 +1,15 @@
 // Incomplete
 
-module.exports = class Modal {
+export default class Modal {
+    private type: number
+    private style: number
+    private custom_id: any
+    private placeholder: any
+    private label: any
+    private required: any
+
     constructor() {
         this.type = 4
-        this.style = null
-        this.custom_id = null
-        this.placeholder = null
-        this.label = null
-        this.required = null
     }
     setPlaceholder(text) {
         return this.placeholder = text
