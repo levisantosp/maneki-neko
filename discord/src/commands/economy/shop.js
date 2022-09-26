@@ -52,6 +52,7 @@ module.exports = class ShopCommand extends Command {
         this.client.on('interactionCreate', async interaction => {
             if (interaction instanceof ComponentInteraction) {
                 if (interaction.channel.id !== message.channel.id) return
+                if (interaction.message.id !== msg.id) return
 
                 const bank = await Bank.findById('bank')
                 const user = await User.findById(interaction.member.id)
