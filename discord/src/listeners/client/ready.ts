@@ -1,11 +1,11 @@
-const { Listener, Logger, Battle } = require('../../structures')
-const { User, Bank, Guild, HG } = require('../../../../database')
-const locale = require('../../../../locales')
-const Eris = require('eris')
+import { Listener, Logger, Battle, App } from '../../structures'
+import { User, Bank, Guild } from '../../../../database'
+import locale from '../../../../locales'
+import { ActivityPartial, TextChannel } from 'eris'
 
-module.exports = class ReadyListener extends Listener {
-    constructor() {
-        super({ name: 'ready' })
+export default class ReadyListener extends Listener {
+    constructor(client: App) {
+        super({ name: 'ready', client })
     }
     async on() {
         Logger.send(`Logged as ${this.client.user.username}#${this.client.user.discriminator}`)
@@ -17,16 +17,17 @@ module.exports = class ReadyListener extends Listener {
                     type: 5
                 },
                 {
-                    name: `Global Bank: 💸 ${(await Bank.findById('bank')).granex.toLocaleString()}`,
+                    name: `Global Bank: 💸 ${(await Bank.findById('bank'))?.granex.toLocaleString()}`,
                     type: 0
                 }
-            ]
+            ] as ActivityPartial[]
+
             const activity = activities[Math.floor(Math.random() * activities.length)]
             this.client.editStatus('online', activity)
         }
 
         const reviveUser = async () => {
-            const users = await User.find({ deadAt: { $lte: Date.now() } })
+            const users: any[] = await User.find({ deadAt: { $lte: Date.now() } })
 
             for (const user of users) {
                 user.energy = 500
@@ -38,7 +39,7 @@ module.exports = class ReadyListener extends Listener {
 
         const addGranexPerFarm = async () => {
             const users = await User.find({ farmTime: { $lte: Date.now() } })
-            const bank = await Bank.findById('bank')
+            const bank: any = await Bank.findById('bank')
 
             for (const user of users) {
                 if (user.farms.length >= 1) {
@@ -120,7 +121,7 @@ module.exports = class ReadyListener extends Listener {
                 }
             )
 
-            const bank = await Bank.findById('bank')
+            const bank: any = await Bank.findById('bank')
 
             var granex = 0
             for (const user of users) {
@@ -128,10 +129,10 @@ module.exports = class ReadyListener extends Listener {
 
                 var tax = user.granex * 0.01
             
-                granex += parseInt(tax)
+                granex += parseInt(tax.toString())
 
-                user.granex -= parseInt(tax)
-                bank.granex += parseInt(tax)
+                user.granex -= parseInt(tax.toString())
+                bank.granex += parseInt(tax.toString())
 
                 user.save()
             }
@@ -141,8 +142,9 @@ module.exports = class ReadyListener extends Listener {
             for (const guild of guilds) {
                 if (!this.client.guilds.get(guild.id)) return guild.delete()
                 
-                this.client.getChannel(guild.announcements)
-                .createMessage(locale.get(guild.lang, 'helper.tax'))
+                const channel = this.client.getChannel(guild.announcements as string) as TextChannel
+
+                channel.createMessage(locale.get(guild.lang, 'helper.tax'))
             }
 
             bank.taxTime = Date.now() + 6.048e+8
@@ -152,7 +154,7 @@ module.exports = class ReadyListener extends Listener {
         }
 
         const startHG = async () => {
-            const guilds = await Guild.find(
+            const guilds: any[] = await Guild.find(
                 {
                     'hg.startsIn': { $lte: Date.now() }
                 }

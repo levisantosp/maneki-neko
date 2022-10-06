@@ -22,15 +22,17 @@ export default class App extends Client {
 
             commands.forEach(async cmd => {
                 const Command = await import(`../../commands/${module}/${cmd}`)
-                const command = new Command(this)
+                const command = new Command.default(this)
 
                 this.commands.set(command.name, command)
 
-                if (command.aliases) {
+                return console.log(command.aliases)
+
+                /*if (command.aliases) {
                     command.aliases.forEach(alias => {
                         this.aliases.set(alias, command.name)
                     })
-                }
+                }*/
             })
         })
         var listenerType = readdirSync('discord/src/listeners')
@@ -40,20 +42,20 @@ export default class App extends Client {
 
             listeners.forEach(async listen => {
                 const Listener = await import(`../../listeners/${type}/${listen}`)
-                const listener = new Listener(this)
+                const listener = new Listener.default(this)
 
                 Logger.warn(`[${listener.name}] listener loaded sucessfully`)
                 this.on(listener.name, (...args) => listener.on(...args).catch(err => new Logger(this).error(err)))
             })
         })
-        await connect(process.env.MONGO_URI)
+        await connect(process.env.MONGO_URI as string)
         await Logger.send('Database connected sucessfully')
         
         this.connect()
     }
 }
 
-export const app = new App(process.env.TOKEN, {
+export const app = new App(process.env.TOKEN as string, {
     restMode: true,
     compress: true,
     defaultImageFormat: 'png',

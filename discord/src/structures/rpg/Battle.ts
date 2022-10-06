@@ -1,9 +1,16 @@
-const { User, Bank, Guild } = require('../../../../database')
-const Embed = require('../embed/Embed')
-const locale = require('../../../../locales')
+import App from '../classes/App'
+import { User, Bank, Guild } from '../../../../database'
+import { Embed } from '..'
+import locale from '../../../../locales'
+import Eris, { Member, MessageWebhookContent, TextChannel, Webhook } from 'eris'
 
-module.exports = class Battle {
-    constructor(guild) {
+export default class Battle {
+    private client: App
+    private _guild: string
+    private guild: any
+    private channel: any
+
+    constructor(guild: string) {
         this.client = require('../classes/App')
         this._guild = guild
     }
@@ -23,7 +30,7 @@ module.exports = class Battle {
         var array = ['fail', 'success']
         var random = array[Math.floor(Math.random() * array.length)]
 
-        const channel = this.client.getChannel(this.guild.hg.channelInteract)
+        const channel = this.client.getChannel(this.guild.hg.channelInteract) as TextChannel
         if (!channel) return
 
         this.channel = channel
@@ -36,25 +43,25 @@ module.exports = class Battle {
 
             embed.setDescription(locale.get(this.guild.lang, 'helper.hg.started'))
 
-            const client = channel.guild.members.get(this.client.user.id)
+            const client = channel.guild.members.get(this.client.user.id) as Member
 
             if (client.permissions.has('manageWebhooks')) {
                 const webhooks = await channel.getWebhooks()
-                var webhook = webhooks.filter(w => w.name === 'Hunger Games')[0]
+                var webhook = webhooks.filter(w => w.name === 'Hunger Games')[0] as Webhook
 
                 if (!webhook) webhook = await channel.createWebhook(
                     {
                         name: 'Hunger Games',
                         avatar: 'https://imgur.com/QrRYEgk.png'
                     }
-                )
+                ) as Webhook
 
-                this.client.executeWebhook(webhook.id, webhook.token,
+                this.client.executeWebhook(webhook.id, webhook.token as string as string,
                     {
-                        embed,
+                        embed: embed,
                         avatarURL: 'https://imgur.com/QrRYEgk.png',
                         username: 'Hunger Games'
-                    }
+                    } as MessageWebhookContent
                 )
             }
         }
@@ -73,7 +80,7 @@ module.exports = class Battle {
 
                 if (damage < 0) damage = 0
 
-                var energy = player2.energy - damage
+                var energy = player2.energy - damage as number
 
                 if (energy < 0) energy = 0
 
@@ -87,14 +94,14 @@ module.exports = class Battle {
                             id: player.id,
                             usingWeapon: player.usingWeapon,
                             usingBulletProof: player.usingBulletProof,
-                            energy: parseInt(energy)
+                            energy: parseInt(String(energy))
                         }
                     )
                 }
 
                 this.checkPlayers()
 
-                const user = this.client.users.get(player1.id)
+                const user = this.client.users.get(player1.id) as Eris.User
 
                 if (energy > 0) {
                     embed.setDescription(locale.get(this.guild.lang, 'helper.hg.attack_yourself',
@@ -104,7 +111,7 @@ module.exports = class Battle {
                         }
                     ))
 
-                    const client = channel.guild.members.get(this.client.user.id)
+                    const client = channel.guild.members.get(this.client.user.id) as Member
 
                     if (client.permissions.has('manageWebhooks')) {
                         const webhooks = await channel.getWebhooks()
@@ -117,12 +124,12 @@ module.exports = class Battle {
                             }
                         )
 
-                        this.client.executeWebhook(webhook.id, webhook.token,
+                        this.client.executeWebhook(webhook.id, webhook.token as string,
                             {
                                 embed,
                                 avatarURL: 'https://imgur.com/QrRYEgk.png',
                                 username: 'Hunger Games'
-                            }
+                            } as MessageWebhookContent
                         )
                     }
                 }
@@ -133,7 +140,7 @@ module.exports = class Battle {
                         }
                     ))
 
-                    const client = channel.guild.members.get(this.client.user.id)
+                    const client = channel.guild.members.get(this.client.user.id) as Member
 
                     if (client.permissions.has('manageWebhooks')) {
                         const webhooks = await channel.getWebhooks()
@@ -146,12 +153,12 @@ module.exports = class Battle {
                             }
                         )
 
-                        this.client.executeWebhook(webhook.id, webhook.token,
+                        this.client.executeWebhook(webhook.id, webhook.token as string,
                             {
                                 embed,
                                 avatarURL: 'https://imgur.com/QrRYEgk.png',
                                 username: 'Hunger Games'
-                            }
+                            } as MessageWebhookContent
                         )
                     }
                 }
@@ -163,8 +170,8 @@ module.exports = class Battle {
                 if (damage < 0) damage = 0
                 if (energy < 0) energy = 0
 
-                const user1 = this.client.users.get(player1.id)
-                const user2 = this.client.users.get(player2.id)
+                const user1 = this.client.users.get(player1.id) as Eris.User
+                const user2 = this.client.users.get(player2.id) as Eris.User
 
                 const args = {
                     fail: async () => {
@@ -176,7 +183,7 @@ module.exports = class Battle {
                             }
                         ))
 
-                        const client = channel.guild.members.get(this.client.user.id)
+                        const client = channel.guild.members.get(this.client.user.id) as Member
 
                         if (client.permissions.has('manageWebhooks')) {
                             const webhooks = await channel.getWebhooks()
@@ -189,17 +196,17 @@ module.exports = class Battle {
                                 }
                             )
 
-                            this.client.executeWebhook(webhook.id, webhook.token,
+                            this.client.executeWebhook(webhook.id, webhook.token as string,
                                 {
                                     embed,
                                     avatarURL: 'https://imgur.com/QrRYEgk.png',
                                     username: 'Hunger Games'
-                                }
+                                } as MessageWebhookContent
                             )
                         }
                     },
                     success: async () => {
-                        var energy = parseInt(player2.energy - damage)
+                        var energy = parseInt(String(player2.energy - damage))
 
                         var index = this.guild.hg.players.findIndex(p => p.id === player2.id)
                         var player = this.guild.hg.players.filter(p => p.id === player2.id)[0]
@@ -226,7 +233,7 @@ module.exports = class Battle {
                                 }
                             ))
 
-                            const client = channel.guild.members.get(this.client.user.id)
+                            const client = channel.guild.members.get(this.client.user.id) as Member
 
                             if (client.permissions.has('manageWebhooks')) {
                                 const webhooks = await channel.getWebhooks()
@@ -239,12 +246,12 @@ module.exports = class Battle {
                                     }
                                 )
 
-                                this.client.executeWebhook(webhook.id, webhook.token,
+                                this.client.executeWebhook(webhook.id, webhook.token as string,
                                     {
                                         embed,
                                         avatarURL: 'https://imgur.com/QrRYEgk.png',
                                         username: 'Hunger Games'
-                                    }
+                                    } as MessageWebhookContent
                                 )
                             }
 
@@ -261,7 +268,7 @@ module.exports = class Battle {
     }
 
     async checkPlayers() {
-        const guild = await Guild.findById(this._guild)
+        const guild: any = await Guild.findById(this._guild)
         const player = guild.hg.players.filter(player => player.energy <= 0)[0]
 
         if (player) {
@@ -270,10 +277,10 @@ module.exports = class Battle {
             guild.hg.players.splice(index)
             guild.save()
 
-            const channel = this.client.getChannel(guild.hg.channelInteract)
+            const channel = this.client.getChannel(guild.hg.channelInteract) as TextChannel
 
             if (channel) {
-                const user = this.client.users.get(player.id)
+                const user = this.client.users.get(player.id) as Eris.User
                 const embed = new Embed()
                 embed.setTitle('Hunger Games')
                 embed.setThumbnail('https://imgur.com/QrRYEgk.png')
@@ -283,7 +290,7 @@ module.exports = class Battle {
                     }
                 ))
 
-                const client = channel.guild.members.get(this.client.user.id)
+                const client = channel.guild.members.get(this.client.user.id) as Member
 
                 if (client.permissions.has('manageWebhooks')) {
                     const webhooks = await channel.getWebhooks()
@@ -296,12 +303,12 @@ module.exports = class Battle {
                         }
                     )
 
-                    this.client.executeWebhook(webhook.id, webhook.token,
+                    this.client.executeWebhook(webhook.id, webhook.token as string,
                         {
                             embed,
                             avatarURL: 'https://imgur.com/QrRYEgk.png',
                             username: 'Hunger Games'
-                        }
+                        } as MessageWebhookContent
                     )
                 }
             }
@@ -312,12 +319,12 @@ module.exports = class Battle {
 
     async checkWinner(guild) {
         if (this.guild.hg.players.length === 1) {
-            const user = this.client.users.get(this.guild.hg.players[0].id)
-            const _user = await User.findById(user.id)
-            const bank = await Bank.findById('bank')
+            const user = this.client.users.get(this.guild.hg.players[0].id) as Eris.User
+            const _user: any = await User.findById(user.id)
+            const bank: any = await Bank.findById('bank')
             if (bank.granex < 5000) return
 
-            const channel = this.client.getChannel(this.guild.hg.channelInteract)
+            const channel = this.client.getChannel(this.guild.hg.channelInteract) as TextChannel
 
             if (channel) {
                 const embed = new Embed()
@@ -331,7 +338,7 @@ module.exports = class Battle {
                     }
                 ))
 
-                const client = channel.guild.members.get(this.client.user.id)
+                const client = channel.guild.members.get(this.client.user.id) as Member
 
                 if (client.permissions.has('manageWebhooks')) {
                     const webhooks = await channel.getWebhooks()
@@ -344,12 +351,12 @@ module.exports = class Battle {
                         }
                     )
 
-                    this.client.executeWebhook(webhook.id, webhook.token,
+                    this.client.executeWebhook(webhook.id, webhook.token as string,
                         {
                             embed,
                             avatarURL: 'https://imgur.com/QrRYEgk.png',
                             username: 'Hunger Games'
-                        }
+                        } as MessageWebhookContent
                     )
                 }
             }
@@ -370,7 +377,7 @@ module.exports = class Battle {
     }
 
     async checkHG() {
-        const guild = await Guild.findById(this._guild)
+        const guild: any = await Guild.findById(this._guild)
         if (guild.hg.players.length === 1) {
             guild.hg.players = []
             guild.hg.closed = false

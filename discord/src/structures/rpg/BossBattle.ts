@@ -1,13 +1,33 @@
-const { User, Bank } = require('../../../../database')
-const Embed = require('../embed/Embed')
+import { User, Bank } from '../../../../database'
+import { ComponentInteraction, Member, MessageWebhookContent, TextChannel } from 'eris'
+import { App, Embed } from '..'
 
-module.exports = class BossBattle {
-    constructor(interaction, user, locale, channel, boss, author) {
+interface BossOptions {
+    name: string
+    energy: number
+    minDamage: number
+    maxDamage: number
+    def: number
+}
+
+export default class BossBattle {
+    private interaction: ComponentInteraction
+    private _user: string
+    private user: any
+    private locale: any
+    private channel: TextChannel
+    private client: App
+    private author: Member
+    private started: boolean
+    private bosses: object
+    private boss: BossOptions
+    private finished: boolean
+
+    constructor(interaction: ComponentInteraction, user: string, locale, channel: TextChannel, boss: string, author: Member) {
         this.interaction = interaction
         this._user = user
         this.locale = locale
         this.channel = channel
-        this.client = require('../classes/App')
         this.author = author
         this.started = false
         this.bosses = {
@@ -59,13 +79,13 @@ module.exports = class BossBattle {
                             }
                         )
     
-                        this.client.executeWebhook(webhook.id, webhook.token,
+                        this.client.executeWebhook(webhook.id, webhook.token as string,
                             {
                                 content: this.author.mention,
                                 embed,
                                 avatarURL: 'https://imgur.com/7pZAh67.png',
                                 username: 'Cleiton Trovoada (Boss)'
-                            }
+                            } as MessageWebhookContent
                         )
                     }
                     else {
@@ -102,13 +122,13 @@ module.exports = class BossBattle {
                                 }
                             )
 
-                            this.client.executeWebhook(webhook.id, webhook.token,
+                            this.client.executeWebhook(webhook.id, webhook.token as string,
                                 {
                                     content: this.author.mention,
                                     embed,
                                     avatarURL: 'https://imgur.com/7pZAh67.png',
                                     username: 'Cleiton Trovoada (Boss)'
-                                }
+                                } as MessageWebhookContent
                             )
 
                             this.boss.energy -= damage
@@ -141,16 +161,16 @@ module.exports = class BossBattle {
                                     }
                                 )
     
-                                this.client.executeWebhook(webhook.id, webhook.token,
+                                this.client.executeWebhook(webhook.id, webhook.token as string,
                                     {
                                         content: this.author.mention,
                                         embed,
                                         avatarURL: 'https://imgur.com/7pZAh67.png',
                                         username: 'Cleiton Trovoada (Boss)'
-                                    }
+                                    } as MessageWebhookContent
                                 )
     
-                                this.user.energy -= parseInt(bossDamage)
+                                this.user.energy -= parseInt(bossDamage.toString())
                             }
                             else {
                                 embed.setTitle('Cleiton Trovoada')
@@ -166,13 +186,13 @@ module.exports = class BossBattle {
                                     }
                                 )
     
-                                this.client.executeWebhook(webhook.id, webhook.token,
+                                this.client.executeWebhook(webhook.id, webhook.token as string,
                                     {
                                         content: this.author.mention,
                                         embed,
                                         avatarURL: 'https://imgur.com/7pZAh67.png',
                                         username: 'Cleiton Trovoada (Boss)'
-                                    }
+                                    } as MessageWebhookContent
                                 )
                             }
                         }
@@ -196,13 +216,13 @@ module.exports = class BossBattle {
                             }
                         )
     
-                        this.client.executeWebhook(webhook.id, webhook.token,
+                        this.client.executeWebhook(webhook.id, webhook.token as string,
                             {
                                 content: this.author.mention,
                                 embed,
                                 avatarURL: 'https://imgur.com/YCQAlba.png',
                                 username: 'Vladimir (Boss)'
-                            }
+                            } as MessageWebhookContent
                         )
                     }
                     else {
@@ -239,13 +259,13 @@ module.exports = class BossBattle {
                                 }
                             )
 
-                            this.client.executeWebhook(webhook.id, webhook.token,
+                            this.client.executeWebhook(webhook.id, webhook.token as string,
                                 {
                                     content: this.author.mention,
                                     embed,
                                     avatarURL: 'https://imgur.com/YCQAlba.png',
                                     username: 'Vladimir (Boss)'
-                                }
+                                } as MessageWebhookContent
                             )
 
                             this.boss.energy -= damage
@@ -278,16 +298,16 @@ module.exports = class BossBattle {
                                     }
                                 )
     
-                                this.client.executeWebhook(webhook.id, webhook.token,
+                                this.client.executeWebhook(webhook.id, webhook.token as string,
                                     {
                                         content: this.author.mention,
                                         embed,
                                         avatarURL: 'https://imgur.com/YCQAlba.png',
                                         username: 'Vladimir (Boss)'
-                                    }
+                                    } as MessageWebhookContent
                                 )
     
-                                this.user.energy -= parseInt(bossDamage)
+                                this.user.energy -= parseInt(bossDamage.toString())
                             }
                             else {
                                 embed.setTitle('Vladimir')
@@ -303,13 +323,13 @@ module.exports = class BossBattle {
                                     }
                                 )
     
-                                this.client.executeWebhook(webhook.id, webhook.token,
+                                this.client.executeWebhook(webhook.id, webhook.token as string,
                                     {
                                         content: this.author.mention,
                                         embed,
                                         avatarURL: 'https://imgur.com/YCQAlba.png',
                                         username: 'Vladimir (Boss)'
-                                    }
+                                    } as MessageWebhookContent
                                 )
                             }
                         }
@@ -470,7 +490,7 @@ module.exports = class BossBattle {
             ))
 
             const webhooks = await this.channel.getWebhooks()
-            var webhook = webhooks.filter(w => w.name === this.boss === 'cleiton' ? 'Cleiton Trovoada (Boss)' : 'Vladimir (Boss)')[0]
+            var webhook = webhooks.filter(w => w.name === this.boss.name === 'cleiton' ? 'Cleiton Trovoada (Boss)' : 'Vladimir (Boss)')[0]
 
             if (!webhook) webhook = await this.channel.createWebhook(
                 {
@@ -479,13 +499,13 @@ module.exports = class BossBattle {
                 }
             )
 
-            this.client.executeWebhook(webhook.id, webhook.token,
+            this.client.executeWebhook(webhook.id, webhook.token as string,
                 {
                     content: this.author.mention,
                     embed,
                     avatarURL: this.boss.name === 'cleiton' ? 'https://imgur.com/7pZAh67.png' : 'https://imgur.com/YCQAlba.png',
                     username: this.boss.name === 'cleiton' ? 'Cleiton Trovoada (Boss)' : 'Vladimir (Boss)'
-                }
+                } as MessageWebhookContent
             )
 
             this.user.artifacts.push(artifact)
@@ -497,7 +517,7 @@ module.exports = class BossBattle {
             embed.setDescription(this.locale.get('commands.boss.you_lost'))
 
             const webhooks = await this.channel.getWebhooks()
-            var webhook = webhooks.filter(w => w.name === this.boss === 'cleiton' ? 'Cleiton Trovoada (Boss)' : 'Vladimir (Boss)')[0]
+            var webhook = webhooks.filter(w => w.name == this.boss == 'cleiton' ? 'Cleiton Trovoada (Boss)' : 'Vladimir (Boss)')[0]
 
             if (!webhook) webhook = await this.channel.createWebhook(
                 {
@@ -506,13 +526,13 @@ module.exports = class BossBattle {
                 }
             )
 
-            this.client.executeWebhook(webhook.id, webhook.token,
+            this.client.executeWebhook(webhook.id, webhook.token as string,
                 {
                     content: this.author.mention,
                     embed,
                     avatarURL: this.boss.name === 'cleiton' ? 'https://imgur.com/7pZAh67.png' : 'https://imgur.com/YCQAlba.png',
                     username: this.boss.name === 'cleiton' ? 'Cleiton Trovoada (Boss)' : 'Vladimir (Boss)'
-                }
+                } as MessageWebhookContent
             )
 
             this.user.deadAt = Date.now() + 3.6e+6

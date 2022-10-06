@@ -1,6 +1,15 @@
 // Incomplete
 
-module.exports = class ModalBuilder {
+interface ModalBuilderData {
+    custom_id: any
+    title: any
+    components: string[]
+}
+
+export default class ModalBuilder {
+    private type: number
+    private data: ModalBuilderData
+
     constructor() {
         this.type = 8
         this.data = {

@@ -1,11 +1,11 @@
-const Embed = require('../embed/Embed')
-const embed = new Embed()
-const c = require('colors')
-const moment = require('moment')
-moment.locale('pt-br')
+import { Embed, App } from '..'
+import c from 'colors'
+import moment from 'moment'
 
-module.exports = class Logger {
-    constructor(client) {
+export default class Logger {
+    private client: App
+
+    constructor(client: App) {
         this.client = client
     }
     static send(message) {
@@ -30,7 +30,7 @@ module.exports = class Logger {
                 name: `${this.client.user.username} Tracker`,
                 avatar: this.client.user.avatarURL
             })
-            
+
             this.client.executeWebhook(webhook.id, webhook.token, {
                 embed,
                 avatarURL: this.client.user.avatarURL,

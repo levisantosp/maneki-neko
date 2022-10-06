@@ -1,9 +1,22 @@
 import { CommandInteraction, Message } from 'eris'
 import App from './App'
 
-export interface CommandOptions {
+interface CommandOptions {
     message: Message
     interaction: CommandInteraction
+}
+
+export interface ICommandOptions {
+    name: string
+    aliases: string[]
+    description: string
+    category: string
+    syntax: string
+    examples: string[]
+    onlyOwner: boolean
+    permissions: string[]
+    botPermissions: string[]
+    client: App
 }
 
 export default class Command {
@@ -16,9 +29,9 @@ export default class Command {
     onlyOwner: boolean
     permissions: string[]
     botPermissions: string[]
-    client?: App
+    client: App
 
-    constructor(options) {
+    constructor(options: ICommandOptions) {
         this.name = options.name
         this.aliases = options.aliases
         this.description = options.description
@@ -28,6 +41,7 @@ export default class Command {
         this.onlyOwner = options.onlyOwner || false
         this.permissions = options.permissions || []
         this.botPermissions = options.botPermissions || []
+        this.client = options.client
     }
-    async run ({}: CommandOptions) {}
+    async run ({ }: CommandOptions) {}
 }

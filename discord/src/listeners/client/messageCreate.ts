@@ -1,17 +1,20 @@
-const { Listener, Embed, Button } = require('../../structures')
-const { User, Bank } = require('../../../../database')
+import { Listener, Embed, Button, App } from '../../structures'
+import { User, Bank } from '../../../../database'
+import { MessageWebhookContent, TextChannel, Webhook, WebhookData, WebhookOptions, WebhookPayload, WebhookTypes } from 'eris'
+import { IListenerOptions } from '../../structures/classes/Listener'
 
-module.exports = class MessageCreateListener extends Listener {
-    constructor() {
-        super({ name: 'messageCreate' })
+export default class MessageCreateListener extends Listener {
+    constructor(client: App) {
+        super({ name: 'messageCreate', client })
     }
-    async on(message) {
+    async on({ message }: IListenerOptions) {
         if (!message.author.bot) return
         if (message.guildID != '994997023000506418') return
 
-        const bank = await Bank.findById('bank')
-        const user = await User.findById(message.content ? message.content : message.embeds[0].footer.replace(' • Vote você também!', ''))
-        const _user = await this.client.getRESTUser(message.content ? message.content : message.embeds[0].footer.replace(' • Vote você também!', ''))
+        const bank: any = await Bank.findById('bank')
+        const userId = message.content || message.embeds[0]?.footer?.text.replace(' • Vote você também!', '') as string
+        const user = await User.findById(userId)
+        const _user = await this.client.getRESTUser(userId)
 
         if (!user) return
         if (bank.granex < 800) throw new Error('The bank doesn\'t have granex')
@@ -39,7 +42,7 @@ module.exports = class MessageCreateListener extends Listener {
         dbl.setEmoji('995013888854741053')
         dbl.setURL('https://discordbotlist.com/bots/maneki-neko/upvote')
 
-        const channels = await this.client.getRESTGuildChannels('721384921679265833')
+        const channels = await this.client.getRESTGuildChannels('721384921679265833') as TextChannel[]
 
         for (const channel of channels) {
             if (channel.id !== '994993504256274482') continue
@@ -52,7 +55,7 @@ module.exports = class MessageCreateListener extends Listener {
                 avatar: this.client.user.avatarURL
             })
 
-            this.client.executeWebhook(webhook.id, webhook.token, {
+            this.client.executeWebhook(webhook.id, webhook.token as string, {
                 content: _user.mention,
                 embed,
                 avatarURL: this.client.user.avatarURL,
@@ -60,8 +63,8 @@ module.exports = class MessageCreateListener extends Listener {
                 components: [{
                     type: 1,
                     components: [topgg, dbl]
-                }]
-            })
+                }],
+            } as MessageWebhookContent)
         }
     }
 }

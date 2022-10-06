@@ -1,6 +1,14 @@
-const { Constants } = require('eris')
+import { Constants } from 'eris'
 
-module.exports = class SelectMenu {
+export default class SelectMenu {
+    private type: number
+    private custom_id: any
+    private placeholder: any
+    private options: object[]
+    private min_values: any
+    private max_values: any
+    private disabled: boolean
+
     constructor() {
         this.type = Constants.ComponentTypes.SELECT_MENU
         this.custom_id = null
@@ -8,7 +16,7 @@ module.exports = class SelectMenu {
         this.options = []
         this.min_values = null
         this.max_values = null
-        this.disabled = null
+        this.disabled = false
     }
 
     /**
