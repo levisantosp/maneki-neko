@@ -1,13 +1,13 @@
 import { Constants } from 'eris'
 
 export default class SelectMenu {
-    private type: number
-    private custom_id: any
-    private placeholder: any
-    private options: object[]
-    private min_values: any
-    private max_values: any
-    private disabled: boolean
+    type: number
+    custom_id: any
+    placeholder: any
+    options: object[]
+    min_values: any
+    max_values: any
+    disabled: boolean
 
     constructor() {
         this.type = Constants.ComponentTypes.SELECT_MENU

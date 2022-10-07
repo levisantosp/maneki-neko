@@ -1,6 +1,6 @@
 import { Listener, Embed, Button, App } from '../../structures'
 import { User, Bank } from '../../../../database'
-import { MessageWebhookContent, TextChannel, Webhook, WebhookData, WebhookOptions, WebhookPayload, WebhookTypes } from 'eris'
+import { MessageWebhookContent, TextChannel } from 'eris'
 import { IListenerOptions } from '../../structures/classes/Listener'
 
 export default class MessageCreateListener extends Listener {
@@ -55,7 +55,7 @@ export default class MessageCreateListener extends Listener {
                 avatar: this.client.user.avatarURL
             })
 
-            this.client.executeWebhook(webhook.id, webhook.token as string, {
+            this.client.executeWebhook(webhook.id, webhook.token!, {
                 content: _user.mention,
                 embed,
                 avatarURL: this.client.user.avatarURL,
@@ -63,7 +63,7 @@ export default class MessageCreateListener extends Listener {
                 components: [{
                     type: 1,
                     components: [topgg, dbl]
-                }],
+                }]
             } as MessageWebhookContent)
         }
     }

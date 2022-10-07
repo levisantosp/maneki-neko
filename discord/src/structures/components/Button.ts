@@ -1,13 +1,13 @@
 import { Constants } from 'eris'
 
 export default class Button {
-    private type: number
-    private style: number
-    private label: any
-    private custom_id: any
-    private emoji: any
-    private url: any
-    private disabled: any
+    type: number
+    style: number
+    label: any
+    custom_id: any
+    emoji: any
+    url: any
+    disabled: any
 
     constructor() {
         this.type = Constants.ComponentTypes.BUTTON

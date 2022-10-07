@@ -7,8 +7,8 @@ interface ModalBuilderData {
 }
 
 export default class ModalBuilder {
-    private type: number
-    private data: ModalBuilderData
+    type: number
+    data: ModalBuilderData
 
     constructor() {
         this.type = 8

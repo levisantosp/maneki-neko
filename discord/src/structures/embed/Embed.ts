@@ -20,16 +20,16 @@ interface EmbedFooterOptions {
 }
 
 export default class Embed {
-    private author?: EmbedAuthorOptions | null
-    private title?: string | null
-    private url?: string | null
-    private description?: string | null
-    private fields?: Array<EmbedFieldsOptions> | null
-    private image?: EmbedImageOption | null
-    private thumbnail?: EmbedImageOption | null
-    private timestamp?: Date | null
-    private footer?: EmbedFooterOptions | null
-    private color?: number | null
+    author?: EmbedAuthorOptions | null
+    title?: string | null
+    url?: string | null
+    description?: string | null
+    fields?: Array<EmbedFieldsOptions> | null
+    image?: EmbedImageOption | null
+    thumbnail?: EmbedImageOption | null
+    timestamp?: Date | null
+    footer?: EmbedFooterOptions | null
+    color?: number | null
 
     constructor() {}
 

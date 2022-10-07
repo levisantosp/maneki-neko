@@ -1,12 +1,13 @@
 import { App, Listener } from '../../structures'
 import { User } from '../../../../database'
 import { ComponentInteraction, TextChannel } from 'eris'
+import { IListenerOptions } from '../../structures/classes/Listener'
 
 export default class InteractionCreateListener extends Listener {
     constructor(client: App) {
         super({ name: 'interactionCreate', client })
     }
-    async on(interaction) {
+    async on({ interaction }: IListenerOptions) {
         if (interaction instanceof ComponentInteraction) {
             if (interaction.guildID !== '721384921679265833') return
             if (interaction.channel.id !== '979035224556056586') return
