@@ -12,22 +12,6 @@ module.exports = class HelpCommand extends Command {
             description_localizations: {
                 'pt-BR': 'Mostra meus comandos'
             },
-            options: [
-                {
-                    type: 3,
-                    name: 'command',
-                    name_localizations: {
-                        'pt-BR': 'comando'
-                    },
-                    description: 'Choose the command',
-                    description_localizations: {
-                        'pt-BR': 'Escolha o comando'
-                    },
-                    choices: [
-                        
-                    ]
-                }
-            ],
             category: 'util',
             botPermissions: ['embedLinks']
         })

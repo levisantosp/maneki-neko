@@ -44,12 +44,33 @@ module.exports = class CommandRunner {
         
         if (!command) return
 
+        if (command.permissions[0]) {
+            var arrayPerm = []
+
+            command.permissions.forEach(perm => {
+                if (!ctx.interaction.member.permissions.has(perm)) arrayPerm.push(perm)
+            })
+
+            if (arrayPerm[0]) return ctx.reply('helper.permissions.user', { permissions: arrayPerm.map(perm => perm).join(', ') })
+        }
+        if (command.botPermissions[0]) {
+            var arrayPerm = []
+
+            var member = ctx.guild.members.get(this.client.user.id)
+
+            command.permissions.forEach(perm => {
+                if (!member.permissions.has(perm)) arrayPerm.push(perm)
+            })
+
+            if (arrayPerm[0]) return ctx.reply('helper.permissions.bot', { permissions: arrayPerm.map(perm => perm).join(', ') })
+        }
+
         command.locale = {
             get: (content, args) => {
                 return locale.get(this.locale, content, args)
             }
         }
-        
+
         command.getMember = (member) => {
             try {
                 if (isNaN(member)) return this.client.guilds.get(this.interaction.guildID).members.get(member.replace(/[<@!>]/g, ''))
