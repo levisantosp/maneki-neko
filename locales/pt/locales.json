@@ -7,7 +7,10 @@
             "limit_channels": "Este servidor chegou ao limite de canais permitidos comandos. ({limit})",
             "invalid_channel": "Canal inválido! Verifique se a menção ou ID do canal estão corretos.",
             "announcement_channel": "{channel} foi setado como canal de anúncios com sucesso!",
-            "allowed_channels_set": "{channel} foi adicionado com sucesso!"
+            "allowed_channels_set": "{channel} foi adicionado com sucesso!",
+            "channel_already_exists": "Este canal já está na lista de canais permitidos comandos.",
+            "channel_not_exists": "Este canal não está na lista de canais permitidos comandos.",
+            "channel_removed": "Canal removido com sucesso!"
         },
         "prefix": {
             "prefix_changed_to": "Meu prefixo neste servidor foi alterado para `{prefix}`"
