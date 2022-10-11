@@ -14,7 +14,17 @@ module.exports = class ReadyListener extends Listener {
         })
 
         const commands = []
-        this.client.slashCommands.forEach(command => commands.push(command))
+        this.client.slashCommands.forEach(command => {
+            commands.push(
+                {
+                    name: command.name,
+                    name_localizations: command.name_localizations,
+                    description: command.description,
+                    description_localizations: command.description_localizations,
+                    options: command.options
+                }
+            )
+        })
 
         this.client.bulkEditCommands(commands)
 
