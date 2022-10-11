@@ -1,7 +1,6 @@
 const { Listener, Logger, Battle } = require('../../structures')
 const { User, Bank, Guild } = require('../../../../database')
 const locale = require('../../../../locales')
-const Eris = require('eris')
 
 module.exports = class ReadyListener extends Listener {
     constructor() {
@@ -13,6 +12,10 @@ module.exports = class ReadyListener extends Listener {
         this.client.slashCommands.forEach(command => {
             this.client.createCommand(command)
         })
+
+        const commands = []
+        this.client.commands.forEach(command => commands.push(command))
+        this.client.bulkEditCommands(commands)
 
         const editClientStatus = async () => {
             const activities = [
