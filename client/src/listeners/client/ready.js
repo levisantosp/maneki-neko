@@ -14,7 +14,8 @@ module.exports = class ReadyListener extends Listener {
         })
 
         const commands = []
-        this.client.commands.forEach(command => commands.push(command))
+        this.client.slashCommands.forEach(command => commands.push(command))
+
         this.client.bulkEditCommands(commands)
 
         const editClientStatus = async () => {
