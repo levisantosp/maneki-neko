@@ -11,30 +11,6 @@ module.exports = class ReadyListener extends Listener {
         Logger.send(`Logged as ${this.client.user.username}#${this.client.user.discriminator}`)
 
         this.client.slashCommands.forEach(command => {
-            if (command.name == 'help') {
-                this.client.slashCommands.forEach(cmd => {
-                    if (cmd.name_localizations) {
-                        command.options[0].choices.push(
-                            {
-                                name: cmd.name,
-                                name_localizations: {
-                                    'pt-BR': cmd.name_localizations
-                                },
-                                value: cmd.name
-                            }
-                        )
-                    }
-                    else {
-                        command.options[0].choices.push(
-                            {
-                                name: cmd.name,
-                                value: cmd.name
-                            }
-                        )
-                    }
-                })
-            }
-
             this.client.createCommand(command)
         })
 
