@@ -24,6 +24,8 @@ module.exports = class CommandRunner {
     async run () {
         if (!this.interaction.member) return
 
+        const permissions = require(`../../../../locales/${this.locale}/permissions.json`)
+
         const user = await User.findById(this.interaction.member?.id)
         const guild = await Guild.findById(this.interaction.guildID)
         const db = {
@@ -51,7 +53,7 @@ module.exports = class CommandRunner {
                 if (!ctx.interaction.member.permissions.has(perm)) arrayPerm.push(perm)
             })
 
-            if (arrayPerm[0]) return ctx.reply('helper.permissions.user', { permissions: arrayPerm.map(perm => perm).join(', ') })
+            if (arrayPerm[0]) return ctx.reply('helper.permissions.user', { permission: arrayPerm.map(perm => permissions[perm]).join(', ') })
         }
         if (command.botPermissions[0]) {
             var arrayPerm = []
