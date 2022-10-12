@@ -62,7 +62,7 @@ module.exports = class CommandRunner {
                 if (!member.permissions.has(perm)) arrayPerm.push(perm)
             })
 
-            if (arrayPerm[0]) return ctx.reply('helper.permissions.bot', { permissions: arrayPerm.map(perm => perm).join(', ') })
+            if (arrayPerm[0]) return ctx.reply('helper.permissions.bot', { permission: arrayPerm.map(perm => perm).join(', ') })
         }
 
         command.locale = {

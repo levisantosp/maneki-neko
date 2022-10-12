@@ -38,25 +38,14 @@ module.exports = class CommandContext {
             }
             case 'object': {
                 if (options?.options && options?.name) {
-                    return this.interaction.createMessage(Object.assign(content,
-                        {
-                            interactionReference: {
-                                interactionID: this.interaction.id
-                            }
-                        }),
+                    return this.interaction.createMessage(Object.assign(content),
                         {
                             file: options?.file,
                             name: options?.name
                         }
                     )
                 }
-                else return this.interaction.createMessage(Object.assign(content,
-                    {
-                        interactionReference: {
-                            interactionID: this.interaction.id
-                        }
-                    })
-                )
+                else return this.interaction.createMessage(Object.assign(content))
             }
         }
     }
