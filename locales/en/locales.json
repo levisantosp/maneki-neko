@@ -7,7 +7,10 @@
             "limit_channels": "This server has reached the limit allowed channels commands. ({limit})",
             "invalid_channel": "Invalid channel! Verify if channel mention or ID are correct.",
             "announcement_channel": "{channel} was set as announcements channel successfully!",
-            "allowed_channels_set": "{channel} was add successfully!"
+            "allowed_channels_set": "{channel} was add successfully!",
+            "channel_already_exists": "This channel is already in the allowed channels list.",
+            "channel_not_exists": "This channel is not in the allowed channels list.",
+            "channel_removed": "Channel removed successfully!"
         },
         "prefix": {
             "prefix_changed_to": "My prefix on this server has been changed to `{prefix}`"
