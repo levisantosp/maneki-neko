@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3832a877-45ef-4ccf-806d-72d5412e8599" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/meow-rp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/commands/misc/ping.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/commands/misc/ping.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/listeners/client/guildCreate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/listeners/client/guildCreate.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/listeners/client/guildDelete.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/listeners/client/guildDelete.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/listeners/client/interactionCreate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/listeners/client/interactionCreate.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/listeners/client/messageCreate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/listeners/client/messageCreate.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/listeners/client/ready.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/listeners/client/ready.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/listeners/guilds/messageCreate.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/listeners/guilds/messageUpdate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structures/classes/App.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structures/classes/App.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structures/classes/Command.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structures/classes/Command.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structures/classes/CommandContext.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structures/classes/CommandContext.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structures/classes/Listener.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structures/classes/Listener.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structures/components/Button.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structures/components/Button.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structures/components/Modal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structures/components/Modal.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structures/components/ModalBuilder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structures/components/ModalBuilder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structures/components/SelectMenu.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structures/components/SelectMenu.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structures/embed/Embed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structures/embed/Embed.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structures/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structures/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structures/rpg/Battle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structures/rpg/Battle.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structures/rpg/BossBattle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structures/rpg/BossBattle.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/structures/util/Logger.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/structures/util/Logger.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/util/emojis.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/util/plugins/RenderEmote.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/locales/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/locales/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/main.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2G8yeWqMpEbcsHHFbovKzqZlkAy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3832a877-45ef-4ccf-806d-72d5412e8599" name="Changes" comment="" />
+      <created>1665784605307</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1665784605307</updated>
+    </task>
+    <servers />
+  </component>
+</project>
