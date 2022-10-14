@@ -183,13 +183,6 @@ module.exports = class MessageCreateListener extends Listener {
                 }
             }
 
-<<<<<<< HEAD:discord/src/listeners/guilds/messageCreate.js
-=======
-            const slash = this.client.slashCommands.get(cmd.name) || this.client.slashCommands.get(command.slice(prefix.length))
-
-            if (slash) await message.reply(`This command is already available in Slash Commands! Try use \`/${slash.name}\`.`)
-
->>>>>>> dev:client/src/listeners/guilds/messageCreate.js
             cmd.run (message).catch(err => {
                 message.reply('helper.error', { error: err })
                 new Logger(this.client).error(err)
