@@ -183,6 +183,10 @@ module.exports = class MessageCreateListener extends Listener {
                 }
             }
 
+            const slash = this.client.slashCommands.get(cmd.name) || this.client.slashCommands.get(command.slice(prefix.length))
+
+            if (slash) await message.reply(`This command is already available in Slash Commands! Try use \`/${slash.name}\`.`)
+            
             cmd.run (message).catch(err => {
                 message.reply('helper.error', { error: err })
                 new Logger(this.client).error(err)
