@@ -402,6 +402,10 @@
             "winner": "`{player}` was the big winner of the match!\n**Award:** {granex} granex and {exp} EXP\n\nIf you didn't win, good luck next time."
         },
         "call": "Call",
-        "your_first_time": "Apparently is your first time here. Start with `{prefix}daily` command."
+        "your_first_time": "Apparently is your first time here. Start with `{prefix}daily` command.",
+        "new_era": {
+            "text": "Hey! A new era of mine is coming. But to sum it up, I will cease to exist to make way for a new project with another bot: a PvP Simulator! Join my server for more information by clicking the button below.",
+            "button": "Entra aí!"
+        }
     }
 }
