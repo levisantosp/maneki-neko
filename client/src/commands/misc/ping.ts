@@ -14,6 +14,13 @@ export default class PingCommand extends Command {
   }
 
   async run({ ctx }: CommandOptions) {
-    ctx.reply('olá', { test: 'a' })
+    const time = 40000 - (Date.now() - this.client.startTime)
+
+    if (ctx.guild?.shard.latency === Infinity) {
+      return ctx.reply('commands.ping.wait', {
+        time: `<t:${parseInt(((Date.now() + time) / 1000).toString())}:R>`
+      })
+    }
+    ctx.reply(`Pong! \`${ctx.guild?.shard.latency}ms\` (Shard ${ctx.guild?.shard.id})`)
   }
 }

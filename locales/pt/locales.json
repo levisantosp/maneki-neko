@@ -349,6 +349,9 @@
             "you_already_use_this": "Você já está usando este template.",
             "you_dont_have_this": "Você não possui este template.",
             "confirm": "Agora você está usando o template `{template}`"
+        },
+        "ping": {
+            "wait": "Calma lá, meu patrão! Eu acabei de inicializar. Tente novamente {time}"
         }
     },
     "helper": {

@@ -9,7 +9,7 @@ export const get = (lang: string, content: string, args?: any) => {
 	}
 
 	if (typeof content === 'string') {
-		for (const arg of Object.keys(args)) {
+		if (args) for (const arg of Object.keys(args)) {
 			locale = locale.replaceAll(`{${arg}}`, args[arg])
 		}
 		return locale

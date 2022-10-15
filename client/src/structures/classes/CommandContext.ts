@@ -25,7 +25,7 @@ export default class CommandContext {
     this.guild = guild
   }
 
-  reply(content: string | AdvancedMessageContent, options?: object | any) {
+  reply (content: string | AdvancedMessageContent, options?: object | any) {
     switch (typeof content) {
       case 'string': {
         if (options?.name && options?.file) {
@@ -55,6 +55,40 @@ export default class CommandContext {
           )
         }
         else return this.interaction.createMessage(Object.assign(content))
+      }
+    }
+  }
+
+  edit (content: string | AdvancedMessageContent, options?: object | any) {
+    switch (typeof content) {
+      case 'string': {
+        if (options?.name && options?.file) {
+          return this.interaction.editOriginalMessage(
+            {
+              content: get(this.locale, content, options)
+            },
+            {
+              file: options?.file,
+              name: options?.name
+            }
+          )
+        }
+        else return this.interaction.editOriginalMessage(
+          {
+            content: get(this.locale, content, options)
+          }
+        )
+      }
+      case 'object': {
+        if (options?.options && options?.name) {
+          return this.interaction.editOriginalMessage(Object.assign(content),
+            {
+              file: options?.file,
+              name: options?.name
+            }
+          )
+        }
+        else return this.interaction.editOriginalMessage(Object.assign(content))
       }
     }
   }
