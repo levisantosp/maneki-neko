@@ -5,6 +5,7 @@ export const get = (lang: string, content: string, args?: any) => {
 
 	for (const file of content.split('.')) {
 		locale = locale[file]
+		console.log(locale)
 		if (!locale) return content
 	}
 
